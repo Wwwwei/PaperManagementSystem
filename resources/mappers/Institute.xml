@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="pms.dao.InstituteMapper">
+
+    <select id="findInstitueByName" parameterType="String" resultMap="pms.entity.EntityMapper.InstituteBean">
+       select *from institute where institute_name=#{institute_name}
+    </select>
+    
+    <select id="findAllInstitute" resultMap="pms.entity.EntityMapper.InstituteBean">
+       select *from institute     
+    </select>
+  
+</mapper>

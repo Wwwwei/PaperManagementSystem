@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="pms.dao.AdminMapper">
+
+    <update id="resetPassword" parameterType="java.util.Map">
+      update teacher set teacher_password=#{teacher_no} where teacher_id=#{teacher_id}
+    </update>
+    
+    <select id="findAdminByLogin" resultMap="pms.entity.EntityMapper.AdminBean" parameterType="pms.entity.Admin">
+      select *from admin where admin_no=#{admin_no} and admin_password=#{admin_password}
+    </select>
+    
+
+
+
+  
+
+  
+</mapper>

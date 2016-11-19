@@ -1,0 +1,25 @@
+.location-area{
+margin-left:100px;
+margin-top:-22px;
+display: none;
+}
+.location-area label{
+    font-weight: normal;
+    vertical-align:middle;
+    margin-top: 0px;
+}
+.location-area input{
+    margin-left:5px;
+	width:150px;
+	vertical-align:middle;display:inline-block;
+	margin-right:10px;
+} 
+.jc-field {
+	margin-bottom: 20px;
+}
+.update-paper-status {
+	margin-left:20px;
+}
+.dl-horizontal.text-overflow.acc-num {
+	display: none;
+}

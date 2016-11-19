@@ -1,0 +1,135 @@
+blockquote {
+	border-left: 10px solid #337ab7;
+	border-bottom: 1px solid #337ab7;
+}
+
+blockquote span {
+	color: #337ab7;
+	font-size: 22px;
+}
+
+body {
+	font-family: "微软雅黑";
+	padding-top: 50px;
+	font-size: 15px;
+}
+
+select {
+	border: 0px;
+}
+
+.btn-danger {
+	font-size: 15px;
+	width: 100%;
+	border: 1px solid #FFFFFF;
+	background-color: #d9534f;
+	color: #FFFFFF;
+}
+
+.btn-danger:hover {
+	font-size: 15px;
+	border: 1px solid #d9534f;
+	background-color: #FFFFFF;
+	color: #d9534f;
+}
+
+.btn-primary {
+	font-size: 15px;
+	width: 100%;
+	border: 1px solid #FFFFFF;
+	background-color: #337ab7;
+	color: #FFFFFF;
+}
+
+.btn-primary:hover {
+	font-size: 15px;
+	border: 1px solid #337ab7;
+	background-color: #FFFFFF;
+	color: #337ab7;
+}
+
+.btn-warning {
+	font-size: 15px;
+	width: 100%;
+	border: 1px solid #FFFFFF;
+	background-color: #f0ad4e;
+	color: #FFFFFF;
+}
+
+.btn-warning:hover {
+	font-size: 15px;
+	border: 1px solid #f0ad4e;
+	background-color: #FFFFFF;
+	color: #f0ad4e;
+}
+
+.dl-horizontal {
+	/* 	font-size: large; */
+	word-break: break-all;
+	word-wrap: break-word;
+}
+
+.input-group-addon {
+	border: 1px solid #FFFFFF;
+	background-color: #337ab7;
+	color: #FFFFFF;
+}
+
+.navbar a {
+	color: white;
+	margin-left:5px;
+	margin-right:5px;
+}
+
+.navbar a:link {
+	color: white;
+	text-decoration: none;
+}
+
+.navbar a:visited {
+	color: white;
+	text-decoration: none;
+}
+
+.navbar a:hover {
+	color: white;
+	text-decoration: none;
+	font-weight: bolder;
+	
+}
+.navbar-default .navbar-nav>li>a:hover{
+	font-weight: bolder;
+	background-color:#2E619F ;
+}
+.test {
+	color: white;
+	text-decoration: none;
+	font-weight: bolder;
+	background-color:#2E619F ;
+}
+label{
+margin-top:5px;
+}
+a:hover{
+	cursor:pointer;
+	text-decoration:none;
+}
+.confirm-button {
+	display: inline-block;
+    margin-right: 5px;
+    font-size: 14px;
+    height: 33px;
+    line-height: 33px;
+    padding: 0 20px;
+    text-align: center;
+    vertical-align: middle;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background-color: #337ab7;
+    color: #FFF;
+    margin-left:100px;
+}
