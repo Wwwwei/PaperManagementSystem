@@ -5,11 +5,14 @@
 
 <mapper namespace="pms.dao.Journals_ConferenceMapper">
 
-	<select id="findJournals_Conference" resultMap="pms.entity.EntityMapper.Journals_ConferenceBean">
+	<!--<select id="findJournals_Conference" resultMap="pms.entity.EntityMapper.Journals_ConferenceBean">-->
+		<!--select-->
+		<!--j.* from journals_conference as j-->
+	<!--</select>-->
+	<select id="findAll" resultMap="pms.entity.EntityMapper.Journals_ConferenceBean">
 		select
 		j.* from journals_conference as j
 	</select>
-
 	<!--<select id="findJournals_ConferenceByFlag" resultMap="pms.entity.EntityMapper.Journals_ConferenceBean"-->
 		<!--parameterType="Object">-->
 		<!--SELECT * FROM journals_conference WHERE-->

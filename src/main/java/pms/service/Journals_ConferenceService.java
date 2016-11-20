@@ -11,8 +11,8 @@ public interface Journals_ConferenceService {
 	 *
 	 * @return
 	 */
-	public List<Journals_Conference> findJournals_Conference();
-
+	//public List<Journals_Conference> findJournals_Conference();
+	public List<Journals_Conference> findAllJournals_Conference();
 	/**
 	 * 根据教师flag查询会议或者期刊集合
 	 * 
@@ -28,6 +28,6 @@ public interface Journals_ConferenceService {
 	 * @param year
 	 * @return
 	 */
-	public Journals_Conference findByIdAndYear(Integer id, Integer year);
+	public Journals_Conference findJournals_ConferenceByIdAndYear(Integer id, Integer year);
 
 }

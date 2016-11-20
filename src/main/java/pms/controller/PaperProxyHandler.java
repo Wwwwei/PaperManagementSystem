@@ -64,16 +64,12 @@ public class PaperProxyHandler {
 
 	/**
 	 * 创建论文代理对象
-	 * 
 	 * @param paper
-	 * @param paper_location_issuing
-	 * @param paper_location_volume
-	 * @param paper_location_pagination
 	 * @param other_includedType
 	 * @param request
 	 * @param session
-	 * @return
-	 */
+     * @return
+     */
 	@RequestMapping(value = "/paper_proxy/create", method = RequestMethod.POST)
 	public ModelAndView create(Paper paper,
 			@RequestParam(value = "other_includedType", required = false) String other_includedType,
@@ -131,11 +127,11 @@ public class PaperProxyHandler {
 			if (null != paper.getPaper_journals_conference_ZKY()
 					&& -1 != paper.getPaper_journals_conference_ZKY().getJournals_conference_id()) {
 				int zky_id = paper.getPaper_journals_conference_ZKY().getJournals_conference_id();
-				Journals_Conference zky = journals_ConferenceService.findByIdAndYear(zky_id,
+				Journals_Conference zky = journals_ConferenceService.findJournals_ConferenceByIdAndYear(zky_id,
 						(Calendar.getInstance()).get(Calendar.YEAR));
 				if (null != zky) {
 					zky_if = journals_ConferenceService
-							.findByIdAndYear(zky_id, (Calendar.getInstance()).get(Calendar.YEAR))
+							.findJournals_ConferenceByIdAndYear(zky_id, (Calendar.getInstance()).get(Calendar.YEAR))
 							.getJournals_conference_IF();
 				}
 
@@ -143,22 +139,22 @@ public class PaperProxyHandler {
 			if (null != paper.getPaper_journals_conference_JCR()
 					&& -1 != paper.getPaper_journals_conference_JCR().getJournals_conference_id()) {
 				int jcr_id = paper.getPaper_journals_conference_JCR().getJournals_conference_id();
-				Journals_Conference jcr = journals_ConferenceService.findByIdAndYear(jcr_id,
+				Journals_Conference jcr = journals_ConferenceService.findJournals_ConferenceByIdAndYear(jcr_id,
 						(Calendar.getInstance()).get(Calendar.YEAR));
 				if (null != jcr) {
 					jcr_if = journals_ConferenceService
-							.findByIdAndYear(jcr_id, (Calendar.getInstance()).get(Calendar.YEAR))
+							.findJournals_ConferenceByIdAndYear(jcr_id, (Calendar.getInstance()).get(Calendar.YEAR))
 							.getJournals_conference_IF();
 				}
 			}
 			if (null != paper.getPaper_journals_conference_CCF()
 					&& -1 != paper.getPaper_journals_conference_CCF().getJournals_conference_id()) {
 				int ccf_id = paper.getPaper_journals_conference_CCF().getJournals_conference_id();
-				Journals_Conference ccf = journals_ConferenceService.findByIdAndYear(ccf_id,
+				Journals_Conference ccf = journals_ConferenceService.findJournals_ConferenceByIdAndYear(ccf_id,
 						(Calendar.getInstance()).get(Calendar.YEAR));
 				if (null != ccf) {
 					ccf_if = journals_ConferenceService
-							.findByIdAndYear(ccf_id, (Calendar.getInstance()).get(Calendar.YEAR))
+							.findJournals_ConferenceByIdAndYear(ccf_id, (Calendar.getInstance()).get(Calendar.YEAR))
 							.getJournals_conference_IF();
 				}
 			}
@@ -208,16 +204,13 @@ public class PaperProxyHandler {
 
 	/**
 	 * 更新论文代理对象
-	 * 
 	 * @param paper
-	 * @param paper_location_issuing
-	 * @param paper_location_volume
-	 * @param paper_location_pagination
 	 * @param other_includedType
+	 * @param commited_paper_id
 	 * @param request
 	 * @param session
-	 * @return
-	 */
+     * @return
+     */
 	@ResponseBody
 	@RequestMapping(value = "/paper_proxy/update", method = RequestMethod.POST)
 	public ModelAndView update(Paper paper,
@@ -284,11 +277,11 @@ public class PaperProxyHandler {
 			if (null != paper.getPaper_journals_conference_ZKY()
 					&& -1 != paper.getPaper_journals_conference_ZKY().getJournals_conference_id()) {
 				int zky_id = paper.getPaper_journals_conference_ZKY().getJournals_conference_id();
-				Journals_Conference zky = journals_ConferenceService.findByIdAndYear(zky_id,
+				Journals_Conference zky = journals_ConferenceService.findJournals_ConferenceByIdAndYear(zky_id,
 						(Calendar.getInstance()).get(Calendar.YEAR));
 				if (null != zky) {
 					zky_if = journals_ConferenceService
-							.findByIdAndYear(zky_id, (Calendar.getInstance()).get(Calendar.YEAR))
+							.findJournals_ConferenceByIdAndYear(zky_id, (Calendar.getInstance()).get(Calendar.YEAR))
 							.getJournals_conference_IF();
 				}
 
@@ -296,22 +289,22 @@ public class PaperProxyHandler {
 			if (null != paper.getPaper_journals_conference_JCR()
 					&& -1 != paper.getPaper_journals_conference_JCR().getJournals_conference_id()) {
 				int jcr_id = paper.getPaper_journals_conference_JCR().getJournals_conference_id();
-				Journals_Conference jcr = journals_ConferenceService.findByIdAndYear(jcr_id,
+				Journals_Conference jcr = journals_ConferenceService.findJournals_ConferenceByIdAndYear(jcr_id,
 						(Calendar.getInstance()).get(Calendar.YEAR));
 				if (null != jcr) {
 					jcr_if = journals_ConferenceService
-							.findByIdAndYear(jcr_id, (Calendar.getInstance()).get(Calendar.YEAR))
+							.findJournals_ConferenceByIdAndYear(jcr_id, (Calendar.getInstance()).get(Calendar.YEAR))
 							.getJournals_conference_IF();
 				}
 			}
 			if (null != paper.getPaper_journals_conference_CCF()
 					&& -1 != paper.getPaper_journals_conference_CCF().getJournals_conference_id()) {
 				int ccf_id = paper.getPaper_journals_conference_CCF().getJournals_conference_id();
-				Journals_Conference ccf = journals_ConferenceService.findByIdAndYear(ccf_id,
+				Journals_Conference ccf = journals_ConferenceService.findJournals_ConferenceByIdAndYear(ccf_id,
 						(Calendar.getInstance()).get(Calendar.YEAR));
 				if (null != ccf) {
 					ccf_if = journals_ConferenceService
-							.findByIdAndYear(ccf_id, (Calendar.getInstance()).get(Calendar.YEAR))
+							.findJournals_ConferenceByIdAndYear(ccf_id, (Calendar.getInstance()).get(Calendar.YEAR))
 							.getJournals_conference_IF();
 				}
 			}

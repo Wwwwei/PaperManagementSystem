@@ -6,9 +6,12 @@ import java.util.Map;
 import pms.entity.Journals_Conference;
 
 public interface Journals_ConferenceMapper {
-
-	public List<Journals_Conference> findJournals_Conference();
-
+	/**
+	 * 查询所有会议或者期刊实体
+	 * @return
+     */
+//	public List<Journals_Conference> findJournals_Conference();
+	public List<Journals_Conference> findAll();
 	/**
 	 * 根据教师flag查询会议或者期刊集合
 	 * 

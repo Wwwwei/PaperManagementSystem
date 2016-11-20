@@ -18,9 +18,10 @@ public class Journals_ConferenceServiceImpl implements Journals_ConferenceServic
 	private Journals_ConferenceMapper journals_ConferenceMapper;
 
 	@Override
-	public List<Journals_Conference> findJournals_Conference() {
+	public List<Journals_Conference> findAllJournals_Conference() {
 		// TODO Auto-generated method stub
-		List<Journals_Conference> journals_Conferences = journals_ConferenceMapper.findJournals_Conference();
+//		List<Journals_Conference> journals_Conferences = journals_ConferenceMapper.findJournals_Conference();
+		List<Journals_Conference> journals_Conferences = journals_ConferenceMapper.findAll();
 		return journals_Conferences;
 	}
 
@@ -36,7 +37,7 @@ public class Journals_ConferenceServiceImpl implements Journals_ConferenceServic
 	}
 
 	@Override
-	public Journals_Conference findByIdAndYear(Integer id, Integer year) {
+	public Journals_Conference findJournals_ConferenceByIdAndYear(Integer id, Integer year) {
 		// TODO Auto-generated method stub
 		if (null != id && null != year) {
 			Map<String, Object> params = new HashMap<String, Object>();
