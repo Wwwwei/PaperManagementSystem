@@ -8,7 +8,7 @@ public interface Journals_ConferenceService {
 
 	/**
 	 * 查询所有的期刊论文等级
-	 * 
+	 *
 	 * @return
 	 */
 	public List<Journals_Conference> findJournals_Conference();
@@ -19,7 +19,7 @@ public interface Journals_ConferenceService {
 	 * @param flag
 	 * @return
 	 */
-	public List<Journals_Conference> findJournals_ConferenceByFlag(Object flag);
+	public List<Journals_Conference> findJournals_ConferenceByFlag(Integer flag);
 
 	/**
 	 * 根据id和影响因子时间查询期刊论文实体

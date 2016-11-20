@@ -25,10 +25,11 @@ public class Journals_ConferenceServiceImpl implements Journals_ConferenceServic
 	}
 
 	@Override
-	public List<Journals_Conference> findJournals_ConferenceByFlag(Object flag) {
+	public List<Journals_Conference> findJournals_ConferenceByFlag(Integer flag) {
 		// TODO Auto-generated method stub
 		if (flag != null) {
-			return journals_ConferenceMapper.findJournals_ConferenceByFlag(flag);
+			//return journals_ConferenceMapper.findJournals_ConferenceByFlag(flag);
+		return journals_ConferenceMapper.findByFlag(flag);
 		} else {
 			return null;
 		}
@@ -41,7 +42,7 @@ public class Journals_ConferenceServiceImpl implements Journals_ConferenceServic
 			Map<String, Object> params = new HashMap<String, Object>();
 			params.put("journals_conference_id", id);
 			params.put("journals_conference_year", year);
-			return journals_ConferenceMapper.findByIdAndYear(params);
+			return journals_ConferenceMapper.selectByIdAndYear(params);
 		} else {
 			return null;
 		}

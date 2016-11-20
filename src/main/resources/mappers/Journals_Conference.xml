@@ -10,24 +10,44 @@
 		j.* from journals_conference as j
 	</select>
 
-	<select id="findJournals_ConferenceByFlag" resultMap="pms.entity.EntityMapper.Journals_ConferenceBean"
-		parameterType="Object">
+	<!--<select id="findJournals_ConferenceByFlag" resultMap="pms.entity.EntityMapper.Journals_ConferenceBean"-->
+		<!--parameterType="Object">-->
+		<!--SELECT * FROM journals_conference WHERE-->
+		<!--journals_conference_flag=#{journals_conference_flag};-->
+	<!--</select>-->
+	<select id="findByFlag" resultMap="pms.entity.EntityMapper.Journals_ConferenceBean"
+			parameterType="java.lang.Integer">
 		SELECT * FROM journals_conference WHERE
 		journals_conference_flag=#{journals_conference_flag};
 	</select>
-	<select id="findById" resultMap="pms.entity.EntityMapper.Journals_ConferenceBean"
-		parameterType="java.lang.Integer">
+	<!--<select id="findById" resultMap="pms.entity.EntityMapper.Journals_ConferenceBean"-->
+		<!--parameterType="java.lang.Integer">-->
+		<!--SELECT *-->
+		<!--FROM journals_conference-->
+		<!--WHERE-->
+		<!--journals_conference_id=#{journals_conference_id};-->
+	<!--</select>-->
+	<select id="selectById" resultMap="pms.entity.EntityMapper.Journals_ConferenceBean"
+			parameterType="java.lang.Integer">
 		SELECT *
 		FROM journals_conference
 		WHERE
 		journals_conference_id=#{journals_conference_id};
 	</select>
-	<select id="findByIdAndYear" resultMap="pms.entity.EntityMapper.Journals_ConferenceBean"
-		parameterType="java.util.Map">
-		SELECT *
-		FROM journals_conference
-		WHERE
-		journals_conference_id=#{journals_conference_id} AND
-		journals_conference_year=#{journals_conference_year};
+	<!--<select id="findByIdAndYear" resultMap="pms.entity.EntityMapper.Journals_ConferenceBean"-->
+		<!--parameterType="java.util.Map">-->
+		<!--SELECT *-->
+		<!--FROM journals_conference-->
+		<!--WHERE-->
+		<!--journals_conference_id=#{journals_conference_id} AND-->
+		<!--journals_conference_year=#{journals_conference_year};-->
+	<!--</select>-->
+	<select id="selectByIdAndYear" resultMap="pms.entity.EntityMapper.Journals_ConferenceBean"
+	parameterType="java.util.Map">
+	SELECT *
+	FROM journals_conference
+	WHERE
+	journals_conference_id=#{journals_conference_id} AND
+	journals_conference_year=#{journals_conference_year};
 	</select>
 </mapper>
