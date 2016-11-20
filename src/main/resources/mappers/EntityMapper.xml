@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pms.entity.EntityMapper">
+	<resultMap type="pms.entity.Author" id="AuthorBean">
+		<id column="author_id" property="author_id" />
+		<result column="author_no" property="author_no" />
+		<result column="author_name" property="author_name" />
+		<result column="author_office" property="author_office" />
+		<result column="author_rank" property="author_rank" />
+		<result column="author_type" property="author_type" />
+
+		<!-- 一对多的关系 -->
+		<!-- property: 指的是集合属性的值, ofType：指的是集合中元素的类型 -->
+		<collection property="author_paper" resultMap="PaperBean" />
+
+	</resultMap>
+
+	<resultMap type="pms.entity.Paper" id="PaperBean">
+		<id column="paper_id" property="paper_id" />
+		<result column="paper_name" property="paper_name" />
+		<result column="paper_rank" property="paper_rank" />
+		<result column="paper_author_num" property="paper_authorNum" />
+		<result column="paper_included_type" property="paper_includedType" />
+		<result column="paper_acc_num" property="paper_accNum" />
+		<result column="paper_status" property="paper_status" />
+		<result column="paper_time" property="paper_time" />
+		<result column="paper_citations" property="paper_citations" />
+		<result column="paper_citations_others" property="paper_citations_others" />
+		<result column="paper_citations_google" property="paper_citations_google" />
+		<result column="paper_journals_conference_other" property="paper_journals_conference_other" />
+		<result column="paper_issue" property="paper_issue" />
+		<result column="paper_location_zky" property="paper_location_ZKY" />
+		<result column="paper_location_jcr" property="paper_location_JCR" />
+		<result column="paper_location_ccf" property="paper_location_CCF" />
+		<association property="paper_journals_conference_ZKY"
+			column="paper_journals_conference_zky_id" select="pms.dao.Journals_ConferenceMapper.findById" />
+		<association property="paper_journals_conference_JCR"
+			column="paper_journals_conference_jcr_id" select="pms.dao.Journals_ConferenceMapper.findById" />
+		<association property="paper_journals_conference_CCF"
+			column="paper_journals_conference_ccf_id" select="pms.dao.Journals_ConferenceMapper.findById" />
+		<collection property="paper_teacher" resultMap="TeacherBean" />
+	</resultMap>
+
+	<resultMap type="pms.entity.Journals_Conference" id="Journals_ConferenceBean">
+		<id column="journals_conference_id" property="journals_conference_id" />
+		<result column="journals_conference_degree" property="journals_conference_degree" />
+		<result column="journals_conference_name" property="journals_conference_name" />
+		<result column="journals_conference_info" property="journals_conference_info" />
+		<result column="journals_conference_flag" property="journals_conference_flag" />
+		<result column="journals_conference_if" property="journals_conference_IF" />
+		<result column="journals_conference_type" property="journals_conference_type" />
+		<result column="journals_conference_year" property="journals_conference_year" />
+	</resultMap>
+
+
+	<resultMap type="pms.entity.Teacher" id="TeacherBean">
+		<id column="teacher_id" property="teacher_id" />
+		<result column="teacher_name" property="teacher_name" />
+		<result column="teacher_password" property="teacher_password" />
+		<result column="teacher_salt" property="teacher_salt" />
+		<result column="teacher_no" property="teacher_no" />
+		<result column="teacher_sex" property="teacher_sex" />
+		<result column="teacher_email" property="teacher_email" />
+		<result column="teacher_phoneNumber" property="teacher_phoneNumber" />
+		<result column="teacher_officeNumber" property="teacher_officeNumber" />
+		<result column="teacher_title" property="teacher_title" />
+		<result column="teacher_birth" property="teacher_birth" />
+		<result column="teacher_age" property="teacher_age" />
+		<result column="teacher_qq" property="teacher_qq" />
+		<result column="teacher_idCard" property="teacher_idCard" />
+		<result column="teacher_comeTime" property="teacher_comeTime" />
+		<result column="teacher_graUniversity" property="teacher_graUniversity" />
+		<result column="teacher_info" property="teacher_info" />
+		<result column="teacher_info_url" property="teacher_info_url" />
+		<result column="teacher_google_scolar_url" property="teacher_google_scolar_url" />
+		<result column="teacher_university" property="teacher_university" />
+		<result column="teacher_subject" property="teacher_subject" />
+		<result column="teacher_subject_study" property="teacher_subject_study" />
+		<collection property="teacher_teachingProfession"
+			resultMap="TeachingProfessionBean" />
+		<collection property="teacher_institute" resultMap="InstituteBean" />
+	</resultMap>
+
+	<resultMap type="pms.entity.Institute" id="InstituteBean">
+		<id column="institute_id" property="institute_id" />
+		<result column="institute_name" property="institute_name" />
+		<result column="institute_info" property="institute_info" />
+		<result column="institute_leader" property="institute_leader" />
+	</resultMap>
+
+	<resultMap type="pms.entity.TeachingProfession" id="TeachingProfessionBean">
+		<id column="teachingProfession_id" property="teachingProfession_id" />
+		<result column="teachingProfession_name" property="teachingProfession_name" />
+		<result column="teachingProfession_info" property="teachingProfession_info" />
+	</resultMap>
+
+	<resultMap type="pms.entity.Paper" id="PaperProxyBean">
+		<id column="paperproxy_id" property="paper_id" />
+		<result column="paperproxy_name" property="paper_name" />
+		<result column="paperproxy_rank" property="paper_rank" />
+		<result column="paperproxy_author_num" property="paper_authorNum" />
+		<result column="paperproxy_included_type" property="paper_includedType" />
+		<result column="paperproxy_acc_num" property="paper_accNum" />
+		<result column="paperproxy_status" property="paper_status" />
+		<result column="paperproxy_time" property="paper_time" />
+		<result column="paperproxy_citations" property="paper_citations" />
+		<result column="paperproxy_citations_others" property="paper_citations_others" />
+		<result column="paperproxy_citations_google" property="paper_citations_google" />
+		<result column="paperproxy_journals_conference_other" property="paper_journals_conference_other" />
+		<result column="paperproxy_issue" property="paper_issue" />
+		<result column="paperproxy_location_zky" property="paper_location_ZKY" />
+		<result column="paperproxy_location_jcr" property="paper_location_JCR" />
+		<result column="paperproxy_location_ccf" property="paper_location_CCF" />
+		<result column="paperproxy_if" property="paper_if" />
+		<association property="paper_journals_conference_ZKY"
+			column="paperproxy_journals_conference_zky_id" select="pms.dao.Journals_ConferenceMapper.findById" />
+		<association property="paper_journals_conference_JCR"
+			column="paperproxy_journals_conference_jcr_id" select="pms.dao.Journals_ConferenceMapper.findById" />
+		<association property="paper_journals_conference_CCF"
+			column="paperproxy_journals_conference_ccf_id" select="pms.dao.Journals_ConferenceMapper.findById" />
+		<collection property="paper_teacher" resultMap="TeacherBean" />
+	</resultMap>
+
+	<resultMap type="pms.entity.AuthorProxy" id="AuthorProxyBean">
+		<id column="authorproxy_id" property="author_id" />
+		<result column="authorproxy_no" property="author_no" />
+		<result column="authorproxy_name" property="author_name" />
+		<result column="authorproxy_office" property="author_office" />
+		<result column="authorproxy_rank" property="author_rank" />
+		<result column="authorproxy_type" property="author_type" />
+		<!-- 一对多的关系 -->
+		<!-- property: 指的是集合属性的值, ofType：指的是集合中元素的类型 -->
+		<collection property="author_paper" resultMap="PaperProxyBean" />
+	</resultMap>
+
+	<resultMap type="pms.entity.Admin" id="AdminBean">
+		<id column="admin_id" property="admin_id" />
+		<result column="admin_no" property="admin_no" />
+		<result column="admin_name" property="admin_name" />
+		<result column="admin_password" property="admin_password" />
+	</resultMap>
+
+
+</mapper>

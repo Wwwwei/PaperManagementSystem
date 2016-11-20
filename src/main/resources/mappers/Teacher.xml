@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pms.dao.TeacherMapper">
+
+	<select id="findTeacherSaltByTeacherNo" parameterType="String" resultType="String">
+	    select teacher_salt from teacher where teacher_no = #{teacher_no}
+	</select>
+	
+	<select id="findTeacherPasswordByTeacherNo" parameterType="String" resultType="String">
+	    select teacher_password from teacher where teacher_no = #{teacher_no}
+	</select>
+
+
+	<update id="updatePassword" parameterType="java.util.Map">
+		update teacher set teacher_password=#{teacher_password},teacher_salt = #{teacher_salt} where
+		teacher_id=#{teacher_id}
+	</update>
+	
+	<update id="updateTeacher" parameterType="pms.entity.Teacher">
+		update teacher set teacher_name=#{teacher_name},teacher_sex = #{teacher_sex},teacher_email = #{teacher_email},
+		teacher_phoneNumber = #{teacher_phoneNumber},teacher_officeNumber = #{teacher_officeNumber},teacher_title = #{teacher_title},
+		teacher_birth = #{teacher_birth},teacher_qq = #{teacher_qq},teacher_idCard = #{teacher_idCard},teacher_comeTime = #{teacher_comeTime},
+		teacher_graUniversity = #{teacher_graUniversity},teacher_info = #{teacher_info},teacher_info_url = #{teacher_info_url},
+		teacher_google_scolar_url = #{teacher_google_scolar_url},teacher_university = #{teacher_university},teacher_subject = #{teacher_subject},teacher_subject_study = #{teacher_subject_study},
+		teacher_institute_id = #{teacher_institute.institute_id},teacher_teachingProfession_id = #{teacher_teachingProfession.teachingProfession_id} where
+		teacher_id=#{teacher_id}
+	</update>
+
+	<select id="findTeacherById" parameterType="int"
+		resultMap="pms.entity.EntityMapper.TeacherBean">
+		select *from teacher where teacher_id=#{teacher_id}
+	</select>
+
+	<select id="findAllTeacher" resultMap="pms.entity.EntityMapper.TeacherBean">
+		select t.teacher_id,t.teacher_name from teacher t order by t.teacher_name
+	</select>
+	
+	<select id="findAllTeacherNo" resultType="String">
+		select t.teacher_no from teacher t
+	</select>
+	
+	<select id="findTeacherIdByTeacherNo" resultType="int" parameterType="String">
+		select t.teacher_id from teacher t where t.teacher_no = #{teacher_no}
+	</select>
+
+	<insert id="insertTeacher" parameterType="pms.entity.Teacher">
+		insert into
+		teacher(teacher_no,teacher_name,teacher_password,teacher_salt,teacher_sex,teacher_email,teacher_phoneNumber,teacher_officeNumber,
+		teacher_title,teacher_qq,teacher_idCard,teacher_comeTime,teacher_info,teacher_birth,teacher_info_url,
+		teacher_google_scolar_url,teacher_university,teacher_subject,teacher_subject_study,teacher_institute_id,teacher_teachingProfession_id)
+		values(#{teacher_no},#{teacher_name},#{teacher_password},#{teacher_salt},#{teacher_sex},#{teacher_email},#{teacher_phoneNumber},#{teacher_officeNumber},
+		#{teacher_title},#{teacher_qq},#{teacher_idCard},#{teacher_comeTime},#{teacher_info},#{teacher_birth},#{teacher_info_url},#{teacher_google_scolar_url},
+		#{teacher_university},#{teacher_subject},#{teacher_subject_study},#{teacher_institute.institute_id},#{teacher_teachingProfession.teachingProfession_id})
+	</insert>
+
+	<select id="findTeacher" parameterType="java.util.Map"
+		resultMap="pms.entity.EntityMapper.TeacherBean">
+		select t.*,i.institute_id,i.institute_name from teacher t inner join institute i on t.teacher_institute_id = i.institute_id
+		<where>
+			<if test="teacher_no!=null">teacher_no = #{teacher_no}</if>
+			<if test="teacher_name!=null">teacher_name = #{teacher_name}</if>
+		</where>
+	</select>
+
+</mapper>
