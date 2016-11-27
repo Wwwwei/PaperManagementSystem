@@ -92,9 +92,9 @@
 	</resultMap>
 
 	<resultMap type="pms.entity.TeachingProfession" id="TeachingProfessionBean">
-		<id column="teachingProfession_id" property="teachingProfession_id" />
-		<result column="teachingProfession_name" property="teachingProfession_name" />
-		<result column="teachingProfession_info" property="teachingProfession_info" />
+		<id column="teachingprofession_id" property="teachingProfession_id" />
+		<result column="teachingprofession_name" property="teachingProfession_name" />
+		<result column="teachingprofession_info" property="teachingProfession_info" />
 	</resultMap>
 
 	<resultMap type="pms.entity.Paper" id="PaperProxyBean">
