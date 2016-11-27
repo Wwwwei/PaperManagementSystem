@@ -21,11 +21,11 @@
 	
 	<update id="updateTeacher" parameterType="pms.entity.Teacher">
 		update teacher set teacher_name=#{teacher_name},teacher_sex = #{teacher_sex},teacher_email = #{teacher_email},
-		teacher_phoneNumber = #{teacher_phoneNumber},teacher_officeNumber = #{teacher_officeNumber},teacher_title = #{teacher_title},
-		teacher_birth = #{teacher_birth},teacher_qq = #{teacher_qq},teacher_idCard = #{teacher_idCard},teacher_comeTime = #{teacher_comeTime},
-		teacher_graUniversity = #{teacher_graUniversity},teacher_info = #{teacher_info},teacher_info_url = #{teacher_info_url},
+		teacher_phone_number = #{teacher_phoneNumber},teacher_office_number = #{teacher_officeNumber},teacher_title = #{teacher_title},
+		teacher_birth = #{teacher_birth},teacher_qq = #{teacher_qq},teacher_id_card = #{teacher_idCard},teacher_come_time = #{teacher_comeTime},
+		teacher_gra_university = #{teacher_graUniversity},teacher_info = #{teacher_info},teacher_info_url = #{teacher_info_url},
 		teacher_google_scolar_url = #{teacher_google_scolar_url},teacher_university = #{teacher_university},teacher_subject = #{teacher_subject},teacher_subject_study = #{teacher_subject_study},
-		teacher_institute_id = #{teacher_institute.institute_id},teacher_teachingProfession_id = #{teacher_teachingProfession.teachingProfession_id} where
+		teacher_institute_id = #{teacher_institute.institute_id},teacher_teachingprofession_id = #{teacher_teachingProfession.teachingProfession_id} where
 		teacher_id=#{teacher_id}
 	</update>
 
@@ -48,9 +48,9 @@
 
 	<insert id="insertTeacher" parameterType="pms.entity.Teacher">
 		insert into
-		teacher(teacher_no,teacher_name,teacher_password,teacher_salt,teacher_sex,teacher_email,teacher_phoneNumber,teacher_officeNumber,
-		teacher_title,teacher_qq,teacher_idCard,teacher_comeTime,teacher_info,teacher_birth,teacher_info_url,
-		teacher_google_scolar_url,teacher_university,teacher_subject,teacher_subject_study,teacher_institute_id,teacher_teachingProfession_id)
+		teacher(teacher_no,teacher_name,teacher_password,teacher_salt,teacher_sex,teacher_email,teacher_phone_number,teacher_office_number,
+		teacher_title,teacher_qq,teacher_id_card,teacher_come_time,teacher_info,teacher_birth,teacher_info_url,
+		teacher_google_scolar_url,teacher_university,teacher_subject,teacher_subject_study,teacher_institute_id,teacher_teachingprofession_id)
 		values(#{teacher_no},#{teacher_name},#{teacher_password},#{teacher_salt},#{teacher_sex},#{teacher_email},#{teacher_phoneNumber},#{teacher_officeNumber},
 		#{teacher_title},#{teacher_qq},#{teacher_idCard},#{teacher_comeTime},#{teacher_info},#{teacher_birth},#{teacher_info_url},#{teacher_google_scolar_url},
 		#{teacher_university},#{teacher_subject},#{teacher_subject_study},#{teacher_institute.institute_id},#{teacher_teachingProfession.teachingProfession_id})
