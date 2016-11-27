@@ -84,7 +84,7 @@ function showSelectByFlag(flag) {
 							}
 							selectText += "</select>";
 							addText += "<div class='form-group'><label class='col-md-4 control-label'>选择会议</label><div class='col-md-8'><select id='journalsORconferenceSelect_CCF' class='form-control' name='paper_journals_conference_CCF.journals_conference_id' onchange='showLocationAreaByConference()'>"
-									+ selectText + "</div></div>";
+									+ selectText + "</div></div><div class='col-md-12'>&nbsp;</div>";
 							addText += " <br><label class='col-md-4 control-label'>其他</label><div class='col-md-8'> <input id='journalsORconferenceSelect_OTHER' type='checkbox' name='paper_journals_conference_other' value='0' onchange='checkJournalsORConferenceOther(1)'/> ";
 						}
 						$("span#journalsORconferenceArea").html(addText);

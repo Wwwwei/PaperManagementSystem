@@ -115,8 +115,11 @@ function shoWPaperProxy(paperproxy_id) {
 							addText += "<div class='panel-collapse collapse in' id='collapseExample2'>"
 								+  "<div class='panel-body'>"
 								+  "<div class='table-responsive'>"
-								+  "<table width='100%' class='table table-hover'>"
-								+  "<thead>"
+								+  "<table width='100%' class='table table-hover'>";
+						switch(result.paper_journals_conference_other){
+						case 0:addText+="<tr><td>期刊类别：其他</td></tr></table></div></div></div></div>";break;
+						case 1:
+							addText +=  "<thead>"
 								+  "<tr>"
 								+  "<th>"+conj+"名称</th>"
 								+  "<th>期刊号</th>"
@@ -124,23 +127,20 @@ function shoWPaperProxy(paperproxy_id) {
 								+  "<th>页码</th>"
 								+  "</tr>"
 								+  "</thead>";
-						switch(result.paper_journals_conference_other){
-						case 0:addText+="<tr><td>其他</td></tr></table></div></div></div></div>";break;
-						case 1:
 							if(null!=result.paper_journals_conference_ZKY){
 							addText+="<tr><td>"+result.paper_journals_conference_ZKY.journals_conference_name+"</td>";
 							var location=result.paper_location_ZKY.split("$");
-							addText+="<td>"+location[0]+"</td><td>卷期:"+location[1]+"</td><td>页码:"+location[2]+"</td></tr>";
+							addText+="<td>"+location[0]+"</td><td>"+location[1]+"</td><td>"+location[2]+"</td></tr>";
 						}
 						if(null!=result.paper_journals_conference_JCR){
 							addText+="<tr><td>"+result.paper_journals_conference_JCR.journals_conference_name+"</td>";
 							var location=result.paper_location_JCR.split("$");
-							addText+="<td>"+location[0]+"</td><td>卷期:"+location[1]+"</td><td>页码:"+location[2]+"</td></tr>";
+							addText+="<td>"+location[0]+"</td><td>"+location[1]+"</td><td>"+location[2]+"</td></tr>";
 						}
 						if(null!=result.paper_journals_conference_CCF){
 							addText+="<tr><td>"+result.paper_journals_conference_CCF.journals_conference_name+"</td>";
 							var location=result.paper_location_CCF.split("$");
-							addText+="<td>"+location[0]+"</td><td>卷期:"+location[1]+"</td><td>页码:"+location[2]+"</td></tr>";
+							addText+="<td>"+location[0]+"</td><td>"+location[1]+"</td><td>"+location[2]+"</td></tr>";
 						}
 						addText+="</table></div></div></div></div>";
 						break;

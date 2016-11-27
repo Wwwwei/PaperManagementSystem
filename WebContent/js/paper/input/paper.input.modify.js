@@ -334,7 +334,7 @@ function showSelect(flag) {
 							addText += "<div class='form-group'><label class='col-md-4 control-label'>CCF等级</label><div class='col-md-8'><select id='journalsORconferenceSelect_CCF' class='form-control' name='paper_journals_conference_CCF.journals_conference_id' onchange='showLocationAreaByJournals(3)'>"
 									+ select_CCF
 									+ "</div></div><div class='col-md-12'>&nbsp;</div>";
-							addText += "<label class='col-md-3 control-label'>其他</label><div class='col-md-9'> <input type='checkbox' id='journalsORconferenceSelect_OTHER' name='paper_journals_conference_other' value='0' onchange='checkJournalsORConferenceOther(0)'/> ";
+							addText += "<label class='col-md-4 control-label'>其他</label><div class='col-md-8'> <input type='checkbox' id='journalsORconferenceSelect_OTHER' name='paper_journals_conference_other' value='0' onchange='checkJournalsORConferenceOther(0)'/> ";
 						} else {
 							var selectText = "<option value ='-1'>无</option>";
 							for ( var i in result) {
@@ -511,8 +511,14 @@ function showSelectByFlag(paperproxy_id, flag, ZKY_id, JCR_id, CCF_id,
 									location[i] = '';
 								}
 							}
+							var area1 = document.getElementById("ZKYA");
+							var area2 = document.getElementById("JCRA");
+							area1.removeAttribute("style");
+							area1.setAttribute("style", "height:0px");
+							area2.removeAttribute("style");
+							area2.setAttribute("style", "height:0px");
 							addText += "<div class='form-group'><label class='col-md-4 control-label'>选择会议</label><div class='col-md-8'><select id='journalsORconferenceSelect_CCF' class='form-control' name='paper_journals_conference_CCF.journals_conference_id' onchange='showLocationAreaByConference()'>"
-									+ selectText + "</div></div>";
+									+ selectText + "</div></div><div class='col-md-12'>&nbsp;</div>";
 							if (0 == OTHER_check) {
 								addText += " <label class='col-md-4 control-label'>其他</label><div class='col-md-8'> <input type='checkbox' id='journalsORconferenceSelect_OTHER' name='paper_journals_conference_other' value='0' onchange='checkJournalsORConferenceOther(1)' checked='checked'/>";
 							} else {
