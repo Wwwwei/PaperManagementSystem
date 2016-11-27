@@ -64,15 +64,15 @@
 		<result column="teacher_no" property="teacher_no" />
 		<result column="teacher_sex" property="teacher_sex" />
 		<result column="teacher_email" property="teacher_email" />
-		<result column="teacher_phoneNumber" property="teacher_phoneNumber" />
-		<result column="teacher_officeNumber" property="teacher_officeNumber" />
+		<result column="teacher_phone_number" property="teacher_phoneNumber" />
+		<result column="teacher_office_number" property="teacher_officeNumber" />
 		<result column="teacher_title" property="teacher_title" />
 		<result column="teacher_birth" property="teacher_birth" />
 		<result column="teacher_age" property="teacher_age" />
 		<result column="teacher_qq" property="teacher_qq" />
-		<result column="teacher_idCard" property="teacher_idCard" />
-		<result column="teacher_comeTime" property="teacher_comeTime" />
-		<result column="teacher_graUniversity" property="teacher_graUniversity" />
+		<result column="teacher_id_card" property="teacher_idCard" />
+		<result column="teacher_come_time" property="teacher_comeTime" />
+		<result column="teacher_gra_university" property="teacher_graUniversity" />
 		<result column="teacher_info" property="teacher_info" />
 		<result column="teacher_info_url" property="teacher_info_url" />
 		<result column="teacher_google_scolar_url" property="teacher_google_scolar_url" />
