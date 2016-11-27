@@ -14,6 +14,7 @@
 	src="<%=request.getContextPath()%>/js/common/bootstrap.min.js"></script>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/bootstrap.min.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/sui.css" />	
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/pms.css" />
 </head>
 <script type="text/javascript">
@@ -56,6 +57,35 @@
 		</div>
 	</div>
 	<div class="container">
+		<div class="sui-steps-round steps-round-auto steps-4">
+		  <div class="finished">
+		    <div class="wrap">
+		      <div class="round">1</div>
+		      <div class="bar"></div>
+		    </div>
+		    <label>录入成果</label>
+		  </div>
+		  <div class="current">
+		    <div class="wrap">
+		      <div class="round">2</div>
+		      <div class="bar"></div>
+		    </div>
+		    <label>信息确认</label>
+		  </div>
+		  <div class="todo">
+		    <div class="wrap">
+		      <div class="round">3</div>
+		      <div class="bar"></div>
+		    </div>
+		    <label>文件上传</label>
+		  </div>
+		  <div class="todo last">
+		    <div class="wrap" style="width:50px ;">
+		      <div class="round">4</div>
+		    </div>
+		    <label>录入完成</label>
+		  </div>
+		</div>
 		<blockquote>
 			<span> 论文信息 </span>
 		</blockquote>
@@ -86,7 +116,7 @@
 			</div>
 			<div class="col-md-6">
 				<button class="btn btn-warning btn-lg" id="paperproxy_confirm"
-					data-toggle="modal" data-target="#myModal">确认提交</button>
+					data-toggle="modal" data-target="#myModal">上传文件</button>
 			</div>
 			<div class="col-md-12">&nbsp;</div>
 		</div>

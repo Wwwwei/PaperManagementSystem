@@ -21,6 +21,7 @@
 	href="<%=request.getContextPath()%>/css/bootstrap.min.css" />
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/validate.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/sui.css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/pms.css" />
 </head>
 <script type="text/javascript">
@@ -66,6 +67,12 @@
 			area2.removeAttribute("style");
 			area2.setAttribute("style", "height:0px");
 		}
+		if(jurnalflag.options[index].value == 0){
+			area1.removeAttribute("style");
+			area1.setAttribute("style", "height:54px");
+			area2.removeAttribute("style");
+			area2.setAttribute("style", "height:54px");
+		}
 	}
 </script>
 <style>
@@ -103,8 +110,36 @@
 					<div class="col-md-12">
 						<div class="panel panel-primary"
 							style="border: 1px solid #FFFFFF;">
-							<div class="panel-heading">请输入成果信息</div>
 							<div class="panel-body" style="color: #000000; font-size: 14px;">
+								<div class="sui-steps-round steps-round-auto steps-4">
+								  <div class="current">
+								    <div class="wrap">
+								      <div class="round">1</div>
+								      <div class="bar"></div>
+								    </div>
+								    <label>录入成果</label>
+								  </div>
+								  <div class="todo">
+								    <div class="wrap">
+								      <div class="round">2</div>
+								      <div class="bar"></div>
+								    </div>
+								    <label>信息确认</label>
+								  </div>
+								  <div class="todo">
+								    <div class="wrap">
+								      <div class="round">3</div>
+								      <div class="bar"></div>
+								    </div>
+								    <label>文件上传</label>
+								  </div>
+								  <div class="todo last">
+								    <div class="wrap" style="width:50px ;">
+								      <div class="round">4</div>
+								    </div>
+								    <label>录入完成</label>
+								  </div>
+								</div>
 								<div class="form-group">
 									<label class="col-md-1 control-label">论文名称<small
 										class="text-muted" style="color: red;">*</small></label>
