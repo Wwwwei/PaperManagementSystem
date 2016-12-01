@@ -702,21 +702,19 @@ public class PaperProxyHandler {
      * 论文代理提交请求
      *
      * @param paperproxy_id
-     * @param request
+     * @param session
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/paper_proxy/submit", method = RequestMethod.POST)
-    public String submit(@RequestParam("commited_paper_id") int commited_paper_id,
-                         @RequestParam("paper_id") Integer paperproxy_id, HttpServletRequest request, HttpSession session) {
+    public String submit(@RequestParam("paperproxy_id") Integer paperproxy_id, HttpSession session) {
         System.out.println(paperproxy_id + "------------------");
-        System.out.println(commited_paper_id + "===================");
-        if (session.getAttribute("teacher") == null && commited_paper_id == 0) {
+        if (session.getAttribute("teacher") == null) {
             return "redirect:/login.jsp";
         }
         Paper paperProxy = paperProxyService.findPaperProxyById(paperproxy_id);
         List<AuthorProxy> authors = authorProxyService.findAuthorProxyListByPaperProxyId(String.valueOf(paperproxy_id));
-        // paperProxy.setPaper_id(null);
+        paperProxy.setPaper_id(null);
         int paper_id = paperService.insertPaper(paperProxy);
         System.out.println("&&&&&&&&&&&&" + paper_id);
         Paper paper = new Paper();
@@ -735,9 +733,9 @@ public class PaperProxyHandler {
         // authorProxyService.deleteAuthorProxy(String.valueOf(paperproxy_id));
         paperProxyService.deletePaperProxy(paperproxy_id);
         // =================================
-        if (commited_paper_id != 0) {
-            paperService.deletePaper(commited_paper_id);
-        }
+//        if (commited_paper_id != 0) {
+//            paperService.deletePaper(commited_paper_id);
+//        }
         return paper_id + "";
     }
 
