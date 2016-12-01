@@ -34,4 +34,12 @@ public class FileServiceTest {
             System.out.println("\n" + file.getFile_type());
         }
     }
+
+    @Test
+    public void testUpdateFile() throws Exception {
+        File file = new File();
+        file.setFile_id(1);
+        file.setFile_url("testtest");
+        System.out.println("\n" + fileService.updateFile(file));
+    }
 }
