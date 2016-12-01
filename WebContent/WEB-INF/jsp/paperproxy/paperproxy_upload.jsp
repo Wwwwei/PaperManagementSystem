@@ -275,7 +275,10 @@ body {
 		
 	<div class="col-md-12">&nbsp;</div>	
 	</div>
-	
+	<input type="hidden" value="${requestScope.teacher_no}"
+		   id="teacher_no" />
+	<input type="hidden" value="${requestScope.paperproxy_id}"
+		   id="paperproxy_id" />
 	<footer class="footer navbar-inverse navbar-bottom ">
 	<div class="container text-center"
 		style="font-size: 18px; color: #999999;">
