@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pms.dao.FileMapper">
+    <insert id="insert" parameterType="pms.entity.File"
+            useGeneratedKeys="true" keyProperty="file_id">
+        <selectKey keyProperty="file_id" resultType="java.lang.Integer"
+                   order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO
+        file(file_id,file_type,file_url,file_is_valid,file_paperproxy_id,file_paper_id)
+        VALUES(#{file_id},#{file_type},#{file_url},#{file_isValid},#{file_paperproxy_id},#{file_paper_id});
+    </insert>
+    <select id="findByPaperproxyId" resultMap="pms.entity.EntityMapper.FileBean"
+            parameterType="java.lang.Integer">
+        SELECT *
+        FROM file
+        WHERE
+        file_paperproxy_id=#{file_paperproxy_id};
+    </select>
+</mapper>
