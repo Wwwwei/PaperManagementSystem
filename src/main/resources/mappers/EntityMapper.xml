@@ -143,5 +143,12 @@
 		<result column="admin_password" property="admin_password" />
 	</resultMap>
 
-
+	<resultMap type="pms.entity.File" id="FileBean">
+		<id column="file_id" property="file_id" />
+		<result column="file_type" property="file_type" />
+		<result column="file_url" property="file_url" />
+		<result column="file_is_valid" property="file_isValid" />
+		<result column="file_paperproxy_id" property="file_paperproxy_id" />
+		<result column="file_paper_id" property="file_paper_id" />
+	</resultMap>
 </mapper>
