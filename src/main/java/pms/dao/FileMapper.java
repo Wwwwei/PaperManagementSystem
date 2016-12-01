@@ -15,6 +15,13 @@ public interface FileMapper {
     public Integer insert(File file);
 
     /**
+     * 更新文件记录
+     * @param file
+     * @return
+     */
+    public Integer update(File file);
+
+    /**
      * 根据论文代理id查询文件记录
      *
      * @param paperproxyId

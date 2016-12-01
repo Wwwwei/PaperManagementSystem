@@ -3,7 +3,6 @@ package pms.service;
 import pms.entity.File;
 
 import java.util.List;
-import java.util.Map;
 
 public interface FileService {
     /**

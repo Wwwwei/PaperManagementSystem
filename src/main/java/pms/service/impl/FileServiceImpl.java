@@ -25,7 +25,8 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public Integer updateFile(File file) {
-        return null;
+        fileMapper.update(file);
+        return file.getFile_id();
     }
 
     @Override

@@ -15,6 +15,13 @@
         file(file_id,file_type,file_url,file_is_valid,file_paperproxy_id,file_paper_id)
         VALUES(#{file_id},#{file_type},#{file_url},#{file_isValid},#{file_paperproxy_id},#{file_paper_id});
     </insert>
+    <update id="update" parameterType="pms.entity.File">
+        UPDATE file
+        SET
+        file_url=#{file_url}
+        WHERE
+        file_id=#{file_id}
+    </update>
     <select id="findByPaperproxyId" resultMap="pms.entity.EntityMapper.FileBean"
             parameterType="java.lang.Integer">
         SELECT *
