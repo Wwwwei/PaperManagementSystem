@@ -1,19 +1,6 @@
 package pms.controller;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import org.springframework.jdbc.support.incrementer.SybaseAnywhereMaxValueIncrementer;
+import com.alibaba.fastjson.JSON;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,13 +10,15 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ModelAndView;
-
-import pms.entity.AuthorProxy;
-import pms.entity.Journals_Conference;
-import pms.entity.Page;
-import pms.entity.Paper;
-import pms.entity.Teacher;
+import pms.entity.*;
 import pms.service.*;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 
 @Controller
 public class PaperProxyHandler {
@@ -422,7 +411,7 @@ public class PaperProxyHandler {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/paper_proxy/show", method = RequestMethod.POST)
+    @RequestMapping(value = "/paper_proxy/getPaper", method = RequestMethod.POST)
     public Paper show(@RequestParam("paperproxy_id") Integer paperproxy_id, HttpServletRequest request,
                       HttpSession session) {
         Paper paper = paperProxyService.findPaperProxyById(paperproxy_id);
@@ -493,6 +482,21 @@ public class PaperProxyHandler {
         request.setAttribute("papers", papers);
         return "teacher/unCommitedPaper";
 
+    }
+
+    /**
+     * 显示论文代理显示页面
+     *
+     * @param paperproxy_id
+     * @param session
+     * @return
+     */
+    @RequestMapping(value = "/paper_proxy/show", method = RequestMethod.GET)
+    public ModelAndView ShowView(@RequestParam("paperproxy_id") Integer paperproxy_id, HttpSession session) {
+        Map<String, Object> model = new HashMap<String, Object>();
+        model.put("paperproxy_id", paperproxy_id);
+        model.put("teacher_no", ((Teacher) session.getAttribute("teacher")).getTeacher_no());
+        return new ModelAndView("paperproxy/paperproxy_show", model);
     }
 
     /**
@@ -606,14 +610,13 @@ public class PaperProxyHandler {
      * 上传请求
      *
      * @param request
-     * @param response
      * @return
      * @throws IllegalStateException
      * @throws IOException
      */
     @ResponseBody
     @RequestMapping(value = "/paper_proxy/file/upload", method = RequestMethod.POST)
-    public String upload(HttpServletRequest request, HttpServletResponse response)
+    public Object upload(HttpServletRequest request)
             throws IllegalStateException, IOException {
         String path = null;
         String fileType = request.getParameter("fileType");
@@ -622,7 +625,7 @@ public class PaperProxyHandler {
 //        String teacher_id = "1";
 //        String paper_id = "1";
         String teacher_id = request.getParameter("teacher_no");
-        String paper_id = request.getParameter("paperproxy_id");
+        String paperproxy_id = request.getParameter("paperproxy_id");
         // 创建一个通用的多部分解析器
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(
                 request.getSession().getServletContext());
@@ -657,7 +660,8 @@ public class PaperProxyHandler {
 						 * (!f.exists()) { f.mkdirs(); }
 						 */
                         // ==============================
-                        path = "G:/" + teacher_id + "/" + paper_id + "/";
+//                        path = "G:/" + teacher_id + "/" + paperproxy_id + "/";
+                        path = "/Users/zhaogx/Downloads/" + teacher_id + "/" + paperproxy_id + "/";
                         File f = new File(path);
                         if (!f.exists()) {
                             f.mkdirs();
@@ -679,9 +683,19 @@ public class PaperProxyHandler {
         // =======================================
         // path放入Paper对象
         // =======================================
-        System.out.println(paper_id + "-------------" + path);
-        //return JSON.toJSONString(path);
-        return "ok";
+        System.out.println(paperproxy_id + "-------------" + path);
+        pms.entity.File file = fileService.findFileByPaperproxyIdAndFileType(Integer.parseInt(paperproxy_id), Integer.parseInt(fileType));
+        if (null == file) {
+            file = new pms.entity.File();
+            file.setFile_paperproxy_id(Integer.parseInt(paperproxy_id));
+            file.setFile_type(Integer.parseInt(fileType));
+            file.setFile_url(path);
+            fileService.createFile(file);
+        } else {
+            file.setFile_url(path);
+            fileService.updateFile(file);
+        }
+        return JSON.toJSONString(path);
     }
 
     /**
