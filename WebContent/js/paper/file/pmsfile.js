@@ -161,7 +161,7 @@ $(document)
                             success: function (data, stats) {
                                 if (stats == "success") {
                                     var result = JSON.parse(htmlobj.responseText);
-                                    alert(result);
+                                    alert("录入成功!"+result);
                                 }
                             },
                             error: function (data) {
