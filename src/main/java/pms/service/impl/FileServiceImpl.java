@@ -7,7 +7,9 @@ import pms.dao.FileMapper;
 import pms.entity.File;
 import pms.service.FileService;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class FileServiceImpl implements FileService {
@@ -22,7 +24,24 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
+    public Integer updateFile(File file) {
+        return null;
+    }
+
+    @Override
     public List<File> findFileByPaperproxyId(Integer paperproxyId) {
         return fileMapper.findByPaperproxyId(paperproxyId);
+    }
+
+    @Override
+    public File findFileByPaperproxyIdAndFileType(Integer paperproxyId, Integer fileType) {
+        if (null != paperproxyId && null != fileType) {
+            Map<String, Object> params = new HashMap<String, Object>();
+            params.put("paperproxyId", paperproxyId);
+            params.put("fileType", fileType);
+            return fileMapper.selectByPaperproxyIdAndFileType(params);
+        } else {
+            return null;
+        }
     }
 }
