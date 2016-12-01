@@ -4,7 +4,8 @@ var authorResult;// 作者信息json
 function shoWPaperProxy(paperproxy_id) {
     htmlobj = $
         .ajax({
-            url: "../paper_proxy/show.do",
+            //url: "../paper_proxy/show.do",
+            url: "../paper_proxy/getPaper.do",
             type: 'POST',
             data: {
                 paperproxy_id: paperproxy_id
