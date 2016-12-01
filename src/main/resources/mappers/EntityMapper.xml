@@ -36,11 +36,11 @@
 		<result column="paper_location_jcr" property="paper_location_JCR" />
 		<result column="paper_location_ccf" property="paper_location_CCF" />
 		<association property="paper_journals_conference_ZKY"
-			column="paper_journals_conference_zky_id" select="pms.dao.Journals_ConferenceMapper.findById" />
+			column="paper_journals_conference_zky_id" select="pms.dao.Journals_ConferenceMapper.selectById" />
 		<association property="paper_journals_conference_JCR"
-			column="paper_journals_conference_jcr_id" select="pms.dao.Journals_ConferenceMapper.findById" />
+			column="paper_journals_conference_jcr_id" select="pms.dao.Journals_ConferenceMapper.selectById" />
 		<association property="paper_journals_conference_CCF"
-			column="paper_journals_conference_ccf_id" select="pms.dao.Journals_ConferenceMapper.findById" />
+			column="paper_journals_conference_ccf_id" select="pms.dao.Journals_ConferenceMapper.selectById" />
 		<collection property="paper_teacher" resultMap="TeacherBean" />
 	</resultMap>
 
@@ -116,11 +116,11 @@
 		<result column="paperproxy_location_ccf" property="paper_location_CCF" />
 		<result column="paperproxy_if" property="paper_if" />
 		<association property="paper_journals_conference_ZKY"
-			column="paperproxy_journals_conference_zky_id" select="pms.dao.Journals_ConferenceMapper.findById" />
+			column="paperproxy_journals_conference_zky_id" select="pms.dao.Journals_ConferenceMapper.selectById" />
 		<association property="paper_journals_conference_JCR"
-			column="paperproxy_journals_conference_jcr_id" select="pms.dao.Journals_ConferenceMapper.findById" />
+			column="paperproxy_journals_conference_jcr_id" select="pms.dao.Journals_ConferenceMapper.selectById" />
 		<association property="paper_journals_conference_CCF"
-			column="paperproxy_journals_conference_ccf_id" select="pms.dao.Journals_ConferenceMapper.findById" />
+			column="paperproxy_journals_conference_ccf_id" select="pms.dao.Journals_ConferenceMapper.selectById" />
 		<collection property="paper_teacher" resultMap="TeacherBean" />
 	</resultMap>
 
