@@ -17,11 +17,8 @@ $(document)
                             result = JSON.parse(htmlobj.responseText);
                             var flag2 = 0;
                             for (var i in result) {
-                                //   FILES[result[i].file_type - 1] = 1;
-                                //  alert(FILES[result[i].file_type - 1]);
                                 if (result[i].file_type == 5)
                                     flag2 = 1;
-                                // alert(result[i].file_type);
                             }
                             if (flag2 == 0) {
                                 for (var i in result) {
@@ -36,7 +33,7 @@ $(document)
                                         var h2 = document.getElementById("h2");
                                         var h3 = document.getElementById("h3");
                                         var h4 = document.getElementById("h4");
-                                        var next = document.getElementById("next");
+                                        var next = document.getElementById("paperproxy_submit");
                                         h1.setAttribute("value", "1");
                                         if (h1.value == "1" && h2.value == "1" && h3.value == "1" && h4.value == "1") {
                                             next.removeAttribute("disabled");
@@ -53,7 +50,7 @@ $(document)
                                         var h2 = document.getElementById("h2");
                                         var h3 = document.getElementById("h3");
                                         var h4 = document.getElementById("h4");
-                                        var next = document.getElementById("next");
+                                        var next = document.getElementById("paperproxy_submit");
                                         h2.setAttribute("value", "1");
                                         if (h1.value == "1" && h2.value == "1" && h3.value == "1" && h4.value == "1") {
                                             next.removeAttribute("disabled");
@@ -70,7 +67,7 @@ $(document)
                                         var h2 = document.getElementById("h2");
                                         var h3 = document.getElementById("h3");
                                         var h4 = document.getElementById("h4");
-                                        var next = document.getElementById("next");
+                                        var next = document.getElementById("paperproxy_submit");
                                         h3.setAttribute("value", "1");
                                         if (h1.value == "1" && h2.value == "1" && h3.value == "1" && h4.value == "1") {
                                             next.removeAttribute("disabled");
@@ -87,7 +84,7 @@ $(document)
                                         var h2 = document.getElementById("h2");
                                         var h3 = document.getElementById("h3");
                                         var h4 = document.getElementById("h4");
-                                        var next = document.getElementById("next");
+                                        var next = document.getElementById("paperproxy_submit");
                                         h4.setAttribute("value", "1");
                                         if (h1.value == "1" && h2.value == "1" && h3.value == "1" && h4.value == "1") {
                                             next.removeAttribute("disabled");
@@ -110,7 +107,7 @@ $(document)
                                         textok5.setAttribute("class", "glyphicon glyphicon-ok-sign");
                                         var h5 = document.getElementById("h5");
                                         var h6 = document.getElementById("h6");
-                                        var next = document.getElementById("next");
+                                        var next = document.getElementById("paperproxy_submit");
                                         h5.setAttribute("value", "1");
                                         if (h5.value == "1" && h6.value == "1") {
                                             next.removeAttribute("disabled");
@@ -133,7 +130,7 @@ $(document)
                                         textok6.setAttribute("class", "glyphicon glyphicon-ok-sign");
                                         var h5 = document.getElementById("h5");
                                         var h6 = document.getElementById("h6");
-                                        var next = document.getElementById("next");
+                                        var next = document.getElementById("paperproxy_submit");
                                         h6.setAttribute("value", "1");
                                         if (h5.value == "1" && h6.value == "1") {
                                             next.removeAttribute("disabled");
@@ -151,6 +148,27 @@ $(document)
                 function () {
                     window.location.href = "../paper_proxy/show.do?paperproxy_id=" + paperproxy_id;
                 });
+            $("button#paperproxy_submit").click(
+                function () {
+                    var htmlobj = $
+                        .ajax({
+                            url: "../paper_proxy/submit.do",
+                            type: 'POST',
+                            data: {
+                                paperproxy_id: paperproxy_id
+                            },
+                            datatype: "json",
+                            success: function (data, stats) {
+                                if (stats == "success") {
+                                    var result = JSON.parse(htmlobj.responseText);
+                                    alert(result);
+                                }
+                            },
+                            error: function (data) {
+                                alert("请求失败");
+                            }
+                        });
+                });
         }
     )
 function changefile() {
@@ -165,7 +183,7 @@ function changefile() {
     var h4 = document.getElementById("h4");
     var h5 = document.getElementById("h5");
     var h6 = document.getElementById("h6");
-    var next = document.getElementById("next");
+    var next = document.getElementById("paperproxy_submit");
 
     if (radioflag == 1) {//国外
         next.setAttribute("disabled", "true");
@@ -188,7 +206,8 @@ function changefile() {
         }
     }
 }
-//文件1	
+
+//文件1
 $("#file-1").fileinput({
     language: 'zh',
     uploadUrl: '../paper_proxy/file/upload.do?fileType=1&paperproxy_id=' + $("input#paperproxy_id").val() + "&teacher_no=" + $("input#teacher_no").val(),
@@ -211,7 +230,7 @@ $("#file-1").on("fileuploaded", function (event, data, previewId, index) {
     var h2 = document.getElementById("h2");
     var h3 = document.getElementById("h3");
     var h4 = document.getElementById("h4");
-    var next = document.getElementById("next");
+    var next = document.getElementById("paperproxy_submit");
     h1.setAttribute("value", "1");
     if (h1.value == "1" && h2.value == "1" && h3.value == "1" && h4.value == "1") {
         next.removeAttribute("disabled");
@@ -223,7 +242,8 @@ function clickf2() {
     p2.setAttribute("class", "active");
     p1.removeAttribute("class");
 }
-//文件2	
+
+//文件2
 $("#file-2").fileinput({
     language: 'zh',
     uploadUrl: '../paper_proxy/file/upload.do?fileType=2&paperproxy_id=' + $("input#paperproxy_id").val() + "&teacher_no=" + $("input#teacher_no").val(),
@@ -246,7 +266,7 @@ $("#file-2").on("fileuploaded", function (event, data, previewId, index) {
     var h2 = document.getElementById("h2");
     var h3 = document.getElementById("h3");
     var h4 = document.getElementById("h4");
-    var next = document.getElementById("next");
+    var next = document.getElementById("paperproxy_submit");
     h2.setAttribute("value", "1");
     if (h1.value == "1" && h2.value == "1" && h3.value == "1" && h4.value == "1") {
         next.removeAttribute("disabled");
@@ -258,7 +278,8 @@ function clickf3() {
     p3.setAttribute("class", "active");
     p2.removeAttribute("class");
 }
-//文件3	
+
+//文件3
 $("#file-3").fileinput({
     language: 'zh',
     uploadUrl: '../paper_proxy/file/upload.do?fileType=3&paperproxy_id=' + $("input#paperproxy_id").val() + "&teacher_no=" + $("input#teacher_no").val(),
@@ -281,7 +302,7 @@ $("#file-3").on("fileuploaded", function (event, data, previewId, index) {
     var h2 = document.getElementById("h2");
     var h3 = document.getElementById("h3");
     var h4 = document.getElementById("h4");
-    var next = document.getElementById("next");
+    var next = document.getElementById("paperproxy_submit");
     h3.setAttribute("value", "1");
     if (h1.value == "1" && h2.value == "1" && h3.value == "1" && h4.value == "1") {
         next.removeAttribute("disabled");
@@ -293,7 +314,8 @@ function clickf4() {
     p4.setAttribute("class", "active");
     p3.removeAttribute("class");
 }
-//文件4	
+
+//文件4
 $("#file-4").fileinput({
     language: 'zh',
     uploadUrl: '../paper_proxy/file/upload.do?fileType=4&paperproxy_id=' + $("input#paperproxy_id").val() + "&teacher_no=" + $("input#teacher_no").val(),
@@ -316,7 +338,7 @@ $("#file-4").on("fileuploaded", function (event, data, previewId, index) {
     var h2 = document.getElementById("h2");
     var h3 = document.getElementById("h3");
     var h4 = document.getElementById("h4");
-    var next = document.getElementById("next");
+    var next = document.getElementById("paperproxy_submit");
     h4.setAttribute("value", "1");
     if (h1.value == "1" && h2.value == "1" && h3.value == "1" && h4.value == "1") {
         next.removeAttribute("disabled");
@@ -345,7 +367,7 @@ $("#file-5").on("fileuploaded", function (event, data, previewId, index) {
     textok5.setAttribute("class", "glyphicon glyphicon-ok-sign");
     var h5 = document.getElementById("h5");
     var h6 = document.getElementById("h6");
-    var next = document.getElementById("next");
+    var next = document.getElementById("paperproxy_submit");
     h5.setAttribute("value", "1");
     if (h5.value == "1" && h6.value == "1") {
         next.removeAttribute("disabled");
@@ -378,7 +400,7 @@ $("#file-6").on("fileuploaded", function (event, data, previewId, index) {
     textok6.setAttribute("class", "glyphicon glyphicon-ok-sign");
     var h5 = document.getElementById("h5");
     var h6 = document.getElementById("h6");
-    var next = document.getElementById("next");
+    var next = document.getElementById("paperproxy_submit");
     h6.setAttribute("value", "1");
     if (h5.value == "1" && h6.value == "1") {
         next.removeAttribute("disabled");

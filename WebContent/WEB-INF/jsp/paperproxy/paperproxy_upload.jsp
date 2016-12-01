@@ -282,7 +282,7 @@
             <button class="btn btn-block btn-primary" id="paperproxy_show">上一步</button>
         </div>
         <div class="col-md-6">
-            <button class="btn btn-block btn-warning" id="next" disabled>确认录入论文</button>
+            <button class="btn btn-block btn-warning" id="paperproxy_submit" disabled>确认录入论文</button>
         </div>
     </div>
     <input type="hidden" value="${requestScope.teacher_no}" name="teacher_no"
