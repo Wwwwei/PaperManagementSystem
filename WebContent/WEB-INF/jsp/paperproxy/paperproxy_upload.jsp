@@ -285,13 +285,12 @@
             <button class="btn btn-block btn-warning" id="next" disabled>确认录入论文</button>
         </div>
     </div>
-
+    <input type="hidden" value="${requestScope.teacher_no}" name="teacher_no"
+           id="teacher_no"/>
+    <input type="hidden" value="${requestScope.paperproxy_id}" name="paperproxy_id"
+           id="paperproxy_id"/>
     <div class="col-md-12">&nbsp;</div>
 </div>
-<input type="hidden" value="${requestScope.teacher_no}"
-       id="teacher_no"/>
-<input type="hidden" value="${requestScope.paperproxy_id}"
-       id="paperproxy_id"/>
 <!--footer开始-->
 <jsp:include page="../../../layout/footer.jsp"/>
 <!--footer结束-->
