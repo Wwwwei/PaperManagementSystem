@@ -252,102 +252,102 @@ function showAuthorInputList(paperproxy_id) {
             }
         });
 }
-// 上传文件
-function UpladFile(paper_id) {
-    var fileObj = document.getElementById("file").files[0]; // js 获取文件对象
-    if (fileObj == null) {
-        alert("请选择上传文件!");
-    } else {
-        var FileController = "../paper_proxy/upload.do"; // 接收上传文件的后台地址
-        // FormData 对象
-        var form = new FormData();
-        form.append("teacher_name", result.paper_teacher.teacher_name); // 可以增加表单数据
-        form.append("paper_id", paper_id);
-        form.append("file", fileObj); // 文件对象
-        // XMLHttpRequest 对象
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-            switch (xhr.readyState) {
-                case 0:
-                    // outLine("xhr请求已初始化");
-                    break;
-                case 1:
-                    // outLine("xhr请求已打开");
-                    break;
-                case 2:
-                    // outLine("xhr请求已发送");
-                    break;
-                case 3:
-                    // outLine("xhr请求已响应");
-                    break;
-                case 4:
-                    // outLine("xhr请求已完成");
-                    if (xhr.status == 200) {
-                        // alert(xhr.responseText);
-                        // alert(result.paper_id);
-                        // alert(result.paper_teacher.teacher_name);
-                        // addText+="<input type='hidden' name='papaer_name'
-                        // value='"+result.paper_name+"'/>";
-                        // addText+="<input type='hidden' name='papaer_rank'
-                        // value='"+result.paper_rank+"'/>";
-                        // addText+="<input type='hidden' name='paper_authorNum'
-                        // value='"+result.paper_authorNum+"'/>";
-                        // addText+="<input type='hidden' name='paper_includedType'
-                        // value='"+result.paper_includedType+"'/>";
-                        // addText+="<input type='hidden' name='paper_accNum'
-                        // value='"+result.result.paper_accNum+"'/>";
-                        // addText+="<input type='hidden' name='paper_time'
-                        // value='"+result.paper_time+"'/>";
-                        // addText+="<input type='hidden'
-                        // name='paper_journals_Conference.journals_conference_id'
-                        // value='"+paper_journals_Conference.journals_conference_id+"'/>";
-                        // addText+="<input type='hidden' name='paper_location'
-                        // value='"+result.paper_location+"'/>";
-                        /*
-                         * var addText="<form action='../paper_proxy/submit.do'
-                         * method='post'>"; addText+="<input type='hidden'
-                         * name='paper_id' value='"+result.paper_id+"'/>";
-                         * addText+="<input type='hidden' name='paper_url'
-                         * value='"+xhr.responseText+"'/>"; addText+="<input
-                         * type='submit' value='提交' /></form>";
-                         * $("span#showSubmitArea").html(addText);
-                         */
-                    } else {
-                        // outLine("xhr请求失败：" + xhr.status);
-                    }
-                    break;
-                default:
-                    break;
-            }
+//// 上传文件
+//function UpladFile(paper_id) {
+//    var fileObj = document.getElementById("file").files[0]; // js 获取文件对象
+//    if (fileObj == null) {
+//        alert("请选择上传文件!");
+//    } else {
+//        var FileController = "../paper_proxy/upload.do"; // 接收上传文件的后台地址
+//        // FormData 对象
+//        var form = new FormData();
+//        form.append("teacher_name", result.paper_teacher.teacher_name); // 可以增加表单数据
+//        form.append("paper_id", paper_id);
+//        form.append("file", fileObj); // 文件对象
+//        // XMLHttpRequest 对象
+//        var xhr = new XMLHttpRequest();
+//        xhr.onreadystatechange = function () {
+//            switch (xhr.readyState) {
+//                case 0:
+//                    // outLine("xhr请求已初始化");
+//                    break;
+//                case 1:
+//                    // outLine("xhr请求已打开");
+//                    break;
+//                case 2:
+//                    // outLine("xhr请求已发送");
+//                    break;
+//                case 3:
+//                    // outLine("xhr请求已响应");
+//                    break;
+//                case 4:
+//                    // outLine("xhr请求已完成");
+//                    if (xhr.status == 200) {
+//                        // alert(xhr.responseText);
+//                        // alert(result.paper_id);
+//                        // alert(result.paper_teacher.teacher_name);
+//                        // addText+="<input type='hidden' name='papaer_name'
+//                        // value='"+result.paper_name+"'/>";
+//                        // addText+="<input type='hidden' name='papaer_rank'
+//                        // value='"+result.paper_rank+"'/>";
+//                        // addText+="<input type='hidden' name='paper_authorNum'
+//                        // value='"+result.paper_authorNum+"'/>";
+//                        // addText+="<input type='hidden' name='paper_includedType'
+//                        // value='"+result.paper_includedType+"'/>";
+//                        // addText+="<input type='hidden' name='paper_accNum'
+//                        // value='"+result.result.paper_accNum+"'/>";
+//                        // addText+="<input type='hidden' name='paper_time'
+//                        // value='"+result.paper_time+"'/>";
+//                        // addText+="<input type='hidden'
+//                        // name='paper_journals_Conference.journals_conference_id'
+//                        // value='"+paper_journals_Conference.journals_conference_id+"'/>";
+//                        // addText+="<input type='hidden' name='paper_location'
+//                        // value='"+result.paper_location+"'/>";
+//                        /*
+//                         * var addText="<form action='../paper_proxy/submit.do'
+//                         * method='post'>"; addText+="<input type='hidden'
+//                         * name='paper_id' value='"+result.paper_id+"'/>";
+//                         * addText+="<input type='hidden' name='paper_url'
+//                         * value='"+xhr.responseText+"'/>"; addText+="<input
+//                         * type='submit' value='提交' /></form>";
+//                         * $("span#showSubmitArea").html(addText);
+//                         */
+//                    } else {
+//                        // outLine("xhr请求失败：" + xhr.status);
+//                    }
+//                    break;
+//                default:
+//                    break;
+//            }
+//
+//        }
+//        xhr.open("post", FileController, true);
+//        xhr.onload = function () {
+//            // alert("上传完成!");
+//        };
+//        xhr.upload.addEventListener("progress", progressFunction, false);
+//        xhr.send(form);
+//    }
+//}
 
-        }
-        xhr.open("post", FileController, true);
-        xhr.onload = function () {
-            // alert("上传完成!");
-        };
-        xhr.upload.addEventListener("progress", progressFunction, false);
-        xhr.send(form);
-    }
-}
-
-function progressFunction(evt) {
-    var progressBar = document.getElementById("progressBar");
-    var percentageDiv = document.getElementById("percentage");
-    if (evt.lengthComputable) {
-        progressBar.max = evt.total;
-        progressBar.value = evt.loaded;
-        percentageDiv.innerHTML = Math.round(evt.loaded / evt.total * 100)
-            + "%";
-    }
-}
-function resetProgressBar() {
-    var progressBar = document.getElementById("progressBar");
-    var percentageDiv = document.getElementById("percentage");
-    if (progressBar.value != 0) {
-        progressBar.value = 0;
-        percentageDiv.innerHTML = "";
-    }
-}
+//function progressFunction(evt) {
+//    var progressBar = document.getElementById("progressBar");
+//    var percentageDiv = document.getElementById("percentage");
+//    if (evt.lengthComputable) {
+//        progressBar.max = evt.total;
+//        progressBar.value = evt.loaded;
+//        percentageDiv.innerHTML = Math.round(evt.loaded / evt.total * 100)
+//            + "%";
+//    }
+//}
+//function resetProgressBar() {
+//    var progressBar = document.getElementById("progressBar");
+//    var percentageDiv = document.getElementById("percentage");
+//    if (progressBar.value != 0) {
+//        progressBar.value = 0;
+//        percentageDiv.innerHTML = "";
+//    }
+//}
 // 检查所有信息均不为空，若有空项，显示提示信息
 function checkAllWithoutNull() {
     var checked = true;
@@ -421,7 +421,7 @@ function checkAllWithoutNull() {
             addText += "<strong>作者姓名</strong>不能为空!";
             checked = false;
         }
-        if (authorResult[i].author_type != "outSchool" && (authorResult[i].author_no == null || $.trim(authorResult[i].author_no) == "")) {
+        if (authorResult[i].author_type != 2 && (authorResult[i].author_no == null || $.trim(authorResult[i].author_no) == "")) {
             if (addText == "") {
                 addText += "<div class='row'><div class='col-md-12'><div class='alert alert-danger' role='alert'>排名第" + authorResult[i].author_rank + "名的";
             }
@@ -433,18 +433,18 @@ function checkAllWithoutNull() {
     }
     return checked;
 }
-/**
- * 获取指定的URL参数值 URL:http://www.quwan.com/index?name=tyler 参数：paramName URL参数
- * 调用方法:getParam("name") 返回值:tyler
- */
-function getParam(paramName) {
-    paramValue = "", isFound = !1;
-    if (this.location.search.indexOf("?") == 0 && this.location.search.indexOf("=") > 1) {
-        arrSource = unescape(this.location.search).substring(1, this.location.search.length).split("&"), i = 0;
-        while (i < arrSource.length && !isFound) arrSource[i].indexOf("=") > 0 && arrSource[i].split("=")[0].toLowerCase() == paramName.toLowerCase() && (paramValue = arrSource[i].split("=")[1], isFound = !0), i++
-    }
-    return paramValue == "" && (paramValue = null), paramValue
-}
+///**
+// * 获取指定的URL参数值 URL:http://www.quwan.com/index?name=tyler 参数：paramName URL参数
+// * 调用方法:getParam("name") 返回值:tyler
+// */
+//function getParam(paramName) {
+//    paramValue = "", isFound = !1;
+//    if (this.location.search.indexOf("?") == 0 && this.location.search.indexOf("=") > 1) {
+//        arrSource = unescape(this.location.search).substring(1, this.location.search.length).split("&"), i = 0;
+//        while (i < arrSource.length && !isFound) arrSource[i].indexOf("=") > 0 && arrSource[i].split("=")[0].toLowerCase() == paramName.toLowerCase() && (paramValue = arrSource[i].split("=")[1], isFound = !0), i++
+//    }
+//    return paramValue == "" && (paramValue = null), paramValue
+//}
 function backFunction() {
     window.location.href = "../teacher/backFunction.do";
 }
