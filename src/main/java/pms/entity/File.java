@@ -4,7 +4,7 @@ public class File {
     private int file_id;// 文件id
     private int file_type; // 文件类型 1:作者信息页;2:论文全页;3:论文/期刊封面;4:论文/期刊封底;5:论文检索证明(国内类型1、2、3、4，国外类型2、5)
     private String file_url;// 文件路径
-    private int file_isValid;//文件是否有效(预留字段)
+    private int file_isValid=1;//文件是否有效(预留字段)
     private int file_paperproxy_id;//论文代理id
     private int file_paper_id;// 论文id
 
