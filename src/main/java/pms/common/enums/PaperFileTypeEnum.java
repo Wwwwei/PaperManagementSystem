@@ -1,4 +1,4 @@
-package pms.util.enums;
+package pms.common.enums;
 
 /**
  * 论文文件类型枚举类
