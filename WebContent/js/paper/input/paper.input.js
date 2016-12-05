@@ -80,23 +80,25 @@ function showSelectByFlag(flag) {
                         select_CCF += "</select>";
                         select_ESI += "</select>";
                         select_OTHER += "</select>";
-                        addText += "<div class='form-group'><label class='col-md-4 control-label' style='font-size:12px'>中科院等级</label><div class='col-md-8'><select id='journalsORconferenceSelect_ZKY' class='form-control' name='paper_journals_conference_ZKY.journals_conference_id' onchange='showLocationAreaByJournals(1)'>"
-                            + select_ZKY
-                            + "</div></div><div class='col-md-12'>&nbsp;</div>";
-                        addText += "<div class='form-group'><label class='col-md-4 control-label'>JCR等级</label><div class='col-md-8'><select id='journalsORconferenceSelect_JCR' class='form-control' name='paper_journals_conference_JCR.journals_conference_id' onchange='showLocationAreaByJournals(2)'>"
+                        addText += " <label class='col-md-3 control-label'>是否ZJUT100期刊论文</label><div class='col-md-3'> <input id='journalsORconferenceSelect_ZJUT100' type='checkbox' name='paper_journals_conference_zjut100' value='1'/></div><div class='col-md-12'>&nbsp;</div>";
+                        addText += "<div class='col-md-12'><div class='alert alert-warning' style='font-size: 14px;'><span class='glyphicon glyphicon-info-sign'></span><strong>Tips</strong>&nbsp;&nbsp;若您的论文在下列级别选项中无对应级别,请勾选其他,手动填写.</div></div>";
+                        addText += "<div class='form-group'><label class='col-md-2 control-label'>中科院等级</label><div class='col-md-2'><select id='journalsORconferenceSelect_ZKY' class='form-control' name='paper_journals_conference_ZKY.journals_conference_id' onchange='showLocationAreaByJournals(1)'>"
+                        + select_ZKY
+                            + "</div></div>";
+                        addText += "<div class='form-group'><label class='col-md-2 control-label'>JCR等级</label><div class='col-md-2'><select id='journalsORconferenceSelect_JCR' class='form-control' name='paper_journals_conference_JCR.journals_conference_id' onchange='showLocationAreaByJournals(2)'>"
                             + select_JCR
-                            + "</div></div><div class='col-md-12'>&nbsp;</div>";
-                        addText += "<div class='form-group'><label class='col-md-4 control-label'>CCF等级</label><div class='col-md-8'><select id='journalsORconferenceSelect_CCF' class='form-control' name='paper_journals_conference_CCF.journals_conference_id' onchange='showLocationAreaByJournals(3)'>"
+                            + "</div></div>";
+                        addText += "<div class='form-group'><label class='col-md-2 control-label'>CCF等级</label><div class='col-md-2'><select id='journalsORconferenceSelect_CCF' class='form-control' name='paper_journals_conference_CCF.journals_conference_id' onchange='showLocationAreaByJournals(3)'>"
                             + select_CCF
                             + "</div></div><div class='col-md-12'>&nbsp;</div>";
-                        addText += "<div class='form-group'><label class='col-md-4 control-label'>ESI等级</label><div class='col-md-8'><select id='journalsORconferenceSelect_ESI' class='form-control' name='paper_journals_conference_ESI.journals_conference_id' onchange='showLocationAreaByJournals(4)'>"
+                        addText += "<div class='form-group'><label class='col-md-2 control-label'>ESI等级</label><div class='col-md-2'><select id='journalsORconferenceSelect_ESI' class='form-control' name='paper_journals_conference_ESI.journals_conference_id' onchange='showLocationAreaByJournals(4)'>"
                             + select_ESI
-                            + "</div></div><div class='col-md-12'>&nbsp;</div>";
-                        addText += "<div class='form-group'><label class='col-md-4 control-label'>其他等级</label><div class='col-md-8'><select id='journalsORconferenceSelect_OTHER' class='form-control' name='paper_journals_conference_OTHER.journals_conference_id' onchange='showLocationAreaByJournals(5)'>"
+                            + "</div></div>";
+                        addText += "<div class='form-group'><label class='col-md-2 control-label'>其他等级</label><div class='col-md-2'><select id='journalsORconferenceSelect_OTHER' class='form-control' name='paper_journals_conference_OTHER.journals_conference_id' onchange='showLocationAreaByJournals(5)'>"
                             + select_OTHER
                             + "</div></div><div class='col-md-12'>&nbsp;</div>";
-                        addText += " <br><label class='col-md-4 control-label'>是否ZJUT100期刊论文</label><div class='col-md-8'> <input id='journalsORconferenceSelect_ZJUT100' type='checkbox' name='paper_journals_conference_zjut100' value='1'/> ";
-                        addText += "<br><label class='col-md-4 control-label'>其他</label><div class='col-md-8'> <input id='journalsORconferenceSelect_IS_OTHER' type='checkbox' name='paper_journals_conference_isOther' value='0' onchange='checkJournalsORConferenceOther(0)'/> ";
+
+                        addText += "<label class='col-md-2 control-label'>其他</label><div class='col-md-2'> <input id='journalsORconferenceSelect_IS_OTHER' type='checkbox' name='paper_journals_conference_isOther' value='0' onchange='checkJournalsORConferenceOther(0)'/></div><div class='col-md-2'>&nbsp;</div> ";
 
                     } else {
                         var selectText = "<option value ='-1'>无</option>";
@@ -109,10 +111,12 @@ function showSelectByFlag(flag) {
                                 + "</option>";
                         }
                         selectText += "</select>";
-                        addText += "<div class='form-group'><label class='col-md-4 control-label'>选择会议</label><div class='col-md-8'><select id='journalsORconferenceSelect_CCF' class='form-control' name='paper_journals_conference_CCF.journals_conference_id' onchange='showLocationAreaByConference()'>"
+                        addText += " <label class='col-md-3 control-label'>是否ZJUT100期刊论文</label><div class='col-md-3'> <input id='journalsORconferenceSelect_ZJUT100' type='checkbox' name='paper_journals_conference_zjut100' value='1'/></div><div class='col-md-12'>&nbsp;</div>";
+                        addText += "<div class='col-md-12'><div class='alert alert-warning' style='font-size: 14px;'><span class='glyphicon glyphicon-info-sign'></span><strong>Tips</strong>&nbsp;&nbsp;若您的论文在下列级别选项中无对应级别,请勾选其他,手动填写.</div></div>";
+                        addText += "<div class='form-group'><label class='col-md-1 control-label'>选择会议</label><div class='col-md-5'><select id='journalsORconferenceSelect_CCF' class='form-control' name='paper_journals_conference_CCF.journals_conference_id' onchange='showLocationAreaByConference()'>"
                             + selectText + "</div></div><div class='col-md-12'>&nbsp;</div>";
-                        addText += " <br><label class='col-md-4 control-label'>是否ZJUT100期刊论文</label><div class='col-md-8'> <input id='journalsORconferenceSelect_ZJUT100' type='checkbox' name='paper_journals_conference_zjut100' value='1'/> ";
-                        addText += " <br><label class='col-md-4 control-label'>其他</label><div class='col-md-8'> <input id='journalsORconferenceSelect_IS_OTHER' type='checkbox' name='paper_journals_conference_isOther' value='0' onchange='checkJournalsORConferenceOther(1)'/> ";
+
+                        addText += " <br><label class='col-md-2 control-label'>其他</label><div class='col-md-2'> <input id='journalsORconferenceSelect_IS_OTHER' type='checkbox' name='paper_journals_conference_isOther' value='0' onchange='checkJournalsORConferenceOther(1)'/> </div><div class='col-md-2'>&nbsp;</div>";
                     }
                     $("span#journalsORconferenceArea").html(addText);
                 }
@@ -519,6 +523,8 @@ $(document)
                         $("div#paper_journals_location").attr("hidden", "hidden");
                         $("div#paper_conference_location").removeAttr("hidden");
                     }
+                    $("div#paper_journals_conference_CUSTOM").attr("hidden",
+                        "hidden");
                     showSelectByFlag(flag);
 
                 });
