@@ -17,7 +17,9 @@ public class Paper {
     private String paper_accNum;// 检索号
     private String paper_time;
     /*废弃*/
-    // private String paper_location;// 论文所在会议或期刊的具体位置(包括页码，期刊号等)
+//    private String paper_location;// 论文所在会议或期刊的具体位置(包括页码，期刊号等)
+    private String paper_journals_location;// 论文所在期刊的具体位置(包括页码，卷期，期刊号;用$分隔)
+    private String paper_conference_location;// 论文所在会议或期刊的具体位置(包括会议名称,会议页码,会议举办地,用$分隔)
     /*废弃*/
     // private String paper_url; // 论文地址
     private int paper_citations; // 总引用
@@ -28,7 +30,11 @@ public class Paper {
     private Journals_Conference paper_journals_conference_ZKY; // 中科院期刊会议
     private Journals_Conference paper_journals_conference_JCR; // JCR期刊会议
     private Journals_Conference paper_journals_conference_CCF; // CFF期刊会议
-    private int paper_journals_conference_other = 1;// 期刊会议其他(0:表示期刊会议为其他，1:表示期刊会议为存在)
+    private Journals_Conference paper_journals_conference_ESI; // ESI期刊会议
+    private Journals_Conference paper_journals_conference_OTHER; // 其他期刊会议
+    private String paper_journals_conference_CUSTOM;//自定义期刊会议
+    private int paper_journals_conference_zjut100; // 是否zjut100期刊论文(0:不是;1:是)
+    private int paper_journals_conference_isOther = 1;// 期刊会议其他(0:表示期刊会议为其他，1:表示期刊会议为存在)
     private String paper_location_ZKY;// 论文所在会议或期刊的具体位置(包括页码，期刊号等)对弈ZKY期刊会议
     private String paper_location_JCR;// 论文所在会议或期刊的具体位置(包括页码，期刊号等)对应JCR期刊会议
     private String paper_location_CCF;// 论文所在会议或期刊的具体位置(包括页码，期刊号等)对弈CFF期刊会议
@@ -145,14 +151,14 @@ public class Paper {
     public void setPaper_journals_conference_JCR(Journals_Conference paper_journals_conference_JCR) {
         this.paper_journals_conference_JCR = paper_journals_conference_JCR;
     }
-
-    public int getPaper_journals_conference_other() {
-        return paper_journals_conference_other;
-    }
-
-    public void setPaper_journals_conference_other(int paper_journals_conference_other) {
-        this.paper_journals_conference_other = paper_journals_conference_other;
-    }
+//
+//    public int getPaper_journals_conference_other() {
+//        return paper_journals_conference_other;
+//    }
+//
+//    public void setPaper_journals_conference_other(int paper_journals_conference_other) {
+//        this.paper_journals_conference_other = paper_journals_conference_other;
+//    }
 
     public String getPaper_location_ZKY() {
         return paper_location_ZKY;
