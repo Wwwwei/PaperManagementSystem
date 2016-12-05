@@ -243,6 +243,13 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="col-md-1 control-label">影响因子*(发表当年)</label>
+                                <div class="col-md-5">
+                                    <input type="text" name="paper_if"
+                                           class="form-control">
+                                </div>
+                            </div>
                             <!-- <div class="form-group">
                                 <label class="col-md-1 control-label">期刊号</label>
                                 <div class="col-md-5">
@@ -251,8 +258,67 @@
                                 </div>
                             </div> -->
                             <div class="col-md-12">&nbsp;</div>
+                            <!--期刊位置信息-->
+                            <div id="paper_journals_location">
+                                <div class="form-group">
+                                    <label class="col-md-1 control-label">期刊号</label>
+                                    <div class="col-md-5">
+                                        <input type="text" name="paper_location_issuing"
+                                               class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-1 control-label">卷期</label>
+                                    <div class="col-md-5">
+                                        <input type="text" name="paper_location_volume"
+                                               class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">&nbsp;</div>
+                                <div class="form-group">
+                                    <label class="col-md-1 control-label">页码</label>
+                                    <div class="col-md-5">
+                                        <input type="text" name="paper_location_pagination"
+                                               class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">&nbsp;</div>
+                            <!--会议位置信息-->
+                            <div id="paper_conference_location" hidden="hidden">
+                                <div class="form-group">
+                                    <label class="col-md-1 control-label">会议名称</label>
+                                    <div class="col-md-5">
+                                        <input type="text" name="paper_location_issuing"
+                                               class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-1 control-label">会议举办地</label>
+                                    <div class="col-md-5">
+                                        <input type="text" name="paper_location_volume"
+                                               class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">&nbsp;</div>
+                                <div class="form-group">
+                                    <label class="col-md-1 control-label">会议页码</label>
+                                    <div class="col-md-5">
+                                        <input type="text" name="paper_location_pagination"
+                                               class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">&nbsp;</div>
                             <div class="col-md-4">
                                 <span id="journalsORconferenceArea"></span>
+                            </div>
+                            <div id="paper_journals_conference_CUSTOM" class="form-group" hidden="hidden">
+                                <label class="col-md-1 control-label">请输入论文级别:</label>
+                                <div class="col-md-5">
+                                    <input type="text" name="paper_journals_conference_CUSTOM"
+                                           class="form-control">
+                                </div>
                             </div>
                             <!-- 	<span
                                 id="degreeArea"></span> -->
