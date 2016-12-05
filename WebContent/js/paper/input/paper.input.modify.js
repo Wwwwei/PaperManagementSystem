@@ -656,7 +656,7 @@ function showLocationAreaByConference() {
 function shoWPaperProxyInputList(paperproxy_id) {
     htmlobj = $
         .ajax({
-           // url: "../paper_proxy/show.do",
+            // url: "../paper_proxy/show.do",
             url: "../paper_proxy/getPaper.do",
             type: 'POST',
             data: {
@@ -693,19 +693,22 @@ function shoWPaperProxyInputList(paperproxy_id) {
                         $("span#includedTypeArea").html(addText);
                         $("select#paper_includedType").val("other");
                     }
+                    $("input#paper_accNum").val(result.paper_accNum);
+                    $("input#paper_time").val(result.paper_time);
                     switch (result.paper_status) {
                         case 0:
                             $("input#paper_status0").attr("checked", "checked");
                             $("input#paper_accNum").val("");
                             $("input#paper_accNum").attr("disabled", true);
+                            $("input#paper_time").val("");
+                            $("input#paper_time").attr("disabled", true);
                             break;
                         case 1:
                             $("input#paper_status1").attr("checked", "checked");
                             $("input#paper_accNum").attr("disabled", false);
+                            $("input#paper_time").attr("disabled", false);
                             break;
                     }
-                    $("input#paper_accNum").val(result.paper_accNum);
-                    $("input#paper_time").val(result.paper_time);
                     $("select#journalsORconference")
                         .val(result.paper_issue);
                     $("input#paper_citations").val(result.paper_citations);
@@ -807,8 +810,13 @@ $(document)
                             $("input#paper_accNum").val("");
                             $("input#paper_accNum").attr(
                                 "disabled", true);
+                            $("input#paper_time").val("");
+                            $("input#paper_time").attr(
+                                "disabled", true);
                         } else {
                             $("input#paper_accNum").attr(
+                                "disabled", false);
+                            $("input#paper_time").attr(
                                 "disabled", false);
                         }
                     });
