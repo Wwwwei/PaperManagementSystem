@@ -18,8 +18,8 @@ public class Paper {
     private String paper_time;
     /*废弃*/
 //    private String paper_location;// 论文所在会议或期刊的具体位置(包括页码，期刊号等)
-    private String paper_journals_location;// 论文所在期刊的具体位置(包括页码，卷期，期刊号;用$分隔)
-    private String paper_conference_location;// 论文所在会议或期刊的具体位置(包括会议名称,会议页码,会议举办地,用$分隔)
+    private String paper_location;// 论文具体位置(若为期刊包括页码，卷期，期刊号;若为会议包括会议名称,会议页码,会议举办地;用$分隔)
+    //    private String paper_conference_location;// 论文所在会议或期刊的具体位置(包括,用$分隔)
     /*废弃*/
     // private String paper_url; // 论文地址
     private int paper_citations; // 总引用
@@ -33,12 +33,12 @@ public class Paper {
     private Journals_Conference paper_journals_conference_ESI; // ESI期刊会议
     private Journals_Conference paper_journals_conference_OTHER; // 其他期刊会议
     private String paper_journals_conference_CUSTOM;//自定义期刊会议
-    private int paper_journals_conference_zjut100; // 是否zjut100期刊论文(0:不是;1:是)
-    private int paper_journals_conference_isOther = 1;// 期刊会议其他(0:表示期刊会议为其他，1:表示期刊会议为存在)
-    private String paper_location_ZKY;// 论文所在会议或期刊的具体位置(包括页码，期刊号等)对弈ZKY期刊会议
-    private String paper_location_JCR;// 论文所在会议或期刊的具体位置(包括页码，期刊号等)对应JCR期刊会议
-    private String paper_location_CCF;// 论文所在会议或期刊的具体位置(包括页码，期刊号等)对弈CFF期刊会议
-    private double paper_if;// 论文当年影响因子
+    private int paper_journals_conference_isZjut100 = 0; // 是否zjut100期刊论文(0:不是;1:是)
+    private int paper_journals_conference_isOther = 1;// 是否勾选期刊会议其他(0:表示期刊会议为其他，1:表示期刊会议为存在)
+    //    private String paper_location_ZKY;// 论文所在会议或期刊的具体位置(包括页码，期刊号等)对弈ZKY期刊会议
+//    private String paper_location_JCR;// 论文所在会议或期刊的具体位置(包括页码，期刊号等)对应JCR期刊会议
+//    private String paper_location_CCF;// 论文所在会议或期刊的具体位置(包括页码，期刊号等)对弈CFF期刊会议
+    private Double paper_if;// 论文当年影响因子
 
     public Integer getPaper_id() {
         return paper_id;
@@ -160,21 +160,21 @@ public class Paper {
 //        this.paper_journals_conference_other = paper_journals_conference_other;
 //    }
 
-    public String getPaper_location_ZKY() {
-        return paper_location_ZKY;
-    }
-
-    public void setPaper_location_ZKY(String paper_location_ZKY) {
-        this.paper_location_ZKY = paper_location_ZKY;
-    }
-
-    public String getPaper_location_JCR() {
-        return paper_location_JCR;
-    }
-
-    public void setPaper_location_JCR(String paper_location_JCR) {
-        this.paper_location_JCR = paper_location_JCR;
-    }
+//    public String getPaper_location_ZKY() {
+//        return paper_location_ZKY;
+//    }
+//
+//    public void setPaper_location_ZKY(String paper_location_ZKY) {
+//        this.paper_location_ZKY = paper_location_ZKY;
+//    }
+//
+//    public String getPaper_location_JCR() {
+//        return paper_location_JCR;
+//    }
+//
+//    public void setPaper_location_JCR(String paper_location_JCR) {
+//        this.paper_location_JCR = paper_location_JCR;
+//    }
 
     public Journals_Conference getPaper_journals_conference_CCF() {
         return paper_journals_conference_CCF;
@@ -184,13 +184,13 @@ public class Paper {
         this.paper_journals_conference_CCF = paper_journals_conference_CCF;
     }
 
-    public String getPaper_location_CCF() {
-        return paper_location_CCF;
-    }
-
-    public void setPaper_location_CCF(String paper_location_CCF) {
-        this.paper_location_CCF = paper_location_CCF;
-    }
+//    public String getPaper_location_CCF() {
+//        return paper_location_CCF;
+//    }
+//
+//    public void setPaper_location_CCF(String paper_location_CCF) {
+//        this.paper_location_CCF = paper_location_CCF;
+//    }
 
     public int getPaper_issue() {
         return paper_issue;
@@ -200,12 +200,82 @@ public class Paper {
         this.paper_issue = paper_issue;
     }
 
-    public double getPaper_if() {
+    public Double getPaper_if() {
         return paper_if;
     }
 
-    public void setPaper_if(double paper_if) {
+    public void setPaper_if(Double paper_if) {
         this.paper_if = paper_if;
     }
+//    public String getPaper_journals_location() {
+//        return paper_journals_location;
+//    }
+//
+//    public void setPaper_journals_location(String paper_journals_location) {
+//        this.paper_journals_location = paper_journals_location;
+//    }
+//
+//    public String getPaper_conference_location() {
+//        return paper_conference_location;
+//    }
+//
+//    public void setPaper_conference_location(String paper_conference_location) {
+//        this.paper_conference_location = paper_conference_location;
+//    }
 
+    public String getPaper_location() {
+        return paper_location;
+    }
+
+    public void setPaper_location(String paper_location) {
+        this.paper_location = paper_location;
+    }
+
+    public Journals_Conference getPaper_journals_conference_ESI() {
+        return paper_journals_conference_ESI;
+    }
+
+    public void setPaper_journals_conference_ESI(Journals_Conference paper_journals_conference_ESI) {
+        this.paper_journals_conference_ESI = paper_journals_conference_ESI;
+    }
+
+    public Journals_Conference getPaper_journals_conference_OTHER() {
+        return paper_journals_conference_OTHER;
+    }
+
+    public void setPaper_journals_conference_OTHER(Journals_Conference paper_journals_conference_OTHER) {
+        this.paper_journals_conference_OTHER = paper_journals_conference_OTHER;
+    }
+
+    public String getPaper_journals_conference_CUSTOM() {
+        return paper_journals_conference_CUSTOM;
+    }
+
+    public void setPaper_journals_conference_CUSTOM(String paper_journals_conference_CUSTOM) {
+        this.paper_journals_conference_CUSTOM = paper_journals_conference_CUSTOM;
+    }
+
+//    public int getPaper_journals_conference_zjut100() {
+//        return paper_journals_conference_zjut100;
+//    }
+//
+//    public void setPaper_journals_conference_zjut100(int paper_journals_conference_zjut100) {
+//        this.paper_journals_conference_zjut100 = paper_journals_conference_zjut100;
+//    }
+
+    public int getPaper_journals_conference_isZjut100() {
+        return paper_journals_conference_isZjut100;
+    }
+
+    public void setPaper_journals_conference_isZjut100(int paper_journals_conference_isZjut100) {
+        this.paper_journals_conference_isZjut100 = paper_journals_conference_isZjut100;
+    }
+
+    public int getPaper_journals_conference_isOther() {
+        return paper_journals_conference_isOther;
+    }
+
+    public void setPaper_journals_conference_isOther(int paper_journals_conference_isOther) {
+        this.paper_journals_conference_isOther = paper_journals_conference_isOther;
+    }
 }
