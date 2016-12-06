@@ -255,14 +255,14 @@
                                 <div class="form-group">
                                     <label class="col-md-1 control-label">期刊号<span style="color: #ff0000">*</span></label>
                                     <div class="col-md-5">
-                                        <input type="text" name="paper_location_issuing"
+                                        <input type="text" name="paper_journals_location1"
                                                class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-1 control-label">卷期<span style="color: #ff0000">*</span></label>
                                     <div class="col-md-5">
-                                        <input type="text" name="paper_location_volume"
+                                        <input type="text" name="paper_journals_location2"
                                                class="form-control">
                                     </div>
                                 </div>
@@ -270,7 +270,7 @@
                                 <div class="form-group">
                                     <label class="col-md-1 control-label">页码<span style="color: #ff0000">*</span></label>
                                     <div class="col-md-5">
-                                        <input type="text" name="paper_location_pagination"
+                                        <input type="text" name="paper_journals_location3"
                                                class="form-control">
                                     </div>
                                 </div>
@@ -281,14 +281,14 @@
                                 <div class="form-group">
                                     <label class="col-md-1 control-label">会议名称<span style="color: #ff0000">*</span></label>
                                     <div class="col-md-5">
-                                        <input type="text" name="paper_location_issuing"
+                                        <input type="text" name="paper_conference_location1"
                                                class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-1 control-label">会议地点<span style="color: #ff0000">*</span></label>
                                     <div class="col-md-5">
-                                        <input type="text" name="paper_location_volume"
+                                        <input type="text" name="paper_conference_location2"
                                                class="form-control">
                                     </div>
                                 </div>
@@ -296,7 +296,7 @@
                                 <div class="form-group">
                                     <label class="col-md-1 control-label">会议页码<span style="color: #ff0000">*</span></label>
                                     <div class="col-md-5">
-                                        <input type="text" name="paper_location_pagination"
+                                        <input type="text" name="paper_conference_location3"
                                                class="form-control">
                                     </div>
                                 </div>
