@@ -62,6 +62,12 @@ public class PaperProxyHandler {
     @RequestMapping(value = "/paper_proxy/create", method = RequestMethod.POST)
     public ModelAndView create(Paper paper,
                                @RequestParam(value = "other_includedType", required = false) String other_includedType,
+                               @RequestParam(value = "paper_conference_location1", required = false) String paper_conference_location1,
+                               @RequestParam(value = "paper_conference_location2", required = false) String paper_conference_location2,
+                               @RequestParam(value = "paper_conference_location3", required = false) String paper_conference_location3,
+                               @RequestParam(value = "paper_journals_location1", required = false) String paper_journals_location1,
+                               @RequestParam(value = "paper_journals_location2", required = false) String paper_journals_location2,
+                               @RequestParam(value = "paper_journals_location3", required = false) String paper_journals_location3,
                                HttpServletRequest request, HttpSession session) {
         if ((Teacher) session.getAttribute("teacher") == null) {
             return new ModelAndView("redirect:/login.jsp", null);
@@ -69,6 +75,22 @@ public class PaperProxyHandler {
         if (other_includedType != null) {
             paper.setPaper_includedType(other_includedType);
         }
+        //组装论文位置信息(以$分隔)
+        StringBuilder stringBuilder = null;
+        switch (paper.getPaper_issue()) {
+            case 0:
+                stringBuilder = new StringBuilder(paper_journals_location1);
+                stringBuilder.append("$")
+                        .append(paper_journals_location2).append("$").append(paper_journals_location3);
+                break;
+            case 1:
+                stringBuilder = new StringBuilder(paper_conference_location1);
+                stringBuilder.append("$")
+                        .append(paper_conference_location2).append("$").append(paper_conference_location3);
+                break;
+        }
+        paper.setPaper_location(stringBuilder.toString());
+        /*
         // 组装期刊会议位置信息
         String issuing = null;
         String volume = null;
@@ -104,8 +126,9 @@ public class PaperProxyHandler {
         System.out.println("=========");
         // ===========================================================
         // paper.setPaper_location(paper_location);
+        */
         // 勾选其他时，设置影响因子为0
-        if (0 == paper.getPaper_journals_conference_other()) {
+     /*   if (0 == paper.getPaper_journals_conference_isOther()) {
             System.out.println("=========勾选其他=============");
             paper.setPaper_if(new Double(0));
         } else {
@@ -152,6 +175,8 @@ public class PaperProxyHandler {
             System.out.println("ccf_if" + ccf_if);
             paper.setPaper_if(getMaxFromThreeDouble(zky_if, jcr_if, ccf_if));
         }
+        */
+        //System.out.println("\n"+JSON.toJSONString(paper));
         paperProxyService.createPaperProxy(paper);
         System.out.println(paper.getPaper_teacher().getTeacher_id() + "----------------------------");
         // authorProxy处理
@@ -221,7 +246,7 @@ public class PaperProxyHandler {
         if (null != other_includedType) {
             paper.setPaper_includedType(other_includedType);
         }
-        // 组装期刊会议位置信息
+    /*    // 组装期刊会议位置信息
         String issuing = null;
         String volume = null;
         String pagination = null;
@@ -256,8 +281,9 @@ public class PaperProxyHandler {
         System.out.println("CCF:" + paper.getPaper_location_CCF());
         System.out.println("=========");
         // ===========================================================
+        */
         // 勾选其他时，设置影响因子为0
-        if (0 == paper.getPaper_journals_conference_other()) {
+        if (0 == paper.getPaper_journals_conference_isOther()) {
             System.out.println("=========勾选其他=============");
             paper.setPaper_if(new Double(0));
         } else {
