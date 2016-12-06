@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="pms.dao.PaperProxyMapper">
 
-	<insert id="insert" parameterType="pms.entity.Paper"
-		useGeneratedKeys="true" keyProperty="paper_id">
-		<selectKey keyProperty="paper_id" resultType="java.lang.Integer"
-			order="AFTER">
-			SELECT
-			LAST_INSERT_ID()
-		</selectKey>
-		INSERT INTO
-		paperproxy(paperproxy_id,paperproxy_name,paperproxy_rank,paperproxy_author_num,paperproxy_included_type,paperproxy_status,paperproxy_acc_num,paperproxy_time,paperproxy_citations,paperproxy_citations_others,paperproxy_citations_google,paperproxy_teacher_id,paperproxy_location_zky,paperproxy_location_jcr,paperproxy_location_ccf,paperproxy_journals_conference_other,paperproxy_journals_conference_zky_id,paperproxy_journals_conference_jcr_id,paperproxy_journals_conference_ccf_id,paperproxy_issue,paperproxy_if)
-		VALUES(#{paper_id},#{paper_name},#{paper_rank},#{paper_authorNum},#{paper_includedType},#{paper_status},#{paper_accNum},#{paper_time},#{paper_citations},#{paper_citations_others},#{paper_citations_google},#{paper_teacher.teacher_id},#{paper_location_ZKY},#{paper_location_JCR},#{paper_location_CCF},#{paper_journals_conference_other},#{paper_journals_conference_ZKY.journals_conference_id},#{paper_journals_conference_JCR.journals_conference_id},#{paper_journals_conference_CCF.journals_conference_id},#{paper_issue},#{paper_if});
-	</insert>
-	<update id="update" parameterType="pms.entity.Paper">
+    <insert id="insert" parameterType="pms.entity.Paper"
+            useGeneratedKeys="true" keyProperty="paper_id">
+        <selectKey keyProperty="paper_id" resultType="java.lang.Integer"
+                   order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO
+        paperproxy(paperproxy_id,paperproxy_name,paperproxy_rank,paperproxy_author_num,paperproxy_included_type,paperproxy_status,paperproxy_acc_num,paperproxy_time,paperproxy_citations,paperproxy_citations_others,paperproxy_citations_google,paperproxy_teacher_id,paperproxy_journals_conference_is_zjut100,paperproxy_journals_conference_is_other,paperproxy_journals_conference_zky_id,paperproxy_journals_conference_jcr_id,paperproxy_journals_conference_ccf_id,paperproxy_journals_conference_esi_id,paperproxy_journals_conference_other_id,paperproxy_journals_conference_custom,paperproxy_issue,paperproxy_location,paperproxy_if)
+        VALUES(#{paper_id},#{paper_name},#{paper_rank},#{paper_authorNum},#{paper_includedType},#{paper_status},#{paper_accNum},#{paper_time},#{paper_citations},#{paper_citations_others},#{paper_citations_google},#{paper_teacher.teacher_id},#{paper_journals_conference_isZjut100},#{paper_journals_conference_isOther},#{paper_journals_conference_ZKY.journals_conference_id},#{paper_journals_conference_JCR.journals_conference_id},#{paper_journals_conference_CCF.journals_conference_id},#{paper_journals_conference_ESI.journals_conference_id},#{paper_journals_conference_OTHER.journals_conference_id},#{paper_journals_conference_CUSTOM},#{paper_issue},#{paper_location},#{paper_if});
+    </insert>
+    <update id="update" parameterType="pms.entity.Paper">
 		UPDATE paperproxy
 		SET
 		paperproxy_name=#{paper_name},paperproxy_rank=#{paper_rank},paperproxy_author_num=#{paper_authorNum},paperproxy_included_type=#{paper_includedType},paperproxy_status=#{paper_status},paperproxy_acc_num=#{paper_accNum},paperproxy_time=#{paper_time},paperproxy_citations=#{paper_citations},paperproxy_citations_others=#{paper_citations_others},paperproxy_citations_google=#{paper_citations_google},paperproxy_location_zky=#{paper_location_ZKY},paperproxy_location_jcr=#{paper_location_JCR},paperproxy_location_ccf=#{paper_location_CCF},paperproxy_journals_conference_other=#{paper_journals_conference_other},paperproxy_journals_conference_zky_id=#{paper_journals_conference_ZKY.journals_conference_id},paperproxy_journals_conference_jcr_id=#{paper_journals_conference_JCR.journals_conference_id},paperproxy_journals_conference_ccf_id=#{paper_journals_conference_CCF.journals_conference_id},paperproxy_issue=#{paper_issue},paperproxy_if=#{paper_if}
 		WHERE paperproxy_id=#{paper_id}
 	</update>
-	<select id="findById" resultMap="pms.entity.EntityMapper.PaperProxyBean"
-		parameterType="java.lang.Integer">
+    <select id="findById" resultMap="pms.entity.EntityMapper.PaperProxyBean"
+            parameterType="java.lang.Integer">
 		SELECT t.*,p.* FROM teacher t inner join paperproxy p
 		on
 		t.teacher_id=p.paperproxy_teacher_id
 		WHERE
 		p.paperproxy_id=#{paper_id};
 	</select>
-	<delete id="delete" parameterType="java.lang.Integer">
+    <delete id="delete" parameterType="java.lang.Integer">
 		DELETE FROM paperproxy WHERE
 		paperproxy_id=#{paper_id};
 	</delete>
-	<select id="findByName" resultMap="pms.entity.EntityMapper.PaperProxyBean"
-		parameterType="String">
+    <select id="findByName" resultMap="pms.entity.EntityMapper.PaperProxyBean"
+            parameterType="String">
 		SELECT *
 		FROM paperproxy p
 		WHERE
