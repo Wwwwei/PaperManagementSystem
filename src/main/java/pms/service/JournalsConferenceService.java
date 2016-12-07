@@ -4,7 +4,7 @@ import java.util.List;
 
 import pms.entity.Journals_Conference;
 
-public interface Journals_ConferenceService {
+public interface JournalsConferenceService {
 
 	/**
 	 * 查询所有的期刊论文等级
