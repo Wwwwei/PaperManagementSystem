@@ -286,7 +286,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-1 control-label">会议地点<span style="color: #ff0000">*</span></label>
+                                    <label class="col-md-1 control-label">会议页码<span style="color: #ff0000">*</span></label>
                                     <div class="col-md-5">
                                         <input type="text" name="paper_conference_location2"
                                                class="form-control">
@@ -294,7 +294,7 @@
                                 </div>
                                 <div class="col-md-12">&nbsp;</div>
                                 <div class="form-group">
-                                    <label class="col-md-1 control-label">会议页码<span style="color: #ff0000">*</span></label>
+                                    <label class="col-md-1 control-label">会议地点<span style="color: #ff0000">*</span></label>
                                     <div class="col-md-5">
                                         <input type="text" name="paper_conference_location3"
                                                class="form-control">
