@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import pms.entity.Journals_Conference;
-import pms.service.Journals_ConferenceService;
+import pms.service.JournalsConferenceService;
 
 @Controller
-public class Journals_ConferenceHandler {
+public class JournalsConferenceHandler {
 	@Resource(name = "journals_ConferenceServiceImpl")
-	private Journals_ConferenceService journals_ConferenceService;
+	private JournalsConferenceService journals_ConferenceService;
 
 	@ResponseBody
 	@RequestMapping(value = "/journals_conference/findByFlag", method = RequestMethod.POST)
