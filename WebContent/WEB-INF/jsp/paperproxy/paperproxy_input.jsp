@@ -56,24 +56,24 @@
         $btn.button('reset')
     })
 
-//    function changestyle() {
-//        var jurnalflag = document.getElementById("journalsORconference");
-//        var index = jurnalflag.selectedIndex;
-//        var area1 = document.getElementById("ZKYA");
-//        var area2 = document.getElementById("JCRA");
-//        if (jurnalflag.options[index].value == 1) {
-//            area1.removeAttribute("style");
-//            area1.setAttribute("style", "height:0px");
-//            area2.removeAttribute("style");
-//            area2.setAttribute("style", "height:0px");
-//        }
-//        if (jurnalflag.options[index].value == 0) {
-//            area1.removeAttribute("style");
-//            area1.setAttribute("style", "height:54px");
-//            area2.removeAttribute("style");
-//            area2.setAttribute("style", "height:54px");
-//        }
-//    }
+    //    function changestyle() {
+    //        var jurnalflag = document.getElementById("journalsORconference");
+    //        var index = jurnalflag.selectedIndex;
+    //        var area1 = document.getElementById("ZKYA");
+    //        var area2 = document.getElementById("JCRA");
+    //        if (jurnalflag.options[index].value == 1) {
+    //            area1.removeAttribute("style");
+    //            area1.setAttribute("style", "height:0px");
+    //            area2.removeAttribute("style");
+    //            area2.setAttribute("style", "height:0px");
+    //        }
+    //        if (jurnalflag.options[index].value == 0) {
+    //            area1.removeAttribute("style");
+    //            area1.setAttribute("style", "height:54px");
+    //            area2.removeAttribute("style");
+    //            area2.setAttribute("style", "height:54px");
+    //        }
+    //    }
 </script>
 <style>
     .jumbotron {
@@ -253,14 +253,16 @@
                             <!--期刊位置信息-->
                             <div id="paper_journals_location">
                                 <div class="form-group">
-                                    <label class="col-md-1 control-label">期刊号<span style="color: #ff0000">*</span></label>
+                                    <label class="col-md-1 control-label">期刊号<span
+                                            style="color: #ff0000">*</span></label>
                                     <div class="col-md-5">
                                         <input type="text" name="paper_journals_location1"
                                                class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-1 control-label">卷期<span style="color: #ff0000">*</span></label>
+                                    <label class="col-md-1 control-label">卷期<span
+                                            style="color: #ff0000">*</span></label>
                                     <div class="col-md-5">
                                         <input type="text" name="paper_journals_location2"
                                                class="form-control">
@@ -268,25 +270,27 @@
                                 </div>
                                 <div class="col-md-12">&nbsp;</div>
                                 <div class="form-group">
-                                    <label class="col-md-1 control-label">页码<span style="color: #ff0000">*</span></label>
+                                    <label class="col-md-1 control-label">页码<span
+                                            style="color: #ff0000">*</span></label>
                                     <div class="col-md-5">
                                         <input type="text" name="paper_journals_location3"
                                                class="form-control">
                                     </div>
                                 </div>
                             </div>
-
                             <!--会议位置信息-->
                             <div id="paper_conference_location" hidden="hidden">
                                 <div class="form-group">
-                                    <label class="col-md-1 control-label">会议名称<span style="color: #ff0000">*</span></label>
+                                    <label class="col-md-1 control-label">会议名称<span
+                                            style="color: #ff0000">*</span></label>
                                     <div class="col-md-5">
                                         <input type="text" name="paper_conference_location1"
                                                class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-1 control-label">会议页码<span style="color: #ff0000">*</span></label>
+                                    <label class="col-md-1 control-label">会议页码<span
+                                            style="color: #ff0000">*</span></label>
                                     <div class="col-md-5">
                                         <input type="text" name="paper_conference_location2"
                                                class="form-control">
@@ -294,17 +298,15 @@
                                 </div>
                                 <div class="col-md-12">&nbsp;</div>
                                 <div class="form-group">
-                                    <label class="col-md-1 control-label">会议地点<span style="color: #ff0000">*</span></label>
+                                    <label class="col-md-1 control-label">会议地点<span
+                                            style="color: #ff0000">*</span></label>
                                     <div class="col-md-5">
                                         <input type="text" name="paper_conference_location3"
                                                class="form-control">
                                     </div>
                                 </div>
                             </div>
-
-
-                                <span id="journalsORconferenceArea"></span>
-
+                            <span id="journalsORconferenceArea"></span>
                             <div id="paper_journals_conference_CUSTOM" class="form-group" hidden="hidden">
                                 <label class="col-md-2 control-label">请输入论文级别:</label>
                                 <div class="col-md-4">
@@ -329,16 +331,16 @@
                                 </div>
                             </div> -->
                             <%--<div class="col-md-8" style="min-height:54px" id="ZKYA">--%>
-                                <%--<span id="journalsORconferenceZKYArea"></span>--%>
-                                <%--<div class='col-md-12'>&nbsp;</div>--%>
+                            <%--<span id="journalsORconferenceZKYArea"></span>--%>
+                            <%--<div class='col-md-12'>&nbsp;</div>--%>
                             <%--</div>--%>
                             <%--<div class="col-md-8" style="min-height:54px" id="JCRA">--%>
-                                <%--<span id="journalsORconferenceJCRArea"></span>--%>
-                                <%--<div class='col-md-12'>&nbsp;</div>--%>
+                            <%--<span id="journalsORconferenceJCRArea"></span>--%>
+                            <%--<div class='col-md-12'>&nbsp;</div>--%>
                             <%--</div>--%>
                             <%--<div class="col-md-8" style="min-height:54px">--%>
-                                <%--<span id="journalsORconferenceCCFArea"></span>--%>
-                                <%--<div class='col-md-12'>&nbsp;</div>--%>
+                            <%--<span id="journalsORconferenceCCFArea"></span>--%>
+                            <%--<div class='col-md-12'>&nbsp;</div>--%>
                             <%--</div>--%>
                             <div class="col-md-12">&nbsp;</div>
                             <div class="form-group">
