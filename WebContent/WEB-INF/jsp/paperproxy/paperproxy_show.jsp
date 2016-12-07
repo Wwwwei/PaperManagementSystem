@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>论文成果录入清单</title>
+    <title>论文成果查看</title>
     <script type="text/javascript"
             src="<%=request.getContextPath()%>/js/common/jquery-2.1.4.min.js"></script>
     <script type="text/javascript"

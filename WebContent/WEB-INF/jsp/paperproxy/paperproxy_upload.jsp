@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>文件上传</title>
+    <title>论文成果上传</title>
     <script type="text/javascript"
             src="<%=request.getContextPath()%>/js/common/jquery-2.1.4.min.js"></script>
     <script type="text/javascript"
