@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 
 import pms.dao.Journals_ConferenceMapper;
 import pms.entity.Journals_Conference;
-import pms.service.Journals_ConferenceService;
+import pms.service.JournalsConferenceService;
 
 @Service
-public class Journals_ConferenceServiceImpl implements Journals_ConferenceService {
+public class JournalsConferenceServiceImpl implements JournalsConferenceService {
 
 	@Autowired
 	private Journals_ConferenceMapper journals_ConferenceMapper;
