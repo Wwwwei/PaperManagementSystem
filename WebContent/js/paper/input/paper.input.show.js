@@ -47,26 +47,27 @@ function shoWPaperProxy(paperproxy_id) {
                     addText += "<div class='col-md-6'>"
                         + "<dl class='dl-horizontal text-overflow'>"
                         + "<dt>论文状态</dt>";
-                    var time_name;
+                    // var time_name;
                     switch (result.paper_status) {
                         case 0:
                             addText += "<dd>已录用</dd></dl></div>";
-                            time_name = "录用时间";
+                            //        time_name = "录用时间";
                             break;
                         case 1:
                             addText += "<dd>已发表</dd></dl></div>";
-                            time_name = "发表时间";
+                            //      time_name = "发表时间";
                             break;
                     }
-
                     addText += "<div class='col-md-6'>"
                         + "<dl class='dl-horizontal text-overflow'>"
-                        + "<dt>" + time_name + "</dt>"
-                        + "<dd>" + result.paper_time + "</dd>"
-                        + "</dl>";
+                        + "<dt>发表时间</dt>";
+                    if (null == result.paper_time || 0 == result.paper_status) {
+                        addText += "<dd>无</dd></dl>"
+                    } else {
+                        addText += +"<dd>" + result.paper_time + "</dd></dl>";
+                    }
                     addText += "<span id='paper_time_ErrorArea'></span>"
                         + "</div>";
-
                     addText += "<div class='col-md-6'>"
                         + "<dl class='dl-horizontal text-overflow'>"
                         + "<dt>检索编号</dt>";
@@ -79,9 +80,14 @@ function shoWPaperProxy(paperproxy_id) {
                         + "</div>";
                     addText += "<div class='col-md-6'>"
                         + "<dl class='dl-horizontal text-overflow'>"
-                        + "<dt>影响因子</dt>"
-                        + "<dd>" + result.paper_if + "</dd>"
-                        + "</dl></div>";
+                        + "<dt>影响因子</dt>";
+                    if (null == result.paper_if) {
+                        addText += "<dd>无</dd></dl>";
+                    } else {
+                        addText += +"<dd>" + result.paper_if + "</dd></dl>";
+                    }
+                    addText += "<span id='paper_if_ErrorArea'></span>"
+                        + "</div>";
                     addText += "<div class='col-md-6'>"
                         + "<dl class='dl-horizontal text-overflow'>"
                         + "<dt>Web of Science 总引</dt>"
@@ -124,21 +130,21 @@ function shoWPaperProxy(paperproxy_id) {
                                 + "<dt>期刊号</dt>"
                                 + "<dd>" + locations[0] + "</dd>"
                                 + "</dl>"
-                                //+"<span id='paper_citations_others_ErrorArea'></span>"
+                                + "<span id='paper_journals_location1_ErrorArea'></span>"
                                 + "</div>";
                             location += "<div class='col-md-6'>"
                                 + "<dl class='dl-horizontal text-overflow'>"
                                 + "<dt>卷期</dt>"
                                 + "<dd>" + locations[1] + "</dd>"
                                 + "</dl>"
-                                    //+"<span id='paper_citations_others_ErrorArea'></span>"
+                                + "<span id='paper_journals_location2_ErrorArea'></span>"
                                 + "</div>";
                             location += "<div class='col-md-6'>"
                                 + "<dl class='dl-horizontal text-overflow'>"
                                 + "<dt>页码</dt>"
                                 + "<dd>" + locations[2] + "</dd>"
                                 + "</dl>"
-                                    //+"<span id='paper_citations_others_ErrorArea'></span>"
+                                + "<span id='paper_journals_location3_ErrorArea'></span>"
                                 + "</div>";
                             break;
                         case 1:
@@ -150,21 +156,21 @@ function shoWPaperProxy(paperproxy_id) {
                                 + "<dt>会议名称</dt>"
                                 + "<dd>" + locations[0] + "</dd>"
                                 + "</dl>"
-                                    //+"<span id='paper_citations_others_ErrorArea'></span>"
+                                + "<span id='paper_conference_location1_ErrorArea'></span>"
                                 + "</div>";
                             location += "<div class='col-md-6'>"
                                 + "<dl class='dl-horizontal text-overflow'>"
                                 + "<dt>会议页码</dt>"
                                 + "<dd>" + locations[1] + "</dd>"
                                 + "</dl>"
-                                    //+"<span id='paper_citations_others_ErrorArea'></span>"
+                                + "<span id='paper_conference_location2_ErrorArea'></span>"
                                 + "</div>";
                             location += "<div class='col-md-6'>"
                                 + "<dl class='dl-horizontal text-overflow'>"
                                 + "<dt>会议地点</dt>"
                                 + "<dd>" + locations[2] + "</dd>"
                                 + "</dl>"
-                                    //+"<span id='paper_citations_others_ErrorArea'></span>"
+                                + "<span id='paper_conference_location3_ErrorArea'></span>"
                                 + "</div>";
                             break;
                     }
@@ -186,11 +192,11 @@ function shoWPaperProxy(paperproxy_id) {
                         + "<th>" + conj + "信息</th>"
                         + "</tr>"
                         + "</thead></table></div>";
-                    addText += "<div class='row'>"+location+"</div>";
+                    addText += "<div class='row'>" + location + "</div>";
 
-                   //期刊级别
+                    //期刊级别
                     addText += "<div class='table-responsive'>"
-                    + "<table width='100%' class='table table-hover'>";
+                        + "<table width='100%' class='table table-hover'>";
                     addText += "<thead>"
                         + "<tr>"
                         + "<th>" + conj + "级别</th>"
@@ -210,11 +216,11 @@ function shoWPaperProxy(paperproxy_id) {
                         case 1:
                             if (null != result.paper_journals_conference_ZKY) {
                                 addText += "<div class='col-md-6'>"
-                                        + "<dl class='dl-horizontal text-overflow'>"
-                                        + "<dt>中科院等级</dt>"
-                                        + "<dd>" + result.paper_journals_conference_ZKY.journals_conference_name + "</dd>"
-                                        + "</dl>"
-                                        + "</div>";
+                                    + "<dl class='dl-horizontal text-overflow'>"
+                                    + "<dt>中科院等级</dt>"
+                                    + "<dd>" + result.paper_journals_conference_ZKY.journals_conference_name + "</dd>"
+                                    + "</dl>"
+                                    + "</div>";
                                 //var location = result.paper_location_ZKY.split("$");
                                 //addText += "<td>" + location[0] + "</td><td>" + location[1] + "</td><td>" + location[2] + "</td></tr>";
                             }
@@ -464,19 +470,29 @@ function showAuthorInputList(paperproxy_id) {
 function checkAllWithoutNull() {
     var checked = true;
     // 论文清单检查
+    //检索编号检查
     if (result.paper_status == 1 && (result.paper_accNum == null || $.trim(result.paper_accNum) == "")) {
         $("span#paper_accNum_ErrorArea").html("<div class='col-md-7 col-md-offset-1'><div class='alert alert-danger' role='alert'><strong>检索编号</strong>不能为空！</div></div>");
         checked = false;
     } else {
         $("span#paper_accNum_ErrorArea").html("");
     }
-    if (result.paper_time == null || $.trim(result.paper_time) == "") {
+    //发表时间检查
+    if (result.paper_status == 1 && (result.paper_time == null || $.trim(result.paper_time) == "")) {
         $("span#paper_time_ErrorArea").html("<div class='col-md-7 col-md-offset-1'><div class='alert alert-danger' role='alert'><strong>发表时间</strong>不能为空！</div></div>");
         checked = false;
-    } else {
+    }
+    else {
         $("span#paper_time_ErrorArea").html("");
     }
-
+    //影响因子检查
+    if (result.paper_if == null || $.trim(result.paper_if) == "") {
+        $("span#paper_if_ErrorArea").html("<div class='col-md-7 col-md-offset-1'><div class='alert alert-danger' role='alert'><strong>影响因子</strong>不能为空！</div></div>");
+        checked = false;
+    }
+    else {
+        $("span#paper_if_ErrorArea").html("");
+    }
 //	var bool_location0=true;
 //	var bool_location1=true;
 //	var bool_location2=true;
@@ -523,7 +539,52 @@ function checkAllWithoutNull() {
     } else {
         $("span#paper_citations_google_ErrorArea").html("");
     }
-    // 作者清单检查
+    //期刊会议清单检查
+    //位置信息检查
+    var locations = result.paper_location.split("$");
+    switch (result.paper_issue) {
+        case 0:
+            if ($.trim(locations[0]) == "") {
+                $("span#paper_journals_location1_ErrorArea").html("<div class='col-md-7 col-md-offset-1'><div class='alert alert-danger' role='alert'><strong>期刊号</strong>不能为空！</div></div>");
+                checked = false;
+            } else {
+                $("span#paper_journals_location1_ErrorArea").html("");
+            }
+            if ($.trim(locations[1]) == "") {
+                $("span#paper_journals_location2_ErrorArea").html("<div class='col-md-7 col-md-offset-1'><div class='alert alert-danger' role='alert'><strong>卷期</strong>不能为空！</div></div>");
+                checked = false;
+            } else {
+                $("span#paper_journals_location2_ErrorArea").html("");
+            }
+            if ($.trim(locations[2]) == "") {
+                $("span#paper_journals_location3_ErrorArea").html("<div class='col-md-7 col-md-offset-1'><div class='alert alert-danger' role='alert'><strong>页码</strong>不能为空！</div></div>");
+                checked = false;
+            } else {
+                $("span#paper_journals_location3_ErrorArea").html("");
+            }
+            break;
+        case 1:
+            if ($.trim(locations[0]) == "") {
+                $("span#paper_conference_location1_ErrorArea").html("<div class='col-md-7 col-md-offset-1'><div class='alert alert-danger' role='alert'><strong>会议名称</strong>不能为空！</div></div>");
+                checked = false;
+            } else {
+                $("span#paper_conference_location1_ErrorArea").html("");
+            }
+            if ($.trim(locations[1]) == "") {
+                $("span#paper_conference_location2_ErrorArea").html("<div class='col-md-7 col-md-offset-1'><div class='alert alert-danger' role='alert'><strong>会议页码</strong>不能为空！</div></div>");
+                checked = false;
+            } else {
+                $("span#paper_conference_location2_ErrorArea").html("");
+            }
+            if ($.trim(locations[2]) == "") {
+                $("span#paper_conference_location3_ErrorArea").html("<div class='col-md-7 col-md-offset-1'><div class='alert alert-danger' role='alert'><strong>会议地点</strong>不能为空！</div></div>");
+                checked = false;
+            } else {
+                $("span#paper_conference_location3_ErrorArea").html("");
+            }
+            break;
+    }
+// 作者清单检查
     for (var i in authorResult) {
         var addText = "";
         if (authorResult[i].author_name == null || $.trim(authorResult[i].author_name) == "") {
