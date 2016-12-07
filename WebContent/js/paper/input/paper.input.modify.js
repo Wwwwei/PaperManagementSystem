@@ -359,8 +359,9 @@ function showSelect(flag) {
         });
 }
 // 根据期刊和会议二级下拉框选择
-function showSelectByFlag(paperproxy_id, flag, ZKY_id, JCR_id, CCF_id,
-                          ZKY_location, JCR_location, CCF_location, OTHER_check) {
+//function showSelectByFlag(paperproxy_id, flag, ZKY_id, JCR_id, CCF_id,
+//                          ZKY_location, JCR_location, CCF_location, OTHER_check) {
+function showSelectByFlag(paperproxy_id, flag, ZKY_id, JCR_id, CCF_id, ESI_id, OTHER_id, OTHER_check) {
     htmlobj = $
         .ajax({
             url: "../journals_conference/findByFlag.do",
@@ -372,29 +373,29 @@ function showSelectByFlag(paperproxy_id, flag, ZKY_id, JCR_id, CCF_id,
             success: function (data, stats) {
                 if (stats == "success") {
                     var addText = "";
-                    $("span#journalsORconferenceZKYArea").html("");
-                    $("span#journalsORconferenceJCRArea").html("");
-                    $("span#journalsORconferenceCCFArea").html("");
+                    //$("span#journalsORconferenceZKYArea").html("");
+                    //$("span#journalsORconferenceJCRArea").html("");
+                    //$("span#journalsORconferenceCCFArea").html("");
                     resultList = JSON.parse(htmlobj.responseText);
                     if (0 == flag) {
-                        var ZKY_locations = ZKY_location.split("$");
-                        var JCR_locations = JCR_location.split("$");
-                        var CCF_locations = CCF_location.split("$");
-                        for (i = 0; i < 3; i++) {
-                            if ('null' == ZKY_locations[i]) {
-                                ZKY_locations[i] = '';
-                            }
-                        }
-                        for (i = 0; i < 3; i++) {
-                            if ('null' == JCR_locations[i]) {
-                                JCR_locations[i] = '';
-                            }
-                        }
-                        for (i = 0; i < 3; i++) {
-                            if ('null' == CCF_locations[i]) {
-                                CCF_locations[i] = '';
-                            }
-                        }
+                        //var ZKY_locations = ZKY_location.split("$");
+                        //var JCR_locations = JCR_location.split("$");
+                        //var CCF_locations = CCF_location.split("$");
+                        //for (i = 0; i < 3; i++) {
+                        //    if ('null' == ZKY_locations[i]) {
+                        //        ZKY_locations[i] = '';
+                        //    }
+                        //}
+                        //for (i = 0; i < 3; i++) {
+                        //    if ('null' == JCR_locations[i]) {
+                        //        JCR_locations[i] = '';
+                        //    }
+                        //}
+                        //for (i = 0; i < 3; i++) {
+                        //    if ('null' == CCF_locations[i]) {
+                        //        CCF_locations[i] = '';
+                        //    }
+                        //}
                         var select_ZKY = "<option value ='-1'>无</option>";
                         var select_JCR = "<option value ='-1'>无</option>";
                         var select_CCF = "<option value ='-1'>无</option>";
@@ -656,116 +657,134 @@ function showLocationAreaByConference() {
 function shoWPaperProxyInputList(paperproxy_id) {
     htmlobj = $
         .ajax({
-            // url: "../paper_proxy/show.do",
-            url: "../paper_proxy/getPaper.do",
-            type: 'POST',
-            data: {
-                paperproxy_id: paperproxy_id
-            },
-            datatype: "json",
-            success: function (data, stats) {
-                if (stats == "success") {
-                    result = JSON.parse(htmlobj.responseText);
-                    $("input#paper_name").val(result.paper_name);
-                    $("input#paper_rank").val(result.paper_rank);
-                    RANK = result.paper_rank;
-                    $("input#paper_authorNum").val(
-                        Number(result.paper_authorNum));
-                    $("input#paper_authorNum").attr({
-                        min: $("input#paper_rank").val()
-                    });
-                    showAuthorList(result.paper_authorNum);
-                    if (result.paper_includedType == "SCI"
-                        || result.paper_includedType == "EI"
-                        || result.paper_includedType == "ISTP"
-                        || result.paper_includedType == "SSCI") {
-                        $("select#paper_includedType").val(
-                            result.paper_includedType);
-                    } else {
-                        var addText = "<div class='form-group'>"
-                            + "<label class='col-md-1 control-label'>请输入收录类型 </label>"
-                            +
+                // url: "../paper_proxy/show.do",
+                url: "../paper_proxy/getPaper.do",
+                type: 'POST',
+                data: {
+                    paperproxy_id: paperproxy_id
+                },
+                datatype: "json",
+                success: function (data, stats) {
+                    if (stats == "success") {
+                        result = JSON.parse(htmlobj.responseText);
+                        $("input#paper_name").val(result.paper_name);
+                        $("input#paper_rank").val(result.paper_rank);
+                        RANK = result.paper_rank;
+                        $("input#paper_authorNum").val(
+                            Number(result.paper_authorNum));
+                        $("input#paper_authorNum").attr({
+                            min: $("input#paper_rank").val()
+                        });
+                        showAuthorList(result.paper_authorNum);
+                        if (result.paper_includedType == "SCI"
+                            || result.paper_includedType == "EI"
+                            || result.paper_includedType == "ISTP"
+                            || result.paper_includedType == "SSCI") {
+                            $("select#paper_includedType").val(
+                                result.paper_includedType);
+                        } else {
+                            var addText = "<div class='form-group'>"
+                                + "<label class='col-md-1 control-label'>请输入收录类型 </label>"
+                                +
 
-                            "<div class='col-md-5'><input type='text' name='other_includedType' value='"
-                            + result.paper_includedType
-                            + "' class='form-control'>"
-                            + "</div></div>";
-                        $("span#includedTypeArea").html(addText);
-                        $("select#paper_includedType").val("other");
-                    }
-                    $("input#paper_accNum").val(result.paper_accNum);
-                    $("input#paper_time").val(result.paper_time);
-                    $("input#paper_if").val(result.paper_if);
-                    switch (result.paper_status) {
-                        case 0:
-                            $("input#paper_status0").attr("checked", "checked");
-                            $("input#paper_accNum").val("");
-                            $("input#paper_accNum").attr("disabled", true);
-                            $("input#paper_time").val("");
-                            $("input#paper_time").attr("disabled", true);
-                            break;
-                        case 1:
-                            $("input#paper_status1").attr("checked", "checked");
-                            $("input#paper_accNum").attr("disabled", false);
-                            $("input#paper_time").attr("disabled", false);
-                            break;
-                    }
-                    $("select#journalsORconference")
-                        .val(result.paper_issue);
-                    $("input#paper_citations").val(result.paper_citations);
-                    $("input#paper_citations_others").val(
-                        result.paper_citations_others);
-                    $("input#paper_citations_google").val(
-                        result.paper_citations_google);
-                    switch (result.paper_issue) {
-                        case 0:
-                            var ZKY_id = -1;
-                            var JCR_id = -1;
-                            var CCF_id = -1;
-                            var ESI_id = -1;
-                            var OTHER_id = -1;
-                            if (null != result.paper_journals_conference_ZKY) {
-                                ZKY_id = result.paper_journals_conference_ZKY.journals_conference_id;
-                            }
-                            if (null != result.paper_journals_conference_JCR) {
-                                JCR_id = result.paper_journals_conference_JCR.journals_conference_id;
-                            }
-                            if (null != result.paper_journals_conference_CCF) {
-                                CCF_id = result.paper_journals_conference_CCF.journals_conference_id;
-                            }
-                            if (null != result.paper_journals_conference_ESI) {
-                                ESI_id = result.paper_journals_conference_ESI.journals_conference_id;
-                            }
-                            if (null != result.paper_journals_conference_OTHER) {
-                                OTHER_id = result.paper_journals_conference_ESI.journals_conference_id;
-                            }
-                            showSelectByFlag(paperproxy_id, result.paper_issue,
-                                ZKY_id, JCR_id, CCF_id,
-                                result.paper_location_ZKY,
-                                result.paper_location_JCR,
-                                result.paper_location_CCF,
-                                result.paper_journals_conference_other);
-                            break;
-                        case 1:
-                            var CCF_id = -1;
-                            if (null != result.paper_journals_conference_CCF) {
-                                CCF_id = result.paper_journals_conference_CCF.journals_conference_id;
-                            }
-                            showSelectByFlag(paperproxy_id, result.paper_issue,
-                                -1, -1, CCF_id, result.paper_location_ZKY,
-                                result.paper_location_JCR,
-                                result.paper_location_CCF,
-                                result.paper_journals_conference_other);
+                                "<div class='col-md-5'><input type='text' name='other_includedType' value='"
+                                + result.paper_includedType
+                                + "' class='form-control'>"
+                                + "</div></div>";
+                            $("span#includedTypeArea").html(addText);
+                            $("select#paper_includedType").val("other");
+                        }
+                        $("input#paper_accNum").val(result.paper_accNum);
+                        $("input#paper_time").val(result.paper_time);
+                        $("input#paper_if").val(result.paper_if);
+                        switch (result.paper_status) {
+                            case 0:
+                                $("input#paper_status0").attr("checked", "checked");
+                                $("input#paper_accNum").val("");
+                                $("input#paper_accNum").attr("disabled", true);
+                                $("input#paper_time").val("");
+                                $("input#paper_time").attr("disabled", true);
+                                break;
+                            case 1:
+                                $("input#paper_status1").attr("checked", "checked");
+                                $("input#paper_accNum").attr("disabled", false);
+                                $("input#paper_time").attr("disabled", false);
+                                break;
+                        }
+                        $("select#journalsORconference")
+                            .val(result.paper_issue);
+                        $("input#paper_citations").val(result.paper_citations);
+                        $("input#paper_citations_others").val(
+                            result.paper_citations_others);
+                        $("input#paper_citations_google").val(
+                            result.paper_citations_google);
+                        switch (result.paper_issue) {
+                            case 0:
+                                $("div#paper_conference_location").attr("hidden", "hidden")
+                                $("div#paper_journals_location").removeAttr("hidden");
+                                var ZKY_id = -1;
+                                var JCR_id = -1;
+                                var CCF_id = -1;
+                                var ESI_id = -1;
+                                var OTHER_id = -1;
+                                if (null != result.paper_journals_conference_ZKY) {
+                                    ZKY_id = result.paper_journals_conference_ZKY.journals_conference_id;
+                                }
+                                if (null != result.paper_journals_conference_JCR) {
+                                    JCR_id = result.paper_journals_conference_JCR.journals_conference_id;
+                                }
+                                if (null != result.paper_journals_conference_CCF) {
+                                    CCF_id = result.paper_journals_conference_CCF.journals_conference_id;
+                                }
+                                if (null != result.paper_journals_conference_ESI) {
+                                    ESI_id = result.paper_journals_conference_ESI.journals_conference_id;
+                                }
+                                if (null != result.paper_journals_conference_OTHER) {
+                                    OTHER_id = result.paper_journals_conference_ESI.journals_conference_id;
+                                }
+                                if (null != result.paper_location) {
+                                    var locations = result.paper_location.split("$");
+                                    $("input#paper_journals_location1").val(locations[0]);
+                                    $("input#paper_journals_location2").val(locations[1]);
+                                    $("input#paper_journals_location3").val(locations[2]);
+                                }
+                                showSelectByFlag(paperproxy_id, result.paper_issue,
+                                    ZKY_id, JCR_id, CCF_id,
+                                    result.paper_location_ZKY,
+                                    result.paper_location_JCR,
+                                    result.paper_location_CCF,
+                                    result.paper_journals_conference_other);
+                                break;
+                            case 1:
+                                $("div#paper_journals_location").attr("hidden", "hidden");
+                                $("div#paper_conference_location").removeAttr("hidden");
+                                var CCF_id = -1;
+                                if (null != result.paper_journals_conference_CCF) {
+                                    CCF_id = result.paper_journals_conference_CCF.journals_conference_id;
+                                }
+                                if (null != result.paper_location) {
+                                    var locations = result.paper_location.split("$");
+                                    $("input#paper_conference_location1").val(locations[0]);
+                                    $("input#paper_conference_location2").val(locations[1]);
+                                    $("input#paper_conference_location3").val(locations[2]);
+                                }
+                                showSelectByFlag(paperproxy_id, result.paper_issue,
+                                    -1, -1, CCF_id, result.paper_location_ZKY,
+                                    result.paper_location_JCR,
+                                    result.paper_location_CCF,
+                                    result.paper_journals_conference_other);
 
-                            break;
-                    }
+                                break;
+                        }
 
+                    }
+                },
+                error: function (data) {
+                    alert("请求失败");
                 }
-            },
-            error: function (data) {
-                alert("请求失败");
             }
-        });
+        )
+    ;
 }
 // 录入者信息填充
 function authorInput() {

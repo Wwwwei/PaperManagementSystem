@@ -126,10 +126,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-1 control-label">论文名称
-                                    <small
-                                            class="text-muted" style="color: red;">*
-                                    </small>
+                                <label class="col-md-1 control-label">论文名称<span style="color: #ff0000">*</span>
                                 </label>
                                 <div class="col-md-5">
                                     <input type="text" id="paper_name" name="paper_name"
@@ -140,10 +137,7 @@
                                 <br>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-1 control-label">我的排名
-                                    <small
-                                            class="text-muted" style="color: red;">*
-                                    </small>
+                                <label class="col-md-1 control-label">我的排名<span style="color: #ff0000">*</span>
                                 </label>
                                 <div class="col-md-5">
                                     <input type="number" id="paper_rank" name="paper_rank" min="1"
@@ -152,10 +146,7 @@
                             </div>
                             <div class="col-md-12">&nbsp;</div>
                             <div class="form-group">
-                                <label class="col-md-1 control-label">作者人数
-                                    <small
-                                            class="text-muted" style="color: red;">*
-                                    </small>
+                                <label class="col-md-1 control-label">作者人数<span style="color: #ff0000">*</span>
                                 </label>
                                 <div class="col-md-5">
                                     <input type="number" id="paper_authorNum" min="1"
@@ -294,7 +285,12 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div class='col-md-12'>&nbsp;</div>
+                            <div class='col-md-12'>
+                                <div class='alert alert-warning' style='font-size: 14px;'><span
+                                        class='glyphicon glyphicon-info-sign'></span><strong>Tips</strong>&nbsp;&nbsp;若您的论文在下列级别选项中无对应级别,请勾选其他,手动填写.
+                                </div>
+                            </div>
                             <div class="col-md-4">
                                 <span id="journalsORconferenceArea"></span>
                             </div>
@@ -313,10 +309,8 @@
                             <%--</div>--%>
                             <div class="col-md-12">&nbsp;</div>
                             <div class="form-group">
-                                <label class="col-md-2 control-label">Web of Science 总引
-                                    <small
-                                            class="text-muted" style="color: red;">*
-                                    </small>
+                                <label class="col-md-2 control-label">Web of Science 总引<span
+                                        style="color: #ff0000">*</span>
                                 </label>
                                 <div class="col-md-4">
                                     <input type="number" name="paper_citations"
@@ -327,10 +321,8 @@
                                 <br>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-2 control-label">Web of Science 他引
-                                    <small
-                                            class="text-muted" style="color: red;">*
-                                    </small>
+                                <label class="col-md-2 control-label">Web of Science 他引<span
+                                        style="color: #ff0000">*</span>
                                 </label>
                                 <div class="col-md-4">
                                     <input type="number" name="paper_citations_others"
@@ -339,10 +331,8 @@
                             </div>
                             <div class="col-md-12">&nbsp;</div>
                             <div class="form-group">
-                                <label class="col-md-2 control-label">Google Scholar 他引
-                                    <small
-                                            class="text-muted" style="color: red;">*
-                                    </small>
+                                <label class="col-md-2 control-label">Google Scholar 他引<span
+                                        style="color: #ff0000">*</span>
                                 </label>
                                 <div class="col-md-4">
                                     <input type="number" name="paper_citations_google"
