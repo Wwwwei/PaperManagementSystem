@@ -213,7 +213,7 @@ $("#file-1").fileinput({
     uploadUrl: '../paper_proxy/file/upload.do?fileType=1&paperproxy_id=' + $("input#paperproxy_id").val() + "&teacher_no=" + $("input#teacher_no").val(),
     allowedFileExtensions: ['pdf', 'doc', 'docx'],
     overwriteInitial: false,
-    maxFileSize: 1000,
+    maxFileSize: 5120,
     maxFilesNum: 1,
     slugCallback: function (filename) {
         return filename.replace('(', '_').replace(']', '_');
@@ -249,7 +249,7 @@ $("#file-2").fileinput({
     uploadUrl: '../paper_proxy/file/upload.do?fileType=2&paperproxy_id=' + $("input#paperproxy_id").val() + "&teacher_no=" + $("input#teacher_no").val(),
     allowedFileExtensions: ['pdf', 'doc', 'docx'],
     overwriteInitial: false,
-    maxFileSize: 1000,
+    maxFileSize: 5120,
     maxFilesNum: 1,
     slugCallback: function (filename) {
         return filename.replace('(', '_').replace(']', '_');
@@ -285,7 +285,7 @@ $("#file-3").fileinput({
     uploadUrl: '../paper_proxy/file/upload.do?fileType=3&paperproxy_id=' + $("input#paperproxy_id").val() + "&teacher_no=" + $("input#teacher_no").val(),
     allowedFileExtensions: ['pdf', 'doc', 'docx'],
     overwriteInitial: false,
-    maxFileSize: 1000,
+    maxFileSize: 5120,
     maxFilesNum: 1,
     slugCallback: function (filename) {
         return filename.replace('(', '_').replace(']', '_');
@@ -321,7 +321,7 @@ $("#file-4").fileinput({
     uploadUrl: '../paper_proxy/file/upload.do?fileType=4&paperproxy_id=' + $("input#paperproxy_id").val() + "&teacher_no=" + $("input#teacher_no").val(),
     allowedFileExtensions: ['pdf', 'doc', 'docx'],
     overwriteInitial: false,
-    maxFileSize: 1000,
+    maxFileSize: 5120,
     maxFilesNum: 1,
     slugCallback: function (filename) {
         return filename.replace('(', '_').replace(']', '_');
@@ -352,7 +352,7 @@ $("#file-5").fileinput({
     uploadUrl: '../paper_proxy/file/upload.do?fileType=2&paperproxy_id=' + $("input#paperproxy_id").val() + "&teacher_no=" + $("input#teacher_no").val(),
     allowedFileExtensions: ['pdf', 'doc', 'docx'],
     overwriteInitial: false,
-    maxFileSize: 1000,
+    maxFileSize: 5120,
     maxFilesNum: 1,
     slugCallback: function (filename) {
         return filename.replace('(', '_').replace(']', '_');
@@ -385,7 +385,7 @@ $("#file-6").fileinput({
     uploadUrl: '../paper_proxy/file/upload.do?fileType=5&paperproxy_id=' + $("input#paperproxy_id").val() + "&teacher_no=" + $("input#teacher_no").val(), // you must set a valid URL here else you will get an error
     allowedFileExtensions: ['pdf', 'doc', 'docx'],
     overwriteInitial: false,
-    maxFileSize: 1000,
+    maxFileSize: 5120,
     maxFilesNum: 1,
     slugCallback: function (filename) {
         return filename.replace('(', '_').replace(']', '_');
