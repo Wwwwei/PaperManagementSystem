@@ -695,6 +695,7 @@ function shoWPaperProxyInputList(paperproxy_id) {
                     }
                     $("input#paper_accNum").val(result.paper_accNum);
                     $("input#paper_time").val(result.paper_time);
+                    $("input#paper_if").val(result.paper_if);
                     switch (result.paper_status) {
                         case 0:
                             $("input#paper_status0").attr("checked", "checked");
@@ -721,6 +722,8 @@ function shoWPaperProxyInputList(paperproxy_id) {
                             var ZKY_id = -1;
                             var JCR_id = -1;
                             var CCF_id = -1;
+                            var ESI_id = -1;
+                            var OTHER_id = -1;
                             if (null != result.paper_journals_conference_ZKY) {
                                 ZKY_id = result.paper_journals_conference_ZKY.journals_conference_id;
                             }
@@ -729,6 +732,12 @@ function shoWPaperProxyInputList(paperproxy_id) {
                             }
                             if (null != result.paper_journals_conference_CCF) {
                                 CCF_id = result.paper_journals_conference_CCF.journals_conference_id;
+                            }
+                            if (null != result.paper_journals_conference_ESI) {
+                                ESI_id = result.paper_journals_conference_ESI.journals_conference_id;
+                            }
+                            if (null != result.paper_journals_conference_OTHER) {
+                                OTHER_id = result.paper_journals_conference_ESI.journals_conference_id;
                             }
                             showSelectByFlag(paperproxy_id, result.paper_issue,
                                 ZKY_id, JCR_id, CCF_id,

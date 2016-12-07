@@ -226,23 +226,91 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="col-md-1 control-label">影响因子<span style="color: #ff0000">*</span></label>
+                                <div class="col-md-5">
+                                    <input type="text" id="paper_if" name="paper_if"
+                                           class="form-control">
+                                </div>
+                            </div>
                             <div class="col-md-12">&nbsp;</div>
+                            <!--期刊位置信息-->
+                            <div id="paper_journals_location">
+                                <div class="form-group">
+                                    <label class="col-md-1 control-label">期刊号<span
+                                            style="color: #ff0000">*</span></label>
+                                    <div class="col-md-5">
+                                        <input type="text" id="paper_journals_location1" name="paper_journals_location1"
+                                               class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-1 control-label">卷期<span
+                                            style="color: #ff0000">*</span></label>
+                                    <div class="col-md-5">
+                                        <input type="text" id="paper_journals_location2" name="paper_journals_location2"
+                                               class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">&nbsp;</div>
+                                <div class="form-group">
+                                    <label class="col-md-1 control-label">页码<span
+                                            style="color: #ff0000">*</span></label>
+                                    <div class="col-md-5">
+                                        <input type="text" id="paper_journals_location3" name="paper_journals_location3"
+                                               class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--会议位置信息-->
+                            <div id="paper_conference_location" hidden="hidden">
+                                <div class="form-group">
+                                    <label class="col-md-1 control-label">会议名称<span
+                                            style="color: #ff0000">*</span></label>
+                                    <div class="col-md-5">
+                                        <input type="text" id="paper_conference_location1"
+                                               name="paper_conference_location1"
+                                               class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-1 control-label">会议页码<span
+                                            style="color: #ff0000">*</span></label>
+                                    <div class="col-md-5">
+                                        <input type="text" id="paper_conference_location2"
+                                               name="paper_conference_location2"
+                                               class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">&nbsp;</div>
+                                <div class="form-group">
+                                    <label class="col-md-1 control-label">会议地点<span
+                                            style="color: #ff0000">*</span></label>
+                                    <div class="col-md-5">
+                                        <input type="text" id="paper_conference_location3"
+                                               name="paper_conference_location3"
+                                               class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="col-md-4">
                                 <span id="journalsORconferenceArea"></span>
                             </div>
                             <!-- 		<span id="degreeArea"></span> -->
-                            <div class="col-md-8" style="min-height: 54px" id="ZKYA">
-                                <span id="journalsORconferenceZKYArea"></span>
-                                <div class='col-md-12'>&nbsp;</div>
-                            </div>
-                            <div class="col-md-8" style="min-height: 54px" id="JCRA">
-                                <span id="journalsORconferenceJCRArea"></span>
-                                <div class='col-md-12'>&nbsp;</div>
-                            </div>
-                            <div class="col-md-8" style="min-height: 54px">
-                                <span id="journalsORconferenceCCFArea"></span>
-                                <div class='col-md-12'>&nbsp;</div>
-                            </div>
+                            <%--<div class="col-md-8" style="min-height: 54px" id="ZKYA">--%>
+                            <%--<span id="journalsORconferenceZKYArea"></span>--%>
+                            <%--<div class='col-md-12'>&nbsp;</div>--%>
+                            <%--</div>--%>
+                            <%--<div class="col-md-8" style="min-height: 54px" id="JCRA">--%>
+                            <%--<span id="journalsORconferenceJCRArea"></span>--%>
+                            <%--<div class='col-md-12'>&nbsp;</div>--%>
+                            <%--</div>--%>
+                            <%--<div class="col-md-8" style="min-height: 54px">--%>
+                            <%--<span id="journalsORconferenceCCFArea"></span>--%>
+                            <%--<div class='col-md-12'>&nbsp;</div>--%>
+                            <%--</div>--%>
                             <div class="col-md-12">&nbsp;</div>
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Web of Science 总引
