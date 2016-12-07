@@ -77,6 +77,11 @@ function shoWPaperProxy(paperproxy_id) {
                     }
                     addText += "<span id='paper_accNum_ErrorArea'></span>"
                         + "</div>";
+                    addText += "<div class='col-md-6'>"
+                        + "<dl class='dl-horizontal text-overflow'>"
+                        + "<dt>影响因子</dt>"
+                        + "<dd>" + result.paper_if + "</dd>"
+                        + "</dl></div>";
                     addText += "<div class='col-md-6' style='min-height:41px;'>&nbsp;</div>"
                     addText += "<div class='col-md-6'>"
                         + "<dl class='dl-horizontal text-overflow'>"
@@ -103,21 +108,25 @@ function shoWPaperProxy(paperproxy_id) {
                         + "</div></div>";
                     var list = "";
                     var conj = "";
+                    var location = "";
                     addText += "<div class='panel panel-primary'>"
                         + "<div class='panel-heading'>"
                         + "<table width='100%'>"
                         + "<tr>"
                         + "<td width='85%'>发表方式：  ";
+                    var locations = result.paper_location.split("$");
                     switch (result.paper_issue) {
                         case 0:
                             addText += "期刊";
-                            list = "收起期刊列表";
+                            list = "收起期刊信息列表";
                             conj = "期刊";
+                            location = "期刊号:" + locations[0] + "卷期:" + locations[1] + "页码:" + locations[2];
                             break;
                         case 1:
                             addText += "会议";
-                            list = "收起会议列表";
+                            list = "收起会议信息列表";
                             conj = "会议";
+                            location = "会议名称:" + locations[0] + "会议页码:" + locations[1] + "会议地点:" + locations[2];
                             break;
                     }
                     addText += "</td>"
@@ -131,33 +140,51 @@ function shoWPaperProxy(paperproxy_id) {
                         + "<div class='panel-body'>"
                         + "<div class='table-responsive'>"
                         + "<table width='100%' class='table table-hover'>";
-                    switch (result.paper_journals_conference_other) {
+                    addText += location+"<br>";
+                    switch (result.paper_journals_conference_isZjut100) {
                         case 0:
-                            addText += "<tr><td>期刊类别：其他</td></tr></table></div></div></div></div>";
+                            break;
+                        case 1:
+                            addText += "zjut100期刊论文";
+                            break;
+                    }
+                    switch (result.paper_journals_conference_isOther) {
+                        case 0:
+                            addText += "<tr><td>其他类别：" + result.paper_journals_conference_CUSTOM + "</td></tr></table></div></div></div></div>";
                             break;
                         case 1:
                             addText += "<thead>"
                                 + "<tr>"
-                                + "<th>" + conj + "名称</th>"
-                                + "<th>期刊号</th>"
-                                + "<th>卷期</th>"
-                                + "<th>页码</th>"
+                                + "<th>" + conj + "级别</th>"
+                                //+ "<th>期刊号</th>"
+                                //+ "<th>卷期</th>"
+                                //+ "<th>页码</th>"
                                 + "</tr>"
                                 + "</thead>";
                             if (null != result.paper_journals_conference_ZKY) {
                                 addText += "<tr><td>" + result.paper_journals_conference_ZKY.journals_conference_name + "</td>";
-                                var location = result.paper_location_ZKY.split("$");
-                                addText += "<td>" + location[0] + "</td><td>" + location[1] + "</td><td>" + location[2] + "</td></tr>";
+                                //var location = result.paper_location_ZKY.split("$");
+                                //addText += "<td>" + location[0] + "</td><td>" + location[1] + "</td><td>" + location[2] + "</td></tr>";
                             }
                             if (null != result.paper_journals_conference_JCR) {
                                 addText += "<tr><td>" + result.paper_journals_conference_JCR.journals_conference_name + "</td>";
-                                var location = result.paper_location_JCR.split("$");
-                                addText += "<td>" + location[0] + "</td><td>" + location[1] + "</td><td>" + location[2] + "</td></tr>";
+                                //var location = result.paper_location_JCR.split("$");
+                                //addText += "<td>" + location[0] + "</td><td>" + location[1] + "</td><td>" + location[2] + "</td></tr>";
                             }
                             if (null != result.paper_journals_conference_CCF) {
                                 addText += "<tr><td>" + result.paper_journals_conference_CCF.journals_conference_name + "</td>";
-                                var location = result.paper_location_CCF.split("$");
-                                addText += "<td>" + location[0] + "</td><td>" + location[1] + "</td><td>" + location[2] + "</td></tr>";
+                                //var location = result.paper_location_CCF.split("$");
+                                //addText += "<td>" + location[0] + "</td><td>" + location[1] + "</td><td>" + location[2] + "</td></tr>";
+                            }
+                            if (null != result.paper_journals_conference_ESI) {
+                                addText += "<tr><td>" + result.paper_journals_conference_ESI.journals_conference_name + "</td>";
+                                //var location = result.paper_location_CCF.split("$");
+                                //addText += "<td>" + location[0] + "</td><td>" + location[1] + "</td><td>" + location[2] + "</td></tr>";
+                            }
+                            if (null != result.paper_journals_conference_OTHER) {
+                                addText += "<tr><td>" + result.paper_journals_conference_OTHER.journals_conference_name + "</td>";
+                                //var location = result.paper_location_CCF.split("$");
+                                //addText += "<td>" + location[0] + "</td><td>" + location[1] + "</td><td>" + location[2] + "</td></tr>";
                             }
                             addText += "</table></div></div></div></div>";
                             break;
@@ -462,7 +489,7 @@ $(document)
             $("button#paperproxy_confirm").click(
                 function () {
                     if (checkAllWithoutNull()) {
-                        window.location.href = "../paper_proxy/upload.do?teacher_no="+teacher_no + "&paperproxy_id=" + paperproxy_id;
+                        window.location.href = "../paper_proxy/upload.do?teacher_no=" + teacher_no + "&paperproxy_id=" + paperproxy_id;
                     }
                 });
             $("button#paperproxy_modify").click(
