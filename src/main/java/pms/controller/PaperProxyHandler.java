@@ -793,7 +793,7 @@ public class PaperProxyHandler {
     @RequestMapping(value = "/paper_proxy/test1", method = RequestMethod.GET)
     public ModelAndView test1() {
         Map<String, String> model = new HashMap<String, String>();
-        model.put("paperproxy_id", "157");
-        return new ModelAndView("paperproxy/paperproxy_fileupload", model);
+        model.put("paperproxy_id", "23");
+        return new ModelAndView("paperproxy/paperproxy_show", model);
     }
 }
