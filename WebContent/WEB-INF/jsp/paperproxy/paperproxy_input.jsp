@@ -142,7 +142,6 @@
                             </div>
                             <div class="form-group">
                                 <label class="col-md-1 control-label">论文名称<span style="color: #ff0000">*</span>
-
                                 </label>
                                 <div class="col-md-5">
                                     <input type="text" id="paper_name" name="paper_name"
