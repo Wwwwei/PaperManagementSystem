@@ -18,7 +18,9 @@ public class Paper {
     private String paper_time;
     /*废弃*/
 //    private String paper_location;// 论文所在会议或期刊的具体位置(包括页码，期刊号等)
-    private String paper_location;// 论文具体位置(若为期刊包括页码，卷期，期刊号;若为会议包括会议名称,会议页码,会议举办地;用$分隔)
+    private String paper_location;// 论文具体位置(若为期刊包括期刊号,卷期,页码;若为会议包括会议页码,会议举办地;用$分隔)
+    private String paper_publishName;//论文出版物名称(若为期刊,则为期刊名称;若为会议,则为会议名称)
+    private String paper_publishType;//论文出版物类型(1:国内;2:国外;3:国际)
     //    private String paper_conference_location;// 论文所在会议或期刊的具体位置(包括,用$分隔)
     /*废弃*/
     // private String paper_url; // 论文地址
@@ -277,5 +279,21 @@ public class Paper {
 
     public void setPaper_journals_conference_isOther(int paper_journals_conference_isOther) {
         this.paper_journals_conference_isOther = paper_journals_conference_isOther;
+    }
+
+    public String getPaper_publishName() {
+        return paper_publishName;
+    }
+
+    public void setPaper_publishName(String paper_publishName) {
+        this.paper_publishName = paper_publishName;
+    }
+
+    public String getPaper_publishType() {
+        return paper_publishType;
+    }
+
+    public void setPaper_publishType(String paper_publishType) {
+        this.paper_publishType = paper_publishType;
     }
 }
