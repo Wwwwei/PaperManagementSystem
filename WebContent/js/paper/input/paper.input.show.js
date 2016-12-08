@@ -527,7 +527,7 @@ function checkAllWithoutNull() {
         $("span#paper_time_ErrorArea").html("");
     }
     //影响因子检查
-    if (result.paper_if == null || $.trim(result.paper_if) == "") {
+    if (result.paper_issue == 0 && (result.paper_if == null || $.trim(result.paper_if) == "")) {
         $("span#paper_if_ErrorArea").html("<div class='col-md-7 col-md-offset-1'><div class='alert alert-danger' role='alert'><strong>影响因子</strong>不能为空！</div></div>");
         checked = false;
     }
@@ -585,19 +585,25 @@ function checkAllWithoutNull() {
     var locations = result.paper_location.split("$");
     switch (result.paper_issue) {
         case 0:
+            if(result.paper_publishName == null || $.trim(result.paper_publishName) == ""){
+                $("span#paper_journals_publishName_ErrorArea").html("<div class='col-md-7 col-md-offset-1'><div class='alert alert-danger' role='alert'><strong>期刊名称</strong>不能为空！</div></div>");
+                checked = false;
+            }else{
+                $("span#paper_journals_publishName_ErrorArea").html("");
+            }
             if ($.trim(locations[0]) == "") {
                 $("span#paper_journals_location1_ErrorArea").html("<div class='col-md-7 col-md-offset-1'><div class='alert alert-danger' role='alert'><strong>期刊号</strong>不能为空！</div></div>");
                 checked = false;
             } else {
                 $("span#paper_journals_location1_ErrorArea").html("");
             }
-            if ($.trim(locations[1]) == "") {
+            if (result.paper_status == 1 && ($.trim(locations[1]) == "")) {
                 $("span#paper_journals_location2_ErrorArea").html("<div class='col-md-7 col-md-offset-1'><div class='alert alert-danger' role='alert'><strong>卷期</strong>不能为空！</div></div>");
                 checked = false;
             } else {
                 $("span#paper_journals_location2_ErrorArea").html("");
             }
-            if ($.trim(locations[2]) == "") {
+            if (result.paper_status == 1 && ($.trim(locations[2]) == "")) {
                 $("span#paper_journals_location3_ErrorArea").html("<div class='col-md-7 col-md-offset-1'><div class='alert alert-danger' role='alert'><strong>页码</strong>不能为空！</div></div>");
                 checked = false;
             } else {
@@ -605,19 +611,25 @@ function checkAllWithoutNull() {
             }
             break;
         case 1:
-            if ($.trim(locations[0]) == "") {
-                $("span#paper_conference_location1_ErrorArea").html("<div class='col-md-7 col-md-offset-1'><div class='alert alert-danger' role='alert'><strong>会议名称</strong>不能为空！</div></div>");
+            //if ($.trim(locations[0]) == "") {
+            //    $("span#paper_conference_location1_ErrorArea").html("<div class='col-md-7 col-md-offset-1'><div class='alert alert-danger' role='alert'><strong>会议名称</strong>不能为空！</div></div>");
+            //    checked = false;
+            //} else {
+            //    $("span#paper_conference_location1_ErrorArea").html("");
+            //}
+            if(result.paper_publishName == null || $.trim(result.paper_publishName) == ""){
+                $("span#paper_conference_publishName_ErrorArea").html("<div class='col-md-7 col-md-offset-1'><div class='alert alert-danger' role='alert'><strong>会议名称</strong>不能为空！</div></div>");
                 checked = false;
-            } else {
-                $("span#paper_conference_location1_ErrorArea").html("");
+            }else{
+                $("span#paper_conference_publishName_ErrorArea").html("");
             }
-            if ($.trim(locations[1]) == "") {
+            if (result.paper_status == 1 && ($.trim(locations[0]) == "")) {
                 $("span#paper_conference_location2_ErrorArea").html("<div class='col-md-7 col-md-offset-1'><div class='alert alert-danger' role='alert'><strong>会议页码</strong>不能为空！</div></div>");
                 checked = false;
             } else {
                 $("span#paper_conference_location2_ErrorArea").html("");
             }
-            if ($.trim(locations[2]) == "") {
+            if ($.trim(locations[1]) == "") {
                 $("span#paper_conference_location3_ErrorArea").html("<div class='col-md-7 col-md-offset-1'><div class='alert alert-danger' role='alert'><strong>会议地点</strong>不能为空！</div></div>");
                 checked = false;
             } else {
