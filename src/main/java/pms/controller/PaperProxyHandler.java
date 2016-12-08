@@ -10,6 +10,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ModelAndView;
+import pms.common.enums.PaperIssueEnum;
+import pms.common.enums.PaperPublishTypeEnum;
 import pms.entity.*;
 import pms.service.*;
 
@@ -64,7 +66,6 @@ public class PaperProxyHandler {
                                @RequestParam(value = "other_includedType", required = false) String other_includedType,
                                @RequestParam(value = "paper_conference_location1", required = false) String paper_conference_location1,
                                @RequestParam(value = "paper_conference_location2", required = false) String paper_conference_location2,
-                               @RequestParam(value = "paper_conference_location3", required = false) String paper_conference_location3,
                                @RequestParam(value = "paper_journals_location1", required = false) String paper_journals_location1,
                                @RequestParam(value = "paper_journals_location2", required = false) String paper_journals_location2,
                                @RequestParam(value = "paper_journals_location3", required = false) String paper_journals_location3,
@@ -77,16 +78,19 @@ public class PaperProxyHandler {
         }
         //组装论文位置信息(以$分隔)
         StringBuilder stringBuilder = null;
-        switch (paper.getPaper_issue()) {
-            case 0:
-                stringBuilder = new StringBuilder(paper_journals_location1);
-                stringBuilder.append("$")
+        PaperIssueEnum paperIssue = PaperIssueEnum.getInstance(paper.getPaper_issue());
+        switch (paperIssue) {
+            case JOURNALS:
+                stringBuilder = new StringBuilder();
+                stringBuilder.append(paper_journals_location1).append("$")
                         .append(paper_journals_location2).append("$").append(paper_journals_location3);
                 break;
-            case 1:
-                stringBuilder = new StringBuilder(paper_conference_location1);
-                stringBuilder.append("$")
-                        .append(paper_conference_location2).append("$").append(paper_conference_location3);
+            case CONFERENCE:
+                stringBuilder = new StringBuilder();
+                stringBuilder.append(paper_conference_location1).append("$")
+                        .append(paper_conference_location2);
+                //发表方式为会议时,出版物类型默认为国际
+                paper.setPaper_publishType(PaperPublishTypeEnum.INTERNATIONAL.getType());
                 break;
         }
         paper.setPaper_location(stringBuilder.toString());
@@ -176,7 +180,7 @@ public class PaperProxyHandler {
             paper.setPaper_if(getMaxFromThreeDouble(zky_if, jcr_if, ccf_if));
         }
         */
-        //System.out.println("\n"+JSON.toJSONString(paper));
+//        System.out.println("\n" + JSON.toJSONString(paper));
         paperProxyService.createPaperProxy(paper);
         System.out.println(paper.getPaper_teacher().getTeacher_id() + "----------------------------");
         // authorProxy处理
