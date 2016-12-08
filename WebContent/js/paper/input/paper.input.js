@@ -80,7 +80,7 @@ function showSelectByFlag(flag) {
                         select_CCF += "</select>";
                         select_ESI += "</select>";
                         select_OTHER += "</select>";
-                        addText += " <label class='col-md-3 control-label'>是否ZJUT100期刊论文</label><div class='col-md-3'> <input type='checkbox' name='paper_journals_conference_isZjut100' value='1'/></div><div class='col-md-12'>&nbsp;</div>";
+                        addText += " <label class='col-md-3 control-label'>是否ZJUT100期刊论文</label><div class='col-md-3'> <input type='checkbox' id='paper_journals_conference_isZjut100' name='paper_journals_conference_isZjut100' value='1'/></div><div class='col-md-12'>&nbsp;</div>";
                         addText += "<div class='col-md-12'><div class='alert alert-warning' style='font-size: 14px;'><span class='glyphicon glyphicon-info-sign'></span><strong>Tips</strong>&nbsp;&nbsp;若您的论文在下列级别选项中无对应级别,请勾选其他,手动填写.</div></div>";
                         addText += "<div class='form-group'><label class='col-md-2 control-label'>中科院等级</label><div class='col-md-2'><select id='journalsORconferenceSelect_ZKY' class='form-control' name='paper_journals_conference_ZKY.journals_conference_id' >"
                             + select_ZKY
@@ -111,8 +111,8 @@ function showSelectByFlag(flag) {
                                 + "</option>";
                         }
                         selectText += "</select>";
-                        addText += " <label class='col-md-3 control-label'>是否ZJUT100期刊论文</label><div class='col-md-3'> <input type='checkbox' name='paper_journals_conference_isZjut100' value='1'/></div><div class='col-md-12'>&nbsp;</div>";
-                        addText += "<div class='col-md-12'><div class='alert alert-warning' style='font-size: 14px;'><span class='glyphicon glyphicon-info-sign'></span><strong>Tips</strong>&nbsp;&nbsp;若您的论文在下列级别选项中无对应级别,请勾选其他,手动填写.</div></div>";
+                        //  addText += " <label class='col-md-3 control-label'>是否ZJUT100期刊论文</label><div class='col-md-3'> <input type='checkbox' id='paper_journals_conference_isZjut100' name='paper_journals_conference_isZjut100' value='1'/></div><div class='col-md-12'>&nbsp;</div>";
+                        addText += "<div class='col-md-12'>&nbsp;</div><div class='col-md-12'><div class='alert alert-warning' style='font-size: 14px;'><span class='glyphicon glyphicon-info-sign'></span><strong>Tips</strong>&nbsp;&nbsp;若您的论文在下列级别选项中无对应级别,请勾选其他,手动填写.</div></div>";
                         addText += "<div class='form-group'><label class='col-md-1 control-label'>CCF等级</label><div class='col-md-5'><select id='journalsORconferenceSelect_CCF' class='form-control' name='paper_journals_conference_CCF.journals_conference_id'>"
                             + selectText + "</div></div><div class='col-md-12'>&nbsp;</div>";
 
@@ -514,14 +514,37 @@ $(document)
                 function () {
                     var flag = $("select#journalsORconference")
                         .children('option:selected').val();
+                    var status = $(
+                        "input:radio[name='paper_status']:checked")
+                        .val();
                     if (0 == flag) {
                         //期刊
                         $("div#paper_conference_location").attr("hidden", "hidden")
                         $("div#paper_journals_location").removeAttr("hidden");
+                        $("input#paper_conference_publishName").attr("disabled",
+                            true);
+                        $("input#paper_journals_publishName").attr("disabled",
+                            false);
+                        $("input#paper_if").attr("disabled",
+                            false);
                     } else if (1 == flag) {
                         //会议
                         $("div#paper_journals_location").attr("hidden", "hidden");
                         $("div#paper_conference_location").removeAttr("hidden");
+                        $("input#paper_conference_publishName").attr("disabled",
+                            false);
+                        $("input#paper_journals_publishName").attr("disabled",
+                            true);
+                        $("input#paper_if").attr("disabled",
+                            true);
+                        if (0 == status) {
+                            $("input#paper_conference_location1").attr("disabled",
+                                true);
+                        } else {
+                            $("input#paper_conference_location1").attr("disabled",
+                                false);
+                        }
+
                     }
                     $("div#paper_journals_conference_CUSTOM").attr("hidden",
                         "hidden");
@@ -536,20 +559,45 @@ $(document)
             $('input:radio[name="paper_status"]')
                 .change(
                     function () {
+                        var flag = $("select#journalsORconference")
+                            .children('option:selected').val();
                         if ($(
                                 "input:radio[name='paper_status']:checked")
                                 .val() == 0) {
+                            //已录用
                             $("input#accNum").val("");
                             $("input#accNum").attr("disabled",
                                 true);
                             $("input#time").val("");
                             $("input#time").attr("disabled",
                                 true);
+                            if (0 == flag) {
+                                $("input#paper_journals_location2").val("");
+                                $("input#paper_journals_location2").attr("disabled",
+                                    true);
+                                $("input#paper_journals_location3").val("");
+                                $("input#paper_journals_location3").attr("disabled",
+                                    true);
+                            } else {
+                                $("input#paper_conference_location1").val("");
+                                $("input#paper_conference_location1").attr("disabled",
+                                    true);
+                            }
                         } else {
+                            //已发表
                             $("input#accNum").attr("disabled",
                                 false);
                             $("input#time").attr("disabled",
                                 false);
+                            if (0 == flag) {
+                                $("input#paper_journals_location2").attr("disabled",
+                                    false);
+                                $("input#paper_journals_location3").attr("disabled",
+                                    false);
+                            } else {
+                                $("input#paper_conference_location1").attr("disabled",
+                                    false);
+                            }
                         }
                     });
             $("input#rank").change(

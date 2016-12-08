@@ -237,7 +237,7 @@
                             <div class="form-group">
                                 <label class="col-md-1 control-label">影响因子<span style="color: #ff0000">*</span></label>
                                 <div class="col-md-5">
-                                    <input type="text" name="paper_if"
+                                    <input type="text" id="paper_if" name="paper_if"
                                            class="form-control">
                                 </div>
                             </div>
@@ -252,6 +252,14 @@
                             <!--期刊位置信息-->
                             <div id="paper_journals_location">
                                 <div class="form-group">
+                                    <label class="col-md-1 control-label">期刊名称<span
+                                            style="color: #ff0000">*</span></label>
+                                    <div class="col-md-5">
+                                        <input type="text" id="paper_journals_publishName" name="paper_publishName"
+                                               class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label class="col-md-1 control-label">期刊号<span
                                             style="color: #ff0000">*</span></label>
                                     <div class="col-md-5">
@@ -259,21 +267,37 @@
                                                class="form-control">
                                     </div>
                                 </div>
+                                <div class="col-md-12">&nbsp;</div>
                                 <div class="form-group">
                                     <label class="col-md-1 control-label">卷期<span
                                             style="color: #ff0000">*</span></label>
                                     <div class="col-md-5">
-                                        <input type="text" name="paper_journals_location2"
+                                        <input type="text" id="paper_journals_location2" name="paper_journals_location2"
+                                               disabled="false"
+                                               class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-1 control-label">页码<span
+                                            style="color: #ff0000">*</span></label>
+                                    <div class="col-md-5">
+                                        <input type="text" id="paper_journals_location3" name="paper_journals_location3"
+                                               disabled="false"
                                                class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-12">&nbsp;</div>
                                 <div class="form-group">
-                                    <label class="col-md-1 control-label">页码<span
+                                    <label class="col-md-1 control-label">期刊性质<span
                                             style="color: #ff0000">*</span></label>
                                     <div class="col-md-5">
-                                        <input type="text" name="paper_journals_location3"
-                                               class="form-control">
+                                        <label class='radio-inline'>
+                                            <input type="radio" name="paper_publishType" value='1' checked="checked"/>国内期刊
+                                        </label>
+                                        <label class='radio-inline' style="margin-top: 5px">
+                                            <input type="radio" name="paper_publishType" value='2'/>国外期刊
+                                        </label>
                                     </div>
                                 </div>
                             </div>
@@ -283,7 +307,8 @@
                                     <label class="col-md-1 control-label">会议名称<span
                                             style="color: #ff0000">*</span></label>
                                     <div class="col-md-5">
-                                        <input type="text" name="paper_conference_location1"
+                                        <input type="text" id="paper_conference_publishName" name="paper_publishName"
+                                               disabled="false"
                                                class="form-control">
                                     </div>
                                 </div>
@@ -291,7 +316,8 @@
                                     <label class="col-md-1 control-label">会议页码<span
                                             style="color: #ff0000">*</span></label>
                                     <div class="col-md-5">
-                                        <input type="text" name="paper_conference_location2"
+                                        <input type="text" id="paper_conference_location1"
+                                               name="paper_conference_location1"
                                                class="form-control">
                                     </div>
                                 </div>
@@ -300,8 +326,17 @@
                                     <label class="col-md-1 control-label">会议地点<span
                                             style="color: #ff0000">*</span></label>
                                     <div class="col-md-5">
-                                        <input type="text" name="paper_conference_location3"
+                                        <input type="text" name="paper_conference_location2"
                                                class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-1 control-label">会议性质<span
+                                            style="color: #ff0000">*</span></label>
+                                    <div class="col-md-5">
+                                        <label class='radio-inline'>
+                                            <input type="radio" value='3' checked="checked"/>国际会议
+                                        </label>
                                     </div>
                                 </div>
                             </div>
