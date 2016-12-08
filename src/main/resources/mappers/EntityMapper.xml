@@ -111,6 +111,8 @@
         <result column="paperproxy_citations_google" property="paper_citations_google"/>
         <result column="paperproxy_issue" property="paper_issue"/>
         <result column="paperproxy_location" property="paper_location"/>
+        <result column="paperproxy_publish_name" property="paper_publishName"/>
+        <result column="paperproxy_publish_type" property="paper_publishType"/>
         <result column="paperproxy_if" property="paper_if"/>
         <result column="paperproxy_journals_conference_custom" property="paper_journals_conference_CUSTOM"/>
         <result column="paperproxy_journals_conference_is_zjut100" property="paper_journals_conference_isZjut100"/>
