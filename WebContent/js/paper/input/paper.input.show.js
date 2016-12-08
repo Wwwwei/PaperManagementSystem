@@ -84,7 +84,7 @@ function shoWPaperProxy(paperproxy_id) {
                     if (null == result.paper_if) {
                         addText += "<dd>无</dd></dl>";
                     } else {
-                        addText += +"<dd>" + result.paper_if + "</dd></dl>";
+                        addText += "<dd>" + result.paper_if + "</dd></dl>";
                     }
                     addText += "<span id='paper_if_ErrorArea'></span>"
                         + "</div>";
@@ -127,6 +127,30 @@ function shoWPaperProxy(paperproxy_id) {
                             conj = "期刊";
                             location = "<div class='col-md-6'>"
                                 + "<dl class='dl-horizontal text-overflow'>"
+                                + "<dt>期刊名称</dt>"
+                                + "<dd>" + result.paper_publishName + "</dd>"
+                                + "</dl>"
+                                + "<span id='paper_journals_publishName_ErrorArea'></span>"
+                                + "</div>";
+                            location += "<div class='col-md-6'>"
+                                + "<dl class='dl-horizontal text-overflow'>"
+                                + "<dt>期刊性质</dt>"
+                                + "<dd>";
+                            switch (result.paper_publishType) {
+                                case 1:
+                                    location += "国内";
+                                    break;
+                                case 2:
+                                    location += "国外";
+                                    break;
+                                case 3:
+                                    location += "国际";
+                                    break;
+                            }
+                            location += "</dd>" + "</dl>"
+                                + "</div>";
+                            location += "<div class='col-md-6'>"
+                                + "<dl class='dl-horizontal text-overflow'>"
                                 + "<dt>期刊号</dt>"
                                 + "<dd>" + locations[0] + "</dd>"
                                 + "</dl>"
@@ -154,21 +178,38 @@ function shoWPaperProxy(paperproxy_id) {
                             location = "<div class='col-md-6'>"
                                 + "<dl class='dl-horizontal text-overflow'>"
                                 + "<dt>会议名称</dt>"
-                                + "<dd>" + locations[0] + "</dd>"
+                                + "<dd>" + result.paper_publishName + "</dd>"
                                 + "</dl>"
-                                + "<span id='paper_conference_location1_ErrorArea'></span>"
+                                + "<span id='paper_conference_publishName_ErrorArea'></span>"
+                                + "</div>";
+                            location += "<div class='col-md-6'>"
+                                + "<dl class='dl-horizontal text-overflow'>"
+                                + "<dt>会议性质</dt>"
+                                + "<dd>";
+                            switch (result.paper_publishType) {
+                                case 1:
+                                    location += "国内";
+                                    break;
+                                case 2:
+                                    location += "国外";
+                                    break;
+                                case 3:
+                                    location += "国际";
+                                    break;
+                            }
+                            location += "</dd>" + "</dl>"
                                 + "</div>";
                             location += "<div class='col-md-6'>"
                                 + "<dl class='dl-horizontal text-overflow'>"
                                 + "<dt>会议页码</dt>"
-                                + "<dd>" + locations[1] + "</dd>"
+                                + "<dd>" + locations[0] + "</dd>"
                                 + "</dl>"
                                 + "<span id='paper_conference_location2_ErrorArea'></span>"
                                 + "</div>";
                             location += "<div class='col-md-6'>"
                                 + "<dl class='dl-horizontal text-overflow'>"
                                 + "<dt>会议地点</dt>"
-                                + "<dd>" + locations[2] + "</dd>"
+                                + "<dd>" + locations[1] + "</dd>"
                                 + "</dl>"
                                 + "<span id='paper_conference_location3_ErrorArea'></span>"
                                 + "</div>";
