@@ -24,14 +24,14 @@ public class PaperProxyServiceTest {
 
     @Test
     public void testCreatePaperProxy() throws Exception {
-        Paper paper=new Paper();
-        paper.setPaper_name("1206test02");
-        paper.setPaper_journals_conference_isZjut100(1);
-        paper.setPaper_journals_conference_isOther(0);
-        Journals_Conference journals_Conference=new Journals_Conference();
-        journals_Conference.setJournals_conference_id(1);
-        paper.setPaper_journals_conference_ESI(journals_Conference);
-        paper.setPaper_journals_conference_OTHER(journals_Conference);
+        Paper paper = new Paper();
+        paper.setPaper_name("test");
+        paper.setPaper_publishName("测试期刊");
         paperProxyService.createPaperProxy(paper);
+    }
+
+    @Test
+    public void testFindPaperProxyById1() throws Exception {
+        System.out.println(paperProxyService.findPaperProxyByName("1208test03"));
     }
 }
