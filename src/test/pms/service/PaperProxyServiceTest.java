@@ -34,4 +34,11 @@ public class PaperProxyServiceTest {
     public void testFindPaperProxyById1() throws Exception {
         System.out.println(paperProxyService.findPaperProxyByName("1208test03"));
     }
+
+    @Test
+    public void testUpdatePaperProxy() throws Exception {
+        Paper paper = paperProxyService.findPaperProxyById(41);
+        paper.setPaper_journals_conference_isZjut100(0);
+        paperProxyService.updatePaperProxy(paper);
+    }
 }
