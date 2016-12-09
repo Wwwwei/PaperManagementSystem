@@ -690,12 +690,13 @@ $(document)
                 function () {
                     if (checkAllWithoutNull()) {
                         //   window.location.href = "../paper_proxy/upload.do?teacher_no=" + teacher_no + "&paperproxy_id=" + paperproxy_id;
-                        $("form#modify_form").submit();
+                        $("form#upload_form").submit();
                     }
                 });
             $("button#paperproxy_modify").click(
                 function () {
-                    window.location.href = "../paper_proxy/modify.do?commited_paper_id=" + commited_paper_id + "&paperproxy_id=" + paperproxy_id;
+                    //window.location.href = "../paper_proxy/modify.do?commited_paper_id=" + commited_paper_id + "&paperproxy_id=" + paperproxy_id;
+                    $("form#modify_form").submit();
                 });
             $("button#backFunction").click(
                 function backFunction() {

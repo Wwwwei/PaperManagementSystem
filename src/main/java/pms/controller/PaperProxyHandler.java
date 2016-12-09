@@ -456,10 +456,10 @@ public class PaperProxyHandler {
      * @param session
      * @return
      */
-    @RequestMapping(value = "/paper_proxy/modify", method = RequestMethod.GET)
+    @RequestMapping(value = "/paper_proxy/modify", method = RequestMethod.POST)
     public ModelAndView modify(@RequestParam("paperproxy_id") String paperproxy_id,
                                @RequestParam(value = "commited_paper_id", required = false, defaultValue = "0") int commited_paper_id,
-                               HttpServletRequest request, HttpSession session) {
+                               HttpSession session) {
         System.out.println(paperproxy_id + "------------");
         System.out.println(commited_paper_id + "*************");
         if ((Teacher) session.getAttribute("teacher") == null && (Teacher) session.getAttribute("admin") == null) {
