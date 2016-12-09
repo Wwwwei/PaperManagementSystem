@@ -113,7 +113,7 @@ function showSelectByFlag(flag) {
                         selectText += "</select>";
                         //  addText += " <label class='col-md-3 control-label'>是否ZJUT100期刊论文</label><div class='col-md-3'> <input type='checkbox' id='paper_journals_conference_isZjut100' name='paper_journals_conference_isZjut100' value='1'/></div><div class='col-md-12'>&nbsp;</div>";
                         addText += "<div class='col-md-12'>&nbsp;</div><div class='col-md-12'><div class='alert alert-warning' style='font-size: 14px;'><span class='glyphicon glyphicon-info-sign'></span><strong>Tips</strong>&nbsp;&nbsp;若您的论文在下列级别选项中无对应级别,请勾选其他,手动填写.</div></div>";
-                        addText += "<div class='form-group'><label class='col-md-1 control-label'>CCF等级</label><div class='col-md-5'><select id='journalsORconferenceSelect_CCF' class='form-control' name='paper_journals_conference_CCF.journals_conference_id'>"
+                        addText += "<div class='form-group'><label class='col-md-2 control-label'>CCF等级</label><div class='col-md-2'><select id='journalsORconferenceSelect_CCF' class='form-control' name='paper_journals_conference_CCF.journals_conference_id'>"
                             + selectText + "</div></div><div class='col-md-12'>&nbsp;</div>";
 
                         addText += " <br><label class='col-md-2 control-label'>其他</label><div class='col-md-2'> <input id='journalsORconferenceSelect_IS_OTHER' type='checkbox' name='paper_journals_conference_isOther' value='0' onchange='checkJournalsORConferenceOther(1)'/> </div><div class='col-md-2'>&nbsp;</div>";
