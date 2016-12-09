@@ -243,6 +243,7 @@
                                                class="form-control">
                                     </div>
                                 </div>
+                                <div class="col-md-12">&nbsp;</div>
                                 <div class="form-group">
                                     <label class="col-md-1 control-label">卷期<span
                                             style="color: #ff0000">*</span></label>
@@ -251,7 +252,7 @@
                                                class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-md-12">&nbsp;</div>
+
                                 <div class="form-group">
                                     <label class="col-md-1 control-label">页码<span
                                             style="color: #ff0000">*</span></label>
@@ -315,15 +316,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class='col-md-12'>&nbsp;</div>
-                            <div class='col-md-12'>
-                                <div class='alert alert-warning' style='font-size: 14px;'><span
-                                        class='glyphicon glyphicon-info-sign'></span><strong>Tips</strong>&nbsp;&nbsp;若您的论文在下列级别选项中无对应级别,请勾选其他,手动填写.
-                                </div>
-                            </div>
-                            <div class="col-md-4">
+                            <%--<div class='col-md-12'>&nbsp;</div>--%>
+                            <%--<div class='col-md-12'>--%>
+                                <%--<div class='alert alert-warning' style='font-size: 14px;'><span--%>
+                                        <%--class='glyphicon glyphicon-info-sign'></span><strong>Tips</strong>&nbsp;&nbsp;若您的论文在下列级别选项中无对应级别,请勾选其他,手动填写.--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+
                                 <span id="journalsORconferenceArea"></span>
-                            </div>
+
                             <div id="paper_journals_conference_CUSTOM" class="form-group" hidden="hidden">
                                 <label class="col-md-2 control-label">请输入论文级别:</label>
                                 <div class="col-md-4">

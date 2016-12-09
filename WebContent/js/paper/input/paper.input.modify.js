@@ -517,32 +517,34 @@ function showSelectByFlag(paperproxy_id, flag, ZKY_id, JCR_id, CCF_id, ESI_id, O
                         select_OTHER += "</select>";
                         if (0 == isZjut100) {
                             addText += " <label class='col-md-3 control-label'>是否ZJUT100期刊论文</label><div class='col-md-3'> <input type='checkbox' id='paper_journals_conference_isZjut100' name='paper_journals_conference_isZjut100' value='1'/></div><div class='col-md-12'>&nbsp;</div>";
+                            addText += "<div class='col-md-12'><div class='alert alert-warning' style='font-size: 14px;'><span class='glyphicon glyphicon-info-sign'></span><strong>Tips</strong>&nbsp;&nbsp;若您的论文在下列级别选项中无对应级别,请勾选其他,手动填写.</div></div>";
                         }
                         else {
                             addText += " <label class='col-md-3 control-label'>是否ZJUT100期刊论文</label><div class='col-md-3'> <input type='checkbox' id='paper_journals_conference_isZjut100' name='paper_journals_conference_isZjut100' value='1' checked='checked'/></div><div class='col-md-12'>&nbsp;</div>";
+                            addText += "<div class='col-md-12'><div class='alert alert-warning' style='font-size: 14px;'><span class='glyphicon glyphicon-info-sign'></span><strong>Tips</strong>&nbsp;&nbsp;若您的论文在下列级别选项中无对应级别,请勾选其他,手动填写.</div></div>";
                         }
-                        addText += "<div class='form-group'><label class='col-md-4 control-label' style='font-size:12px'>中科院分区</label><div class='col-md-8'><select id='journalsORconferenceSelect_ZKY' class='form-control' name='paper_journals_conference_ZKY.journals_conference_id'>"
+                        addText += "<div class='form-group'><label class='col-md-2 control-label' >中科院分区</label><div class='col-md-2'><select id='journalsORconferenceSelect_ZKY' class='form-control' name='paper_journals_conference_ZKY.journals_conference_id'>"
                             + select_ZKY
-                            + "</div></div><div class='col-md-12'>&nbsp;</div>";
+                            + "</div></div>";
 
-                        addText += "<div class='form-group'><label class='col-md-4 control-label'>JCR等级</label><div class='col-md-8'><select id='journalsORconferenceSelect_JCR' class='form-control' name='paper_journals_conference_JCR.journals_conference_id'>"
+                        addText += "<div class='form-group'><label class='col-md-2 control-label'>JCR等级</label><div class='col-md-2'><select id='journalsORconferenceSelect_JCR' class='form-control' name='paper_journals_conference_JCR.journals_conference_id'>"
                             + select_JCR
-                            + "</div></div><div class='col-md-12'>&nbsp;</div>";
-                        addText += "<div class='form-group'><label class='col-md-4 control-label'>CCF等级</label><div class='col-md-8'><select id='journalsORconferenceSelect_CCF' class='form-control' name='paper_journals_conference_CCF.journals_conference_id'>"
+                            + "</div></div>";
+                        addText += "<div class='form-group'><label class='col-md-2 control-label'>CCF等级</label><div class='col-md-2'><select id='journalsORconferenceSelect_CCF' class='form-control' name='paper_journals_conference_CCF.journals_conference_id'>"
                             + select_CCF
                             + "</div></div><div class='col-md-12'>&nbsp;</div>";
-                        addText += "<div class='form-group'><label class='col-md-4 control-label'>ESI等级</label><div class='col-md-8'><select id='journalsORconferenceSelect_ESI' class='form-control' name='paper_journals_conference_ESI.journals_conference_id'>"
+                        addText += "<div class='form-group'><label class='col-md-2 control-label'>ESI等级</label><div class='col-md-2'><select id='journalsORconferenceSelect_ESI' class='form-control' name='paper_journals_conference_ESI.journals_conference_id'>"
                             + select_ESI
-                            + "</div></div><div class='col-md-12'>&nbsp;</div>";
-                        addText += "<div class='form-group'><label class='col-md-4 control-label'>其他等级</label><div class='col-md-8'><select id='journalsORconferenceSelect_OTHER' class='form-control' name='paper_journals_conference_OTHER.journals_conference_id'>"
+                            + "</div></div>";
+                        addText += "<div class='form-group'><label class='col-md-2 control-label'>其他等级</label><div class='col-md-2'><select id='journalsORconferenceSelect_OTHER' class='form-control' name='paper_journals_conference_OTHER.journals_conference_id'>"
                             + select_OTHER
                             + "</div></div><div class='col-md-12'>&nbsp;</div>";
                         if (0 == isOther) {
-                            addText += " <label class='col-md-4 control-label'>其他</label><div class='col-md-8'> <input type='checkbox' id='journalsORconferenceSelect_OTHER' name='paper_journals_conference_other' value='0' onchange='checkJournalsORConferenceOther(0)' checked='checked'/>";
+                            addText += " <label class='col-md-2 control-label'>其他</label><div class='col-md-2'> <input type='checkbox' id='journalsORconferenceSelect_OTHER' name='paper_journals_conference_other' value='0' onchange='checkJournalsORConferenceOther(0)' checked='checked'/>";
                             $("input#paper_journals_conference_CUSTOM_input").val(custom);
                             $("div#paper_journals_conference_CUSTOM").removeAttr("hidden");
                         } else {
-                            addText += " <label class='col-md-4 control-label'>其他</label><div class='col-md-8'> <input type='checkbox' id='journalsORconferenceSelect_OTHER' name='paper_journals_conference_other' value='0' onchange='checkJournalsORConferenceOther(0)'/> ";
+                            addText += " <label class='col-md-2 control-label'>其他</label><div class='col-md-2'> <input type='checkbox' id='journalsORconferenceSelect_OTHER' name='paper_journals_conference_other' value='0' onchange='checkJournalsORConferenceOther(0)'/> ";
                             $("input#paper_journals_conference_CUSTOM_input").val("");
                             $("div#paper_journals_conference_CUSTOM").attr("hidden",
                                 "hidden");
@@ -578,14 +580,15 @@ function showSelectByFlag(paperproxy_id, flag, ZKY_id, JCR_id, CCF_id, ESI_id, O
                         //area1.setAttribute("style", "height:0px");
                         //area2.removeAttribute("style");
                         //area2.setAttribute("style", "height:0px");
-                        addText += "<div class='form-group'><label class='col-md-4 control-label'>CCF等级</label><div class='col-md-8'><select id='journalsORconferenceSelect_CCF' class='form-control' name='paper_journals_conference_CCF.journals_conference_id' >"
+                        addText += "<div class='col-md-12'>&nbsp;</div><div class='col-md-12'><div class='alert alert-warning' style='font-size: 14px;'><span class='glyphicon glyphicon-info-sign'></span><strong>Tips</strong>&nbsp;&nbsp;若您的论文在下列级别选项中无对应级别,请勾选其他,手动填写.</div></div>";
+                        addText += "<div class='form-group'><label class='col-md-2 control-label'>CCF等级</label><div class='col-md-2'><select id='journalsORconferenceSelect_CCF' class='form-control' name='paper_journals_conference_CCF.journals_conference_id' >"
                             + selectText + "</div></div><div class='col-md-12'>&nbsp;</div>";
                         if (0 == isOther) {
-                            addText += " <label class='col-md-4 control-label'>其他</label><div class='col-md-8'> <input type='checkbox' id='journalsORconferenceSelect_OTHER' name='paper_journals_conference_other' value='0' onchange='checkJournalsORConferenceOther(1)' checked='checked'/>";
+                            addText += " <label class='col-md-2 control-label'>其他</label><div class='col-md-2'> <input type='checkbox' id='journalsORconferenceSelect_OTHER' name='paper_journals_conference_other' value='0' onchange='checkJournalsORConferenceOther(1)' checked='checked'/></div><div class='col-md-2'>&nbsp;</div>";
                             $("input#paper_journals_conference_CUSTOM_input").val(custom);
                             $("div#paper_journals_conference_CUSTOM").removeAttr("hidden");
                         } else {
-                            addText += " <label class='col-md-4 control-label'>其他</label><div class='col-md-8'> <input type='checkbox' id='journalsORconferenceSelect_OTHER' name='paper_journals_conference_other' value='0' onchange='checkJournalsORConferenceOther(1)'/> ";
+                            addText += " <label class='col-md-2 control-label'>其他</label><div class='col-md-2'> <input type='checkbox' id='journalsORconferenceSelect_OTHER' name='paper_journals_conference_other' value='0' onchange='checkJournalsORConferenceOther(1)'/></div><div class='col-md-2'>&nbsp;</div> ";
                             $("input#paper_journals_conference_CUSTOM_input").val("");
                             $("div#paper_journals_conference_CUSTOM").attr("hidden",
                                 "hidden");
