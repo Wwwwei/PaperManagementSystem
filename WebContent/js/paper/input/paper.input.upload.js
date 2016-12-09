@@ -3,6 +3,7 @@ $(document)
         function () {
             var teacher_no = $("input#teacher_no").val();
             var paperproxy_id = $("input#paperproxy_id").val();
+            var paperproxy_publishType=$("input#paperproxy_publishType").val();
             var htmlobj = $
                 .ajax({
                     url: "../paper_proxy/file/getFile.do",
@@ -15,129 +16,11 @@ $(document)
                     success: function (data, stats) {
                         if (stats == "success") {
                             result = JSON.parse(htmlobj.responseText);
-                            var flag2 = 0;
-                            for (var i in result) {
-                                if (result[i].file_type == 5)
-                                    flag2 = 1;
+                            changefile();
+                            for(var i in result){
+                                wordgreen(paperproxy_publishType,result[i].file_type);
                             }
-                            if (flag2 == 0) {
-                                for (var i in result) {
-                                    if (result[i].file_type == 1) {
-                                        var f1 = document.getElementById("f1");
-                                        var text1 = document.getElementById("text1");
-                                        var textok1 = document.getElementById("textok1");
-                                        f1.setAttribute("class", "alert alert-success");
-                                        text1.setAttribute("class", "text-success");
-                                        textok1.setAttribute("class", "glyphicon glyphicon-ok-sign");
-                                        var h1 = document.getElementById("h1");
-                                        var h2 = document.getElementById("h2");
-                                        var h3 = document.getElementById("h3");
-                                        var h4 = document.getElementById("h4");
-                                        var next = document.getElementById("paperproxy_submit");
-                                        h1.setAttribute("value", "1");
-                                        if (h1.value == "1" && h2.value == "1" && h3.value == "1" && h4.value == "1") {
-                                            next.removeAttribute("disabled");
-                                        }
-                                    }
-                                    else if (result[i].file_type == 2) {
-                                        var f2 = document.getElementById("f2");
-                                        var text2 = document.getElementById("text2");
-                                        var textok2 = document.getElementById("textok2");
-                                        f2.setAttribute("class", "alert alert-success");
-                                        text2.setAttribute("class", "text-success");
-                                        textok2.setAttribute("class", "glyphicon glyphicon-ok-sign");
-                                        var h1 = document.getElementById("h1");
-                                        var h2 = document.getElementById("h2");
-                                        var h3 = document.getElementById("h3");
-                                        var h4 = document.getElementById("h4");
-                                        var next = document.getElementById("paperproxy_submit");
-                                        h2.setAttribute("value", "1");
-                                        if (h1.value == "1" && h2.value == "1" && h3.value == "1" && h4.value == "1") {
-                                            next.removeAttribute("disabled");
-                                        }
-                                    }
-                                    else if (result[i].file_type == 3) {
-                                        var f3 = document.getElementById("f3");
-                                        var text3 = document.getElementById("text3");
-                                        var textok3 = document.getElementById("textok3");
-                                        f3.setAttribute("class", "alert alert-success");
-                                        text3.setAttribute("class", "text-success");
-                                        textok3.setAttribute("class", "glyphicon glyphicon-ok-sign");
-                                        var h1 = document.getElementById("h1");
-                                        var h2 = document.getElementById("h2");
-                                        var h3 = document.getElementById("h3");
-                                        var h4 = document.getElementById("h4");
-                                        var next = document.getElementById("paperproxy_submit");
-                                        h3.setAttribute("value", "1");
-                                        if (h1.value == "1" && h2.value == "1" && h3.value == "1" && h4.value == "1") {
-                                            next.removeAttribute("disabled");
-                                        }
-                                    }
-                                    else if (result[i].file_type == 4) {
-                                        var f4 = document.getElementById("f4");
-                                        var text4 = document.getElementById("text4");
-                                        var textok4 = document.getElementById("textok4");
-                                        f4.setAttribute("class", "alert alert-success");
-                                        text4.setAttribute("class", "text-success");
-                                        textok4.setAttribute("class", "glyphicon glyphicon-ok-sign");
-                                        var h1 = document.getElementById("h1");
-                                        var h2 = document.getElementById("h2");
-                                        var h3 = document.getElementById("h3");
-                                        var h4 = document.getElementById("h4");
-                                        var next = document.getElementById("paperproxy_submit");
-                                        h4.setAttribute("value", "1");
-                                        if (h1.value == "1" && h2.value == "1" && h3.value == "1" && h4.value == "1") {
-                                            next.removeAttribute("disabled");
-                                        }
-                                    }
-                                }
-                            }
-                            else if (flag2 == 1) {
-                                var incountry = document.getElementById("incountry");
-                                var outcountry = document.getElementById("outcountry");
-                                incountry.removeAttribute("checked");
-                                outcountry.setAttribute("checked", "true");
-                                for (var i in result) {
-                                    if (result[i].file_type == 2) {
-                                        var f5 = document.getElementById("f5");
-                                        var text5 = document.getElementById("text5");
-                                        var textok5 = document.getElementById("textok5");
-                                        f5.setAttribute("class", "alert alert-success");
-                                        text5.setAttribute("class", "text-success");
-                                        textok5.setAttribute("class", "glyphicon glyphicon-ok-sign");
-                                        var h5 = document.getElementById("h5");
-                                        var h6 = document.getElementById("h6");
-                                        var next = document.getElementById("paperproxy_submit");
-                                        h5.setAttribute("value", "1");
-                                        if (h5.value == "1" && h6.value == "1") {
-                                            next.removeAttribute("disabled");
-                                        }
-                                    }
-                                    else if (result[i].file_type == 5) {
-                                        var listarea1 = document.getElementById("china");
-                                        var listarea2 = document.getElementById("us");
-                                        var filearea1 = document.getElementById("china2");
-                                        var filearea2 = document.getElementById("us2");
-                                        listarea1.setAttribute("class", "col-md-12 hidden");
-                                        listarea2.setAttribute("class", "col-md-12");
-                                        filearea1.setAttribute("class", "col-md-12 hidden");
-                                        filearea2.setAttribute("class", "col-md-12");
-                                        var f6 = document.getElementById("f6");
-                                        var text6 = document.getElementById("text6");
-                                        var textok6 = document.getElementById("textok6");
-                                        f6.setAttribute("class", "alert alert-success");
-                                        text6.setAttribute("class", "text-success");
-                                        textok6.setAttribute("class", "glyphicon glyphicon-ok-sign");
-                                        var h5 = document.getElementById("h5");
-                                        var h6 = document.getElementById("h6");
-                                        var next = document.getElementById("paperproxy_submit");
-                                        h6.setAttribute("value", "1");
-                                        if (h5.value == "1" && h6.value == "1") {
-                                            next.removeAttribute("disabled");
-                                        }
-                                    }
-                                }
-                            }
+
                         }
                     },
                     error: function (data) {
@@ -172,7 +55,8 @@ $(document)
         }
     )
 function changefile() {
-    var radioflag = $("input[name='paper_type']:checked").val();
+    //var radioflag = $("input[name='paper_type']:checked").val();
+    var paperproxy_publishType=$("input#paperproxy_publishType").val();
     var listarea1 = document.getElementById("china");
     var listarea2 = document.getElementById("us");
     var filearea1 = document.getElementById("china2");
@@ -185,7 +69,7 @@ function changefile() {
     var h6 = document.getElementById("h6");
     var next = document.getElementById("paperproxy_submit");
 
-    if (radioflag == 1) {//国外
+    if (paperproxy_publishType == 2||paperproxy_publishType == 3) {//国外
         next.setAttribute("disabled", "true");
         listarea1.setAttribute("class", "col-md-12 hidden");
         listarea2.setAttribute("class", "col-md-12");
@@ -195,13 +79,59 @@ function changefile() {
             next.removeAttribute("disabled");
         }
     }
-    if (radioflag == 0) {//国内
+    if (paperproxy_publishType == 1) {//国内
         next.setAttribute("disabled", "true");
         listarea2.setAttribute("class", "col-md-12 hidden");
         listarea1.setAttribute("class", "col-md-12");
         filearea2.setAttribute("class", "col-md-12 hidden");
         filearea1.setAttribute("class", "col-md-12");
         if (h1.value == "1" && h2.value == "1" && h3.value == "1" && h4.value == "1") {
+            next.removeAttribute("disabled");
+        }
+    }
+}
+function wordgreen(publishType,Filetype){
+    if(publishType == 1){//国内
+        var f = document.getElementById("f"+Filetype);
+        var text = document.getElementById("text"+Filetype);
+        var textok = document.getElementById("textok"+Filetype);
+        f.setAttribute("class", "alert alert-success");
+        text.setAttribute("class", "text-success");
+        textok.setAttribute("class", "glyphicon glyphicon-ok-sign");
+        var h1 = document.getElementById("h1");
+        var h2 = document.getElementById("h2");
+        var h3 = document.getElementById("h3");
+        var h4 = document.getElementById("h4");
+        var next = document.getElementById("paperproxy_submit");
+        switch(Filetype){
+            case 1:h1.setAttribute("value", "1");break;
+            case 2:h2.setAttribute("value", "1");break;
+            case 3:h3.setAttribute("value", "1");break;
+            case 4:h4.setAttribute("value", "1");break;
+        }
+        if (h1.value == "1" && h2.value == "1" && h3.value == "1" && h4.value == "1") {
+            next.removeAttribute("disabled");
+        }
+    }else{//国外+国际
+        if(Filetype == 2)
+            Filetype = 5;
+        else
+            Filetype = 6;
+        var f = document.getElementById("f"+Filetype);
+        var text = document.getElementById("text"+Filetype);
+        var textok = document.getElementById("textok"+Filetype);
+        f.setAttribute("class", "alert alert-success");
+        text.setAttribute("class", "text-success");
+        textok.setAttribute("class", "glyphicon glyphicon-ok-sign");
+        var h5 = document.getElementById("h5");
+        var h6 = document.getElementById("h6");
+        var next = document.getElementById("paperproxy_submit");
+        if(Filetype == 5)
+            h5.setAttribute("value", "1");
+        if(Filetype == 6)
+            h6.setAttribute("value", "1");
+
+        if (h5.value == "1" && h6.value == "1") {
             next.removeAttribute("disabled");
         }
     }

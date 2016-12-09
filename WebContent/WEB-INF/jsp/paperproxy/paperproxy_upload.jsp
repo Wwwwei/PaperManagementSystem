@@ -302,5 +302,5 @@
 <script type="text/javascript"
         src="<%=request.getContextPath()%>/js/paper/file/locales/zh.js"></script>
 <script type="text/javascript"
-        src="<%=request.getContextPath()%>/js/paper/file/pmsfile.js"></script>
+        src="<%=request.getContextPath()%>/js/paper/input/paper.input.upload.js"></script>
 </html>
