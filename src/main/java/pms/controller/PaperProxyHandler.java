@@ -755,6 +755,8 @@ public class PaperProxyHandler {
         // =================================
         // 删除代理表操作
         // boolean flag=true;
+        //TODO: 文件表更新paper_id字段
+        //TODO:文件表检查是否有多余记录
         System.out.println(authors.size());
         for (AuthorProxy author : authors) {
             author.setAuthor_paper(paper);
