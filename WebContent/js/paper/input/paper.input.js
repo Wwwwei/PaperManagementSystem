@@ -535,6 +535,7 @@ $(document)
                             false);
                         $("input#paper_journals_publishName").attr("disabled",
                             true);
+                        $("input#paper_if").val("");
                         $("input#paper_if").attr("disabled",
                             true);
                         if (0 == status) {
