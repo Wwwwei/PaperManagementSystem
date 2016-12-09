@@ -47,10 +47,10 @@ public class PaperProxyHandler {
 
     private static final String DELETE_PAPERPROXY_INFO = "删除未提交成果错误,请重新操作！";
     private static final String HAS_DELETE_PAPERPROXY_INFO = "已经删除，请勿重复提交！";
-    private static final String ISSUING_PREFIX = "paper_location_issuing";
-    private static final String VOLUME_PREFIX = "paper_location_volume";
-    private static final String PAGINATION_PREFIX = "paper_location_pagination";
-    private static final String[] NAME_SUFFIX = {"_ZKY", "_JCR", "_CCF"};
+//    private static final String ISSUING_PREFIX = "paper_location_issuing";
+//    private static final String VOLUME_PREFIX = "paper_location_volume";
+//    private static final String PAGINATION_PREFIX = "paper_location_pagination";
+//    private static final String[] NAME_SUFFIX = {"_ZKY", "_JCR", "_CCF"};
 
     /**
      * 创建论文代理对象
@@ -216,10 +216,10 @@ public class PaperProxyHandler {
         return new ModelAndView("paperproxy/paperproxy_show", model);
     }
 
-    private double getMaxFromThreeDouble(double a, double b, double c) {
-        double maxNum = a > b ? a > c ? a : c : b > c ? b : c;
-        return maxNum;
-    }
+//    private double getMaxFromThreeDouble(double a, double b, double c) {
+//        double maxNum = a > b ? a > c ? a : c : b > c ? b : c;
+//        return maxNum;
+//    }
 
     /**
      * 更新论文代理对象
@@ -358,6 +358,7 @@ public class PaperProxyHandler {
                 paper.setPaper_publishType(PaperPublishTypeEnum.INTERNATIONAL.getType());
                 break;
         }
+        paper.setPaper_location(stringBuilder.toString());
         // 未更新前作者人数
         int ex_authorNum = paperProxyService.findPaperProxyById(paper.getPaper_id()).getPaper_authorNum();
         System.out.println("=========更新前作者人数：" + ex_authorNum);
@@ -478,7 +479,7 @@ public class PaperProxyHandler {
      * @param session
      * @return
      */
-    @RequestMapping(value = "/paper_proxy/modify", method = RequestMethod.POST)
+    @RequestMapping(value = "/paper_proxy/modify")
     public ModelAndView modify(@RequestParam("paperproxy_id") String paperproxy_id,
                                @RequestParam(value = "commited_paper_id", required = false, defaultValue = "0") int commited_paper_id,
                                HttpSession session) {
