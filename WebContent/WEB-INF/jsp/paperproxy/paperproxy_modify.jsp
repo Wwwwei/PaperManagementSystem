@@ -267,10 +267,12 @@
                                             style="color: #ff0000">*</span></label>
                                     <div class="col-md-5">
                                         <label class='radio-inline'>
-                                            <input type="radio" id="paper_publishType1" name="paper_publishType" value='1'/>国内期刊
+                                            <input type="radio" id="paper_publishType1" name="paper_publishType"
+                                                   value='1'/>国内期刊
                                         </label>
                                         <label class='radio-inline' style="margin-top: 5px">
-                                            <input type="radio" id="paper_publishType2" name="paper_publishType" value='2'/>国外期刊
+                                            <input type="radio" id="paper_publishType2" name="paper_publishType"
+                                                   value='2'/>国外期刊
                                         </label>
                                     </div>
                                 </div>
@@ -283,7 +285,6 @@
                                             style="color: #ff0000">*</span></label>
                                     <div class="col-md-5">
                                         <input type="text" id="paper_conference_publishName" name="paper_publishName"
-                                               disabled="false"
                                                class="form-control">
                                     </div>
                                 </div>
@@ -318,17 +319,18 @@
                             </div>
                             <%--<div class='col-md-12'>&nbsp;</div>--%>
                             <%--<div class='col-md-12'>--%>
-                                <%--<div class='alert alert-warning' style='font-size: 14px;'><span--%>
-                                        <%--class='glyphicon glyphicon-info-sign'></span><strong>Tips</strong>&nbsp;&nbsp;若您的论文在下列级别选项中无对应级别,请勾选其他,手动填写.--%>
-                                <%--</div>--%>
+                            <%--<div class='alert alert-warning' style='font-size: 14px;'><span--%>
+                            <%--class='glyphicon glyphicon-info-sign'></span><strong>Tips</strong>&nbsp;&nbsp;若您的论文在下列级别选项中无对应级别,请勾选其他,手动填写.--%>
+                            <%--</div>--%>
                             <%--</div>--%>
 
-                                <span id="journalsORconferenceArea"></span>
+                            <span id="journalsORconferenceArea"></span>
 
                             <div id="paper_journals_conference_CUSTOM" class="form-group" hidden="hidden">
                                 <label class="col-md-2 control-label">请输入论文级别:</label>
                                 <div class="col-md-4">
-                                    <input type="text" id="paper_journals_conference_CUSTOM_input" name="paper_journals_conference_CUSTOM"
+                                    <input type="text" id="paper_journals_conference_CUSTOM_input"
+                                           name="paper_journals_conference_CUSTOM"
                                            class="form-control">
                                 </div>
                             </div>
