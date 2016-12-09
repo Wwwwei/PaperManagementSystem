@@ -18,7 +18,7 @@
     <update id="update" parameterType="pms.entity.File">
         UPDATE file
         SET
-        file_url=#{file_url}
+        file_url=#{file_url},file_paper_id=#{file_paper_id},file_is_valid=#{file_isValid}
         WHERE
         file_id=#{file_id}
     </update>
@@ -27,13 +27,13 @@
         SELECT *
         FROM file
         WHERE
-        file_paperproxy_id=#{file_paperproxy_id};
+        file_paperproxy_id=#{file_paperproxy_id} AND file_is_valid=1;
     </select>
     <select id="selectByPaperproxyIdAndFileType" resultMap="pms.entity.EntityMapper.FileBean"
             parameterType="java.util.Map">
         SELECT *
         FROM file
         WHERE
-        file_paperproxy_id=#{paperproxyId} AND file_type=#{fileType};
+        file_paperproxy_id=#{paperproxyId} AND file_type=#{fileType} AND file_is_valid=1;
     </select>
 </mapper>
