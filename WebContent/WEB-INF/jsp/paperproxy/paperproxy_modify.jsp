@@ -36,24 +36,24 @@
     function changeState() {
         hasSaved = true;
     }
-    function changestyle() {
-        var jurnalflag = document.getElementById("journalsORconference");
-        var index = jurnalflag.selectedIndex;
-        var area1 = document.getElementById("ZKYA");
-        var area2 = document.getElementById("JCRA");
-        if (jurnalflag.options[index].value == 1) {
-            area1.removeAttribute("style");
-            area1.setAttribute("style", "height:0px");
-            area2.removeAttribute("style");
-            area2.setAttribute("style", "height:0px");
-        }
-        if (jurnalflag.options[index].value == 0) {
-            area1.removeAttribute("style");
-            area1.setAttribute("style", "height:54px");
-            area2.removeAttribute("style");
-            area2.setAttribute("style", "height:54px");
-        }
-    }
+    //    function changestyle() {
+    //        var jurnalflag = document.getElementById("journalsORconference");
+    //        var index = jurnalflag.selectedIndex;
+    //        var area1 = document.getElementById("ZKYA");
+    //        var area2 = document.getElementById("JCRA");
+    //        if (jurnalflag.options[index].value == 1) {
+    //            area1.removeAttribute("style");
+    //            area1.setAttribute("style", "height:0px");
+    //            area2.removeAttribute("style");
+    //            area2.setAttribute("style", "height:0px");
+    //        }
+    //        if (jurnalflag.options[index].value == 0) {
+    //            area1.removeAttribute("style");
+    //            area1.setAttribute("style", "height:54px");
+    //            area2.removeAttribute("style");
+    //            area2.setAttribute("style", "height:54px");
+    //        }
+    //    }
 </script>
 <style>
     .jumbotron {
@@ -211,7 +211,7 @@
                                 <label class="col-md-1 control-label">发表方式</label>
                                 <div class="col-md-5">
                                     <select id="journalsORconference" name="paper_issue"
-                                            class="form-control" onchange="changestyle()">
+                                            class="form-control">
                                         <option value="0">期刊</option>
                                         <option value="1">会议</option>
                                     </select>
@@ -227,6 +227,14 @@
                             <div class="col-md-12">&nbsp;</div>
                             <!--期刊位置信息-->
                             <div id="paper_journals_location">
+                                <div class="form-group">
+                                    <label class="col-md-1 control-label">期刊名称<span
+                                            style="color: #ff0000">*</span></label>
+                                    <div class="col-md-5">
+                                        <input type="text" id="paper_journals_publishName" name="paper_publishName"
+                                               class="form-control">
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label class="col-md-1 control-label">期刊号<span
                                             style="color: #ff0000">*</span></label>
@@ -252,6 +260,19 @@
                                                class="form-control">
                                     </div>
                                 </div>
+                                <div class="col-md-12">&nbsp;</div>
+                                <div class="form-group">
+                                    <label class="col-md-1 control-label">期刊性质<span
+                                            style="color: #ff0000">*</span></label>
+                                    <div class="col-md-5">
+                                        <label class='radio-inline'>
+                                            <input type="radio" id="paper_publishType1" name="paper_publishType" value='1'/>国内期刊
+                                        </label>
+                                        <label class='radio-inline' style="margin-top: 5px">
+                                            <input type="radio" id="paper_publishType2" name="paper_publishType" value='2'/>国外期刊
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
 
                             <!--会议位置信息-->
@@ -260,8 +281,8 @@
                                     <label class="col-md-1 control-label">会议名称<span
                                             style="color: #ff0000">*</span></label>
                                     <div class="col-md-5">
-                                        <input type="text" id="paper_conference_location1"
-                                               name="paper_conference_location1"
+                                        <input type="text" id="paper_conference_publishName" name="paper_publishName"
+                                               disabled="false"
                                                class="form-control">
                                     </div>
                                 </div>
@@ -269,8 +290,8 @@
                                     <label class="col-md-1 control-label">会议页码<span
                                             style="color: #ff0000">*</span></label>
                                     <div class="col-md-5">
-                                        <input type="text" id="paper_conference_location2"
-                                               name="paper_conference_location2"
+                                        <input type="text" id="paper_conference_location1"
+                                               name="paper_conference_location1"
                                                class="form-control">
                                     </div>
                                 </div>
@@ -279,9 +300,18 @@
                                     <label class="col-md-1 control-label">会议地点<span
                                             style="color: #ff0000">*</span></label>
                                     <div class="col-md-5">
-                                        <input type="text" id="paper_conference_location3"
-                                               name="paper_conference_location3"
+                                        <input type="text" id="paper_conference_location2"
+                                               name="paper_conference_location2"
                                                class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-1 control-label">会议性质<span
+                                            style="color: #ff0000">*</span></label>
+                                    <div class="col-md-5">
+                                        <label class='radio-inline'>
+                                            <input type="radio" value='3' checked="checked"/>国际会议
+                                        </label>
                                     </div>
                                 </div>
                             </div>
@@ -293,6 +323,13 @@
                             </div>
                             <div class="col-md-4">
                                 <span id="journalsORconferenceArea"></span>
+                            </div>
+                            <div id="paper_journals_conference_CUSTOM" class="form-group" hidden="hidden">
+                                <label class="col-md-2 control-label">请输入论文级别:</label>
+                                <div class="col-md-4">
+                                    <input type="text" id="paper_journals_conference_CUSTOM_input" name="paper_journals_conference_CUSTOM"
+                                           class="form-control">
+                                </div>
                             </div>
                             <!-- 		<span id="degreeArea"></span> -->
                             <%--<div class="col-md-8" style="min-height: 54px" id="ZKYA">--%>

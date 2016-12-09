@@ -348,7 +348,7 @@ function showSelect(flag) {
                         addText += "<div class='form-group'><label class='col-md-4 control-label'>选择会议</label><div class='col-md-8'><select id='journalsORconferenceSelect_CCF' class='form-control' name='paper_journals_conference_CCF.journals_conference_id' onchange='showLocationAreaByConference()'>"
                             + selectText
                             + "</div></div><div class='col-md-12'>&nbsp;</div>";
-                        addText += " <label class='col-md-4 control-label'>其他</label><div class='col-md-8'> <input type='checkbox' id='journalsORconferenceSelect_OTHER' name='paper_journals_conference_other' value='0' onchange='checkJournalsORConferenceOther(1)'/> ";
+                        addText += " <label class='col-md-4 control-label'>其他</label><div class='col-md-8'> <input type='checkbox' id='journalsORconferenceSelect_OTHER' name='paper_journals_conference_isOther' value='0' onchange='checkJournalsORConferenceOther(1)'/> ";
                     }
                     $("span#journalsORconferenceArea").html(addText);
                 }
@@ -361,7 +361,7 @@ function showSelect(flag) {
 // 根据期刊和会议二级下拉框选择
 //function showSelectByFlag(paperproxy_id, flag, ZKY_id, JCR_id, CCF_id,
 //                          ZKY_location, JCR_location, CCF_location, OTHER_check) {
-function showSelectByFlag(paperproxy_id, flag, ZKY_id, JCR_id, CCF_id, ESI_id, OTHER_id, OTHER_check) {
+function showSelectByFlag(paperproxy_id, flag, ZKY_id, JCR_id, CCF_id, ESI_id, OTHER_id, isZjut100, isOther, custom) {
     htmlobj = $
         .ajax({
             url: "../journals_conference/findByFlag.do",
@@ -399,6 +399,8 @@ function showSelectByFlag(paperproxy_id, flag, ZKY_id, JCR_id, CCF_id, ESI_id, O
                         var select_ZKY = "<option value ='-1'>无</option>";
                         var select_JCR = "<option value ='-1'>无</option>";
                         var select_CCF = "<option value ='-1'>无</option>";
+                        var select_ESI = "<option value ='-1'>无</option>";
+                        var select_OTHER = "<option value ='-1'>无</option>";
                         for (var i in resultList) {
                             var select_withoutCheck = "<option value ='"
                                 + resultList[i].journals_conference_id
@@ -414,18 +416,18 @@ function showSelectByFlag(paperproxy_id, flag, ZKY_id, JCR_id, CCF_id, ESI_id, O
                                 case 1:
                                     if (ZKY_id == resultList[i].journals_conference_id) {
                                         select_ZKY += select_withCheck;
-                                        var addText_ZKY = "";
-                                        addText_ZKY += "<label class='col-md-1 control-label' style='padding-left: 0px;padding-right: 0px;'>期刊号</label><div class='col-md-3'><input type='text' name='paper_location_issuing_ZKY' value='"
-                                            + ZKY_locations[0]
-                                            + "' class='form-control'></div>";
-                                        addText_ZKY += "<label class='col-md-1 control-label'>卷期</label><div class='col-md-3'><input type='text' name='paper_location_volume_ZKY' value='"
-                                            + ZKY_locations[1]
-                                            + "' class='form-control'></div>";
-                                        addText_ZKY += "<label class='col-md-1 control-label'>页码</label><div class='col-md-3'><input type='text' name='paper_location_pagination_ZKY' value='"
-                                            + ZKY_locations[2]
-                                            + "' class='form-control'></div>";
-                                        $("span#journalsORconferenceZKYArea")
-                                            .html(addText_ZKY);
+                                        //var addText_ZKY = "";
+                                        //addText_ZKY += "<label class='col-md-1 control-label' style='padding-left: 0px;padding-right: 0px;'>期刊号</label><div class='col-md-3'><input type='text' name='paper_location_issuing_ZKY' value='"
+                                        //    + ZKY_locations[0]
+                                        //    + "' class='form-control'></div>";
+                                        //addText_ZKY += "<label class='col-md-1 control-label'>卷期</label><div class='col-md-3'><input type='text' name='paper_location_volume_ZKY' value='"
+                                        //    + ZKY_locations[1]
+                                        //    + "' class='form-control'></div>";
+                                        //addText_ZKY += "<label class='col-md-1 control-label'>页码</label><div class='col-md-3'><input type='text' name='paper_location_pagination_ZKY' value='"
+                                        //    + ZKY_locations[2]
+                                        //    + "' class='form-control'></div>";
+                                        //$("span#journalsORconferenceZKYArea")
+                                        //    .html(addText_ZKY);
                                     } else {
                                         select_ZKY += select_withoutCheck;
                                     }
@@ -433,18 +435,18 @@ function showSelectByFlag(paperproxy_id, flag, ZKY_id, JCR_id, CCF_id, ESI_id, O
                                 case 2:
                                     if (JCR_id == resultList[i].journals_conference_id) {
                                         select_JCR += select_withCheck;
-                                        var addText_JCR = "";
-                                        addText_JCR += "<label class='col-md-1 control-label' style='padding-left: 0px;padding-right: 0px;'>期刊号</label><div class='col-md-3'><input type='text' name='paper_location_issuing_JCR' value='"
-                                            + JCR_locations[0]
-                                            + "' class='form-control'></div>";
-                                        addText_JCR += "<label class='col-md-1 control-label'>卷期</label><div class='col-md-3'><input type='text' name='paper_location_volume_JCR' value='"
-                                            + JCR_locations[1]
-                                            + "' class='form-control'></div>";
-                                        addText_JCR += "<label class='col-md-1 control-label'>页码</label><div class='col-md-3'><input type='text' name='paper_location_pagination_JCR' value='"
-                                            + JCR_locations[2]
-                                            + "' class='form-control'></div>";
-                                        $("span#journalsORconferenceJCRArea")
-                                            .html(addText_JCR);
+                                        //var addText_JCR = "";
+                                        //addText_JCR += "<label class='col-md-1 control-label' style='padding-left: 0px;padding-right: 0px;'>期刊号</label><div class='col-md-3'><input type='text' name='paper_location_issuing_JCR' value='"
+                                        //    + JCR_locations[0]
+                                        //    + "' class='form-control'></div>";
+                                        //addText_JCR += "<label class='col-md-1 control-label'>卷期</label><div class='col-md-3'><input type='text' name='paper_location_volume_JCR' value='"
+                                        //    + JCR_locations[1]
+                                        //    + "' class='form-control'></div>";
+                                        //addText_JCR += "<label class='col-md-1 control-label'>页码</label><div class='col-md-3'><input type='text' name='paper_location_pagination_JCR' value='"
+                                        //    + JCR_locations[2]
+                                        //    + "' class='form-control'></div>";
+                                        //$("span#journalsORconferenceJCRArea")
+                                        //    .html(addText_JCR);
                                     } else {
                                         select_JCR += select_withoutCheck;
                                     }
@@ -452,20 +454,58 @@ function showSelectByFlag(paperproxy_id, flag, ZKY_id, JCR_id, CCF_id, ESI_id, O
                                 case 3:
                                     if (CCF_id == resultList[i].journals_conference_id) {
                                         select_CCF += select_withCheck;
-                                        var addText_CCF = "";
-                                        addText_CCF += "<label class='col-md-1 control-label' style='padding-left: 0px;padding-right: 0px;'>期刊号</label><div class='col-md-3'><input type='text' name='paper_location_issuing_CCF' value='"
-                                            + CCF_locations[0]
-                                            + "' class='form-control'></div>";
-                                        addText_CCF += "<label class='col-md-1 control-label'>卷期</label><div class='col-md-3'><input type='text' name='paper_location_volume_CCF' value='"
-                                            + CCF_locations[1]
-                                            + "' class='form-control'></div>";
-                                        addText_CCF += "<label class='col-md-1 control-label'>页码</label><div class='col-md-3'><input type='text' name='paper_location_pagination_CCF' value='"
-                                            + CCF_locations[2]
-                                            + "' class='form-control'></div>";
-                                        $("span#journalsORconferenceCCFArea")
-                                            .html(addText_CCF);
+                                        //var addText_CCF = "";
+                                        //addText_CCF += "<label class='col-md-1 control-label' style='padding-left: 0px;padding-right: 0px;'>期刊号</label><div class='col-md-3'><input type='text' name='paper_location_issuing_CCF' value='"
+                                        //    + CCF_locations[0]
+                                        //    + "' class='form-control'></div>";
+                                        //addText_CCF += "<label class='col-md-1 control-label'>卷期</label><div class='col-md-3'><input type='text' name='paper_location_volume_CCF' value='"
+                                        //    + CCF_locations[1]
+                                        //    + "' class='form-control'></div>";
+                                        //addText_CCF += "<label class='col-md-1 control-label'>页码</label><div class='col-md-3'><input type='text' name='paper_location_pagination_CCF' value='"
+                                        //    + CCF_locations[2]
+                                        //    + "' class='form-control'></div>";
+                                        //$("span#journalsORconferenceCCFArea")
+                                        //    .html(addText_CCF);
                                     } else {
                                         select_CCF += select_withoutCheck;
+                                    }
+                                    break;
+                                case 4:
+                                    if (ESI_id == resultList[i].journals_conference_id) {
+                                        select_ESI += select_withCheck;
+                                        //var addText_CCF = "";
+                                        //addText_CCF += "<label class='col-md-1 control-label' style='padding-left: 0px;padding-right: 0px;'>期刊号</label><div class='col-md-3'><input type='text' name='paper_location_issuing_CCF' value='"
+                                        //    + CCF_locations[0]
+                                        //    + "' class='form-control'></div>";
+                                        //addText_CCF += "<label class='col-md-1 control-label'>卷期</label><div class='col-md-3'><input type='text' name='paper_location_volume_CCF' value='"
+                                        //    + CCF_locations[1]
+                                        //    + "' class='form-control'></div>";
+                                        //addText_CCF += "<label class='col-md-1 control-label'>页码</label><div class='col-md-3'><input type='text' name='paper_location_pagination_CCF' value='"
+                                        //    + CCF_locations[2]
+                                        //    + "' class='form-control'></div>";
+                                        //$("span#journalsORconferenceCCFArea")
+                                        //    .html(addText_CCF);
+                                    } else {
+                                        select_ESI += select_withoutCheck;
+                                    }
+                                    break;
+                                case 5:
+                                    if (OTHER_id == resultList[i].journals_conference_id) {
+                                        select_OTHER += select_withCheck;
+                                        //var addText_CCF = "";
+                                        //addText_CCF += "<label class='col-md-1 control-label' style='padding-left: 0px;padding-right: 0px;'>期刊号</label><div class='col-md-3'><input type='text' name='paper_location_issuing_CCF' value='"
+                                        //    + CCF_locations[0]
+                                        //    + "' class='form-control'></div>";
+                                        //addText_CCF += "<label class='col-md-1 control-label'>卷期</label><div class='col-md-3'><input type='text' name='paper_location_volume_CCF' value='"
+                                        //    + CCF_locations[1]
+                                        //    + "' class='form-control'></div>";
+                                        //addText_CCF += "<label class='col-md-1 control-label'>页码</label><div class='col-md-3'><input type='text' name='paper_location_pagination_CCF' value='"
+                                        //    + CCF_locations[2]
+                                        //    + "' class='form-control'></div>";
+                                        //$("span#journalsORconferenceCCFArea")
+                                        //    .html(addText_CCF);
+                                    } else {
+                                        select_OTHER += select_withoutCheck;
                                     }
                                     break;
                             }
@@ -473,19 +513,39 @@ function showSelectByFlag(paperproxy_id, flag, ZKY_id, JCR_id, CCF_id, ESI_id, O
                         select_ZKY += "</select>";
                         select_JCR += "</select>";
                         select_CCF += "</select>";
-                        addText += "<div class='form-group'><label class='col-md-4 control-label' style='font-size:12px'>中科院分区</label><div class='col-md-8'><select id='journalsORconferenceSelect_ZKY' class='form-control' name='paper_journals_conference_ZKY.journals_conference_id' onchange='showLocationAreaByJournals(1)'>"
+                        select_ESI += "</select>";
+                        select_OTHER += "</select>";
+                        if (0 == isZjut100) {
+                            addText += " <label class='col-md-3 control-label'>是否ZJUT100期刊论文</label><div class='col-md-3'> <input type='checkbox' id='paper_journals_conference_isZjut100' name='paper_journals_conference_isZjut100' value='1'/></div><div class='col-md-12'>&nbsp;</div>";
+                        }
+                        else {
+                            addText += " <label class='col-md-3 control-label'>是否ZJUT100期刊论文</label><div class='col-md-3'> <input type='checkbox' id='paper_journals_conference_isZjut100' name='paper_journals_conference_isZjut100' value='1' checked='checked'/></div><div class='col-md-12'>&nbsp;</div>";
+                        }
+                        addText += "<div class='form-group'><label class='col-md-4 control-label' style='font-size:12px'>中科院分区</label><div class='col-md-8'><select id='journalsORconferenceSelect_ZKY' class='form-control' name='paper_journals_conference_ZKY.journals_conference_id'>"
                             + select_ZKY
                             + "</div></div><div class='col-md-12'>&nbsp;</div>";
-                        addText += "<div class='form-group'><label class='col-md-4 control-label'>JCR等级</label><div class='col-md-8'><select id='journalsORconferenceSelect_JCR' class='form-control' name='paper_journals_conference_JCR.journals_conference_id' onchange='showLocationAreaByJournals(2)'>"
+
+                        addText += "<div class='form-group'><label class='col-md-4 control-label'>JCR等级</label><div class='col-md-8'><select id='journalsORconferenceSelect_JCR' class='form-control' name='paper_journals_conference_JCR.journals_conference_id'>"
                             + select_JCR
                             + "</div></div><div class='col-md-12'>&nbsp;</div>";
-                        addText += "<div class='form-group'><label class='col-md-4 control-label'>CCF等级</label><div class='col-md-8'><select id='journalsORconferenceSelect_CCF' class='form-control' name='paper_journals_conference_CCF.journals_conference_id' onchange='showLocationAreaByJournals(3)'>"
+                        addText += "<div class='form-group'><label class='col-md-4 control-label'>CCF等级</label><div class='col-md-8'><select id='journalsORconferenceSelect_CCF' class='form-control' name='paper_journals_conference_CCF.journals_conference_id'>"
                             + select_CCF
                             + "</div></div><div class='col-md-12'>&nbsp;</div>";
-                        if (0 == OTHER_check) {
+                        addText += "<div class='form-group'><label class='col-md-4 control-label'>ESI等级</label><div class='col-md-8'><select id='journalsORconferenceSelect_ESI' class='form-control' name='paper_journals_conference_ESI.journals_conference_id'>"
+                            + select_ESI
+                            + "</div></div><div class='col-md-12'>&nbsp;</div>";
+                        addText += "<div class='form-group'><label class='col-md-4 control-label'>其他等级</label><div class='col-md-8'><select id='journalsORconferenceSelect_OTHER' class='form-control' name='paper_journals_conference_OTHER.journals_conference_id'>"
+                            + select_OTHER
+                            + "</div></div><div class='col-md-12'>&nbsp;</div>";
+                        if (0 == isOther) {
                             addText += " <label class='col-md-4 control-label'>其他</label><div class='col-md-8'> <input type='checkbox' id='journalsORconferenceSelect_OTHER' name='paper_journals_conference_other' value='0' onchange='checkJournalsORConferenceOther(0)' checked='checked'/>";
+                            $("input#paper_journals_conference_CUSTOM_input").val(custom);
+                            $("div#paper_journals_conference_CUSTOM").removeAttr("hidden");
                         } else {
                             addText += " <label class='col-md-4 control-label'>其他</label><div class='col-md-8'> <input type='checkbox' id='journalsORconferenceSelect_OTHER' name='paper_journals_conference_other' value='0' onchange='checkJournalsORConferenceOther(0)'/> ";
+                            $("input#paper_journals_conference_CUSTOM_input").val("");
+                            $("div#paper_journals_conference_CUSTOM").attr("hidden",
+                                "hidden");
                         }
                     } else {
                         var selectText = "<option value ='-1'>无</option>";
@@ -506,37 +566,42 @@ function showSelectByFlag(paperproxy_id, flag, ZKY_id, JCR_id, CCF_id, ESI_id, O
                         }
                         selectText += "</select>";
 
-                        var location = CCF_location.split("$");
-                        for (i = 0; i < 3; i++) {
-                            if ('null' == location[i]) {
-                                location[i] = '';
-                            }
-                        }
-                        var area1 = document.getElementById("ZKYA");
-                        var area2 = document.getElementById("JCRA");
-                        area1.removeAttribute("style");
-                        area1.setAttribute("style", "height:0px");
-                        area2.removeAttribute("style");
-                        area2.setAttribute("style", "height:0px");
-                        addText += "<div class='form-group'><label class='col-md-4 control-label'>选择会议</label><div class='col-md-8'><select id='journalsORconferenceSelect_CCF' class='form-control' name='paper_journals_conference_CCF.journals_conference_id' onchange='showLocationAreaByConference()'>"
+                        //var location = CCF_location.split("$");
+                        //for (i = 0; i < 2; i++) {
+                        //    if ('null' == location[i]) {
+                        //        location[i] = '';
+                        //    }
+                        //}
+                        //var area1 = document.getElementById("ZKYA");
+                        //var area2 = document.getElementById("JCRA");
+                        //area1.removeAttribute("style");
+                        //area1.setAttribute("style", "height:0px");
+                        //area2.removeAttribute("style");
+                        //area2.setAttribute("style", "height:0px");
+                        addText += "<div class='form-group'><label class='col-md-4 control-label'>CCF等级</label><div class='col-md-8'><select id='journalsORconferenceSelect_CCF' class='form-control' name='paper_journals_conference_CCF.journals_conference_id' >"
                             + selectText + "</div></div><div class='col-md-12'>&nbsp;</div>";
-                        if (0 == OTHER_check) {
+                        if (0 == isOther) {
                             addText += " <label class='col-md-4 control-label'>其他</label><div class='col-md-8'> <input type='checkbox' id='journalsORconferenceSelect_OTHER' name='paper_journals_conference_other' value='0' onchange='checkJournalsORConferenceOther(1)' checked='checked'/>";
+                            $("input#paper_journals_conference_CUSTOM_input").val(custom);
+                            $("div#paper_journals_conference_CUSTOM").removeAttr("hidden");
                         } else {
                             addText += " <label class='col-md-4 control-label'>其他</label><div class='col-md-8'> <input type='checkbox' id='journalsORconferenceSelect_OTHER' name='paper_journals_conference_other' value='0' onchange='checkJournalsORConferenceOther(1)'/> ";
+                            $("input#paper_journals_conference_CUSTOM_input").val("");
+                            $("div#paper_journals_conference_CUSTOM").attr("hidden",
+                                "hidden");
                         }
-                        var addText_CCF = "";
-                        addText_CCF += "<label class='col-md-1 control-label' style='padding-left: 0px;padding-right: 0px;'>期刊号</label><div class='col-md-3'><input type='text' name='paper_location_issuing_CCF' value='"
-                            + location[0]
-                            + "' class='form-control'></div>";
-                        addText_CCF += "<label class='col-md-1 control-label'>卷期</label><div class='col-md-3'><input type='text' name='paper_location_volume_CCF' value='"
-                            + location[1]
-                            + "' class='form-control'></div>";
-                        addText_CCF += "<label class='col-md-1 control-label'>页码</label><div class='col-md-3'><input type='text' name='paper_location_pagination_CCF' value='"
-                            + location[2]
-                            + "' class='form-control'></div>";
-                        $("span#journalsORconferenceCCFArea").html(
-                            addText_CCF);
+                        //var addText_CCF = "";
+                        //addText_CCF += "<label class='col-md-1 control-label' style='padding-left: 0px;padding-right: 0px;'>期刊号</label><div class='col-md-3'><input type='text' name='paper_location_issuing_CCF' value='"
+                        //    + location[0]
+                        //    + "' class='form-control'></div>";
+                        //addText_CCF += "<label class='col-md-1 control-label'>卷期</label><div class='col-md-3'><input type='text' name='paper_location_volume_CCF' value='"
+                        //    + location[1]
+                        //    + "' class='form-control'></div>";
+                        //addText_CCF += "<label class='col-md-1 control-label'>页码</label><div class='col-md-3'><input type='text' name='paper_location_pagination_CCF' value='"
+                        //    + location[2]
+                        //    + "' class='form-control'></div>";
+                        //$("span#journalsORconferenceCCFArea").html(
+                        //    addText_CCF);
                     }
                     $("span#journalsORconferenceArea").html(addText);
                     switch (flag) {
@@ -559,100 +624,112 @@ function showSelectByFlag(paperproxy_id, flag, ZKY_id, JCR_id, CCF_id, ESI_id, O
 function checkJournalsORConferenceOther(type) {
     var other = $("input#journalsORconferenceSelect_OTHER");
     if (other.prop("checked")) {
+        $("div#paper_journals_conference_CUSTOM").removeAttr("hidden");
         switch (type) {
             case 0:
                 $("select#journalsORconferenceSelect_ZKY").val(-1);
                 $("select#journalsORconferenceSelect_JCR").val(-1);
                 $("select#journalsORconferenceSelect_CCF").val(-1);
+                $("select#journalsORconferenceSelect_ESI").val(-1);
+                $("select#journalsORconferenceSelect_OTHER").val(-1);
                 $("select#journalsORconferenceSelect_ZKY").attr("disabled",
                     "disabled");
                 $("select#journalsORconferenceSelect_JCR").attr("disabled",
                     "disabled");
                 $("select#journalsORconferenceSelect_CCF").attr("disabled",
                     "disabled");
-                showLocationAreaByJournals(1);
-                showLocationAreaByJournals(2);
-                showLocationAreaByJournals(3);
+                $("select#journalsORconferenceSelect_ESI").attr("disabled",
+                    "disabled");
+                $("select#journalsORconferenceSelect_OTHER").attr("disabled",
+                    "disabled");
+                //showLocationAreaByJournals(1);
+                //showLocationAreaByJournals(2);
+                //showLocationAreaByJournals(3);
                 break;
             case 1:
                 $("select#journalsORconferenceSelect_CCF").val(-1);
                 $("select#journalsORconferenceSelect_CCF").attr("disabled",
                     "disabled");
-                showLocationAreaByConference();
+                //   showLocationAreaByConference();
                 break;
         }
 
     } else {
+        $("input#paper_journals_conference_CUSTOM_input").val("");
+        $("div#paper_journals_conference_CUSTOM").attr("hidden",
+            "hidden");
         $("select#journalsORconferenceSelect_ZKY").removeAttr("disabled");
         $("select#journalsORconferenceSelect_JCR").removeAttr("disabled");
         $("select#journalsORconferenceSelect_CCF").removeAttr("disabled");
+        $("select#journalsORconferenceSelect_ESI").removeAttr("disabled");
+        $("select#journalsORconferenceSelect_OTHER").removeAttr("disabled");
     }
 }
-// 期刊显示论文期刊号、卷期、页码输入(type表示期刊类型,1:中科院;2:JCR;3:CCF)
-function showLocationAreaByJournals(type) {
-    switch (type) {
-        case 1:
-            var options_ZKY = $("select#journalsORconferenceSelect_ZKY option:selected");
-            if (-1 != options_ZKY.val()) {
-                var addText = "";
-                addText += "<label class='col-md-1 control-label' style='padding-left: 0px;padding-right: 0px;'>期刊号</label><div class='col-md-3'><input type='text' name='paper_location_issuing_ZKY' class='form-control'></div>";
-                addText += "<label class='col-md-1 control-label'>卷期</label><div class='col-md-3'><input type='text' name='paper_location_volume_ZKY' class='form-control'></div>";
-                addText += "<label class='col-md-1 control-label'>页码</label><div class='col-md-3'><input type='text' name='paper_location_pagination_ZKY' class='form-control'></div>";
-                $("span#journalsORconferenceZKYArea").html(addText);
-            } else {
-                $("span#journalsORconferenceZKYArea").html("");
-            }
-            break;
-        case 2:
-            var options_JCR = $("select#journalsORconferenceSelect_JCR option:selected");
-            if (-1 != options_JCR.val()) {
-                var addText = "";
-                addText += "<label class='col-md-1 control-label' style='padding-left: 0px;padding-right: 0px;'>期刊号</label><div class='col-md-3'><input type='text' name='paper_location_issuing_JCR' class='form-control'></div>";
-                addText += "<label class='col-md-1 control-label'>卷期</label><div class='col-md-3'><input type='text' name='paper_location_volume_JCR' class='form-control'></div>";
-                addText += "<label class='col-md-1 control-label'>页码</label><div class='col-md-3'><input type='text' name='paper_location_pagination_JCR' class='form-control'></div>";
-                $("span#journalsORconferenceJCRArea").html(addText);
-            } else {
-                $("span#journalsORconferenceJCRArea").html("");
-            }
-            break;
-        case 3:
-            var options_CCF = $("select#journalsORconferenceSelect_CCF option:selected");
-            if (-1 != options_CCF.val()) {
-                var addText = "";
-                addText += "<label class='col-md-1 control-label' style='padding-left: 0px;padding-right: 0px;'>期刊号</label><div class='col-md-3'><input type='text' name='paper_location_issuing_CCF' class='form-control'></div>";
-                addText += "<label class='col-md-1 control-label'>卷期</label><div class='col-md-3'><input type='text' name='paper_location_volume_CCF' class='form-control'></div>";
-                addText += "<label class='col-md-1 control-label'>页码</label><div class='col-md-3'><input type='text' name='paper_location_pagination_CCF' class='form-control'></div>";
-                $("span#journalsORconferenceCCFArea").html(addText);
-            } else {
-                $("span#journalsORconferenceCCFArea").html("");
-            }
-            break;
-    }
-
-}
-// 会议显示论文期刊号、卷期、页码输入(type表示会议类型,1:CCF;2:其他)
-function showLocationAreaByConference() {
-    var type = 2;
-    var options_CCF = $("select#journalsORconferenceSelect_CCF option:selected");
-    for (var i in resultList) {
-        if (resultList[i].journals_conference_id == options_CCF.val()) {
-            type = resultList[i].journals_conference_type;
-            break;
-        }
-    }
-    switch (type) {
-        case 1:
-            var addText = "";
-            addText += "<label class='col-md-1 control-label' style='padding-left: 0px;padding-right: 0px;'>期刊号</label><div class='col-md-3'><input type='text' name='paper_location_issuing_CCF' class='form-control'></div>";
-            addText += "<label class='col-md-1 control-label'>卷期</label><div class='col-md-3'><input type='text' name='paper_location_volume_CCF' class='form-control'></div>";
-            addText += "<label class='col-md-1 control-label'>页码</label><div class='col-md-3'><input type='text' name='paper_location_pagination_CCF' class='form-control'></div>";
-            $("span#journalsORconferenceCCFArea").html(addText);
-            break;
-        case 2:
-            $("span#journalsORconferenceCCFArea").html("");
-            break;
-    }
-}
+//// 期刊显示论文期刊号、卷期、页码输入(type表示期刊类型,1:中科院;2:JCR;3:CCF)
+//function showLocationAreaByJournals(type) {
+//    switch (type) {
+//        case 1:
+//            var options_ZKY = $("select#journalsORconferenceSelect_ZKY option:selected");
+//            if (-1 != options_ZKY.val()) {
+//                var addText = "";
+//                addText += "<label class='col-md-1 control-label' style='padding-left: 0px;padding-right: 0px;'>期刊号</label><div class='col-md-3'><input type='text' name='paper_location_issuing_ZKY' class='form-control'></div>";
+//                addText += "<label class='col-md-1 control-label'>卷期</label><div class='col-md-3'><input type='text' name='paper_location_volume_ZKY' class='form-control'></div>";
+//                addText += "<label class='col-md-1 control-label'>页码</label><div class='col-md-3'><input type='text' name='paper_location_pagination_ZKY' class='form-control'></div>";
+//                $("span#journalsORconferenceZKYArea").html(addText);
+//            } else {
+//                $("span#journalsORconferenceZKYArea").html("");
+//            }
+//            break;
+//        case 2:
+//            var options_JCR = $("select#journalsORconferenceSelect_JCR option:selected");
+//            if (-1 != options_JCR.val()) {
+//                var addText = "";
+//                addText += "<label class='col-md-1 control-label' style='padding-left: 0px;padding-right: 0px;'>期刊号</label><div class='col-md-3'><input type='text' name='paper_location_issuing_JCR' class='form-control'></div>";
+//                addText += "<label class='col-md-1 control-label'>卷期</label><div class='col-md-3'><input type='text' name='paper_location_volume_JCR' class='form-control'></div>";
+//                addText += "<label class='col-md-1 control-label'>页码</label><div class='col-md-3'><input type='text' name='paper_location_pagination_JCR' class='form-control'></div>";
+//                $("span#journalsORconferenceJCRArea").html(addText);
+//            } else {
+//                $("span#journalsORconferenceJCRArea").html("");
+//            }
+//            break;
+//        case 3:
+//            var options_CCF = $("select#journalsORconferenceSelect_CCF option:selected");
+//            if (-1 != options_CCF.val()) {
+//                var addText = "";
+//                addText += "<label class='col-md-1 control-label' style='padding-left: 0px;padding-right: 0px;'>期刊号</label><div class='col-md-3'><input type='text' name='paper_location_issuing_CCF' class='form-control'></div>";
+//                addText += "<label class='col-md-1 control-label'>卷期</label><div class='col-md-3'><input type='text' name='paper_location_volume_CCF' class='form-control'></div>";
+//                addText += "<label class='col-md-1 control-label'>页码</label><div class='col-md-3'><input type='text' name='paper_location_pagination_CCF' class='form-control'></div>";
+//                $("span#journalsORconferenceCCFArea").html(addText);
+//            } else {
+//                $("span#journalsORconferenceCCFArea").html("");
+//            }
+//            break;
+//    }
+//
+//}
+//// 会议显示论文期刊号、卷期、页码输入(type表示会议类型,1:CCF;2:其他)
+//function showLocationAreaByConference() {
+//    var type = 2;
+//    var options_CCF = $("select#journalsORconferenceSelect_CCF option:selected");
+//    for (var i in resultList) {
+//        if (resultList[i].journals_conference_id == options_CCF.val()) {
+//            type = resultList[i].journals_conference_type;
+//            break;
+//        }
+//    }
+//    switch (type) {
+//        case 1:
+//            var addText = "";
+//            addText += "<label class='col-md-1 control-label' style='padding-left: 0px;padding-right: 0px;'>期刊号</label><div class='col-md-3'><input type='text' name='paper_location_issuing_CCF' class='form-control'></div>";
+//            addText += "<label class='col-md-1 control-label'>卷期</label><div class='col-md-3'><input type='text' name='paper_location_volume_CCF' class='form-control'></div>";
+//            addText += "<label class='col-md-1 control-label'>页码</label><div class='col-md-3'><input type='text' name='paper_location_pagination_CCF' class='form-control'></div>";
+//            $("span#journalsORconferenceCCFArea").html(addText);
+//            break;
+//        case 2:
+//            $("span#journalsORconferenceCCFArea").html("");
+//            break;
+//    }
+//}
 // 获取论文代理表信息
 function shoWPaperProxyInputList(paperproxy_id) {
     htmlobj = $
@@ -722,6 +799,18 @@ function shoWPaperProxyInputList(paperproxy_id) {
                             case 0:
                                 $("div#paper_conference_location").attr("hidden", "hidden")
                                 $("div#paper_journals_location").removeAttr("hidden");
+                                $("input#paper_journals_publishName").val(
+                                    result.paper_publishName);
+                                switch (result.paper_publishType) {
+                                    case 1:
+                                        $("input#paper_publishType1").attr("checked", "checked");
+                                        $("input#paper_publishType2").removeAttr("checked");
+                                        break;
+                                    case 2:
+                                        $("input#paper_publishType2").attr("checked", "checked");
+                                        $("input#paper_publishType1").removeAttr("checked");
+                                        break;
+                                }
                                 var ZKY_id = -1;
                                 var JCR_id = -1;
                                 var CCF_id = -1;
@@ -740,7 +829,7 @@ function shoWPaperProxyInputList(paperproxy_id) {
                                     ESI_id = result.paper_journals_conference_ESI.journals_conference_id;
                                 }
                                 if (null != result.paper_journals_conference_OTHER) {
-                                    OTHER_id = result.paper_journals_conference_ESI.journals_conference_id;
+                                    OTHER_id = result.paper_journals_conference_OTHER.journals_conference_id;
                                 }
                                 if (null != result.paper_location) {
                                     var locations = result.paper_location.split("$");
@@ -749,15 +838,14 @@ function shoWPaperProxyInputList(paperproxy_id) {
                                     $("input#paper_journals_location3").val(locations[2]);
                                 }
                                 showSelectByFlag(paperproxy_id, result.paper_issue,
-                                    ZKY_id, JCR_id, CCF_id,
-                                    result.paper_location_ZKY,
-                                    result.paper_location_JCR,
-                                    result.paper_location_CCF,
-                                    result.paper_journals_conference_other);
+                                    ZKY_id, JCR_id, CCF_id, ESI_id, OTHER_id, result.paper_journals_conference_isZjut100,
+                                    result.paper_journals_conference_isOther, result.paper_journals_conference_CUSTOM);
                                 break;
                             case 1:
                                 $("div#paper_journals_location").attr("hidden", "hidden");
                                 $("div#paper_conference_location").removeAttr("hidden");
+                                $("input#paper_conference_publishName").val(
+                                    result.paper_publishName);
                                 var CCF_id = -1;
                                 if (null != result.paper_journals_conference_CCF) {
                                     CCF_id = result.paper_journals_conference_CCF.journals_conference_id;
@@ -766,14 +854,10 @@ function shoWPaperProxyInputList(paperproxy_id) {
                                     var locations = result.paper_location.split("$");
                                     $("input#paper_conference_location1").val(locations[0]);
                                     $("input#paper_conference_location2").val(locations[1]);
-                                    $("input#paper_conference_location3").val(locations[2]);
                                 }
                                 showSelectByFlag(paperproxy_id, result.paper_issue,
-                                    -1, -1, CCF_id, result.paper_location_ZKY,
-                                    result.paper_location_JCR,
-                                    result.paper_location_CCF,
-                                    result.paper_journals_conference_other);
-
+                                    -1, -1, CCF_id, -1, -1, result.paper_journals_conference_isZjut100,
+                                    result.paper_journals_conference_isOther, result.paper_journals_conference_CUSTOM);
                                 break;
                         }
 
