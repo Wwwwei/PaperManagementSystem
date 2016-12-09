@@ -112,13 +112,13 @@
         <span>文件信息 </span>
     </blockquote>
     <div class="row">
-        <div class="col-md-4"><label>请选择论文的类型：</label></div>
-        <div class="col-md-4"><input id="incountry" type="radio" name="paper_type" value="0" checked
-                                     onclick="changefile()">&nbsp;&nbsp;国内论文
-        </div>
-        <div class="col-md-4"><input id="outcountry" type="radio" name="paper_type" value="1" onclick="changefile()">&nbsp;&nbsp;国外论文
-        </div>
-        <div class="col-md-12">&nbsp;</div>
+        <%--<div class="col-md-4"><label>请选择论文的类型：</label></div>--%>
+        <%--<div class="col-md-4"><input id="incountry" type="radio" name="paper_type" value="0" checked--%>
+                                     <%--onclick="changefile()">&nbsp;&nbsp;国内论文--%>
+        <%--</div>--%>
+        <%--<div class="col-md-4"><input id="outcountry" type="radio" name="paper_type" value="1" onclick="changefile()">&nbsp;&nbsp;国外论文--%>
+        <%--</div>--%>
+        <%--<div class="col-md-12">&nbsp;</div>--%>
         <div class="col-md-12">
             <div class="alert alert-warning">
                 <table>
