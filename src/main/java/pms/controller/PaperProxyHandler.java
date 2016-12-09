@@ -235,6 +235,11 @@ public class PaperProxyHandler {
     @RequestMapping(value = "/paper_proxy/update", method = RequestMethod.POST)
     public ModelAndView update(Paper paper,
                                @RequestParam(value = "other_includedType", required = false) String other_includedType,
+                               @RequestParam(value = "paper_conference_location1", required = false) String paper_conference_location1,
+                               @RequestParam(value = "paper_conference_location2", required = false) String paper_conference_location2,
+                               @RequestParam(value = "paper_journals_location1", required = false) String paper_journals_location1,
+                               @RequestParam(value = "paper_journals_location2", required = false) String paper_journals_location2,
+                               @RequestParam(value = "paper_journals_location3", required = false) String paper_journals_location3,
                                @RequestParam(value = "commited_paper_id") Integer commited_paper_id, HttpServletRequest request,
                                HttpSession session) {
         // if ((Teacher) session.getAttribute("teacher") == null && (int)
@@ -244,7 +249,7 @@ public class PaperProxyHandler {
         if ((Teacher) session.getAttribute("teacher") == null) {
             return new ModelAndView("redirect:/login.jsp", null);
         }
-        System.out.println(commited_paper_id + "(((((((((((");
+        //  System.out.println(commited_paper_id + "(((((((((((");
         // String paper_location = paper_location_issuing + "$" +
         // paper_location_volume + "$" + paper_location_pagination;
         if (null != other_includedType) {
@@ -287,7 +292,7 @@ public class PaperProxyHandler {
         // ===========================================================
         */
         // 勾选其他时，设置影响因子为0
-        if (0 == paper.getPaper_journals_conference_isOther()) {
+  /*      if (0 == paper.getPaper_journals_conference_isOther()) {
             System.out.println("=========勾选其他=============");
             paper.setPaper_if(new Double(0));
         } else {
@@ -334,7 +339,25 @@ public class PaperProxyHandler {
             System.out.println("ccf_if" + ccf_if);
             paper.setPaper_if(getMaxFromThreeDouble(zky_if, jcr_if, ccf_if));
         }
+        */
         // paper.setPaper_location(paper_location);
+        //组装论文位置信息(以$分隔)
+        StringBuilder stringBuilder = null;
+        PaperIssueEnum paperIssue = PaperIssueEnum.getInstance(paper.getPaper_issue());
+        switch (paperIssue) {
+            case JOURNALS:
+                stringBuilder = new StringBuilder();
+                stringBuilder.append(paper_journals_location1).append("$")
+                        .append(paper_journals_location2).append("$").append(paper_journals_location3);
+                break;
+            case CONFERENCE:
+                stringBuilder = new StringBuilder();
+                stringBuilder.append(paper_conference_location1).append("$")
+                        .append(paper_conference_location2);
+                //发表方式为会议时,出版物类型默认为国际
+                paper.setPaper_publishType(PaperPublishTypeEnum.INTERNATIONAL.getType());
+                break;
+        }
         // 未更新前作者人数
         int ex_authorNum = paperProxyService.findPaperProxyById(paper.getPaper_id()).getPaper_authorNum();
         System.out.println("=========更新前作者人数：" + ex_authorNum);
@@ -452,7 +475,6 @@ public class PaperProxyHandler {
      * 显示论文代理修改页面
      *
      * @param paperproxy_id
-     * @param request
      * @param session
      * @return
      */
@@ -554,7 +576,6 @@ public class PaperProxyHandler {
      *
      * @param teacher_no
      * @param paperproxy_id
-     * @param session
      * @return
      */
     @RequestMapping(value = "/paper_proxy/upload", method = RequestMethod.POST)
@@ -756,7 +777,30 @@ public class PaperProxyHandler {
         // 删除代理表操作
         // boolean flag=true;
         //TODO: 文件表更新paper_id字段
-        //TODO:文件表检查是否有多余记录
+        // TODO:文件表检查是否有多余记录
+        List<pms.entity.File> files = fileService.findFileByPaperproxyId(paperproxy_id);
+        PaperIssueEnum paperIssue = PaperIssueEnum.getInstance(paper.getPaper_issue());
+        switch (paperIssue) {
+            case JOURNALS:
+                for (pms.entity.File file : files) {
+                    file.setFile_paper_id(paper_id);
+                    if (5 == file.getFile_type()) {
+                        file.setFile_isValid(0);
+                    }
+                }
+                break;
+            case CONFERENCE:
+                for (pms.entity.File file : files) {
+                    file.setFile_paper_id(paper_id);
+                    if (1 == file.getFile_type() || 3 == file.getFile_type() || 4 == file.getFile_type()) {
+                        file.setFile_isValid(0);
+                    }
+                }
+                break;
+        }
+        for (pms.entity.File file : files) {
+            fileService.updateFile(file);
+        }
         System.out.println(authors.size());
         for (AuthorProxy author : authors) {
             author.setAuthor_paper(paper);
