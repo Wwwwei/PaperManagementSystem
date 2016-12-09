@@ -557,14 +557,15 @@ public class PaperProxyHandler {
      * @param session
      * @return
      */
-    @RequestMapping(value = "/paper_proxy/upload", method = RequestMethod.GET)
-    public ModelAndView uploadView(@RequestParam("teacher_no") String teacher_no, @RequestParam("paperproxy_id") Integer paperproxy_id, HttpSession session) {
+    @RequestMapping(value = "/paper_proxy/upload", method = RequestMethod.POST)
+    public ModelAndView uploadView(@RequestParam("teacher_no") String teacher_no, @RequestParam("paperproxy_id") Integer paperproxy_id, @RequestParam("paperproxy_publishType") Integer paperproxy_publishType) {
         Map<String, Object> model = new HashMap<String, Object>();
         // =====================================================
         //  Teacher teacher = (Teacher) session.getAttribute("teacher");
         // =====================================================
         model.put("paperproxy_id", paperproxy_id);
         model.put("teacher_no", teacher_no);
+        model.put("paperproxy_publishType", paperproxy_publishType);
         return new ModelAndView("paperproxy/paperproxy_upload", model);
     }
 //	/**

@@ -289,6 +289,8 @@
            id="teacher_no"/>
     <input type="hidden" value="${requestScope.paperproxy_id}" name="paperproxy_id"
            id="paperproxy_id"/>
+    <input type="hidden" value="${requestScope.paperproxy_publishType}" name="paperproxy_publishType"
+           id="paperproxy_publishType"/>
     <div class="col-md-12">&nbsp;</div>
 </div>
 <!--footer开始-->
