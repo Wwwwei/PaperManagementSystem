@@ -91,8 +91,9 @@
     </blockquote>
 
 
-    <span id="showPaperProxyList"></span> <input type="hidden"
-                                                 value="${requestScope.paperproxy_id}" id="paperproxy_id"/>
+    <span id="showPaperProxyList"></span>
+    <%--<input type="hidden"--%>
+    <%--value="${requestScope.paperproxy_id}" id="paperproxy_id"/>--%>
     <input type="hidden"
            value="${requestScope.commited_paper_id}" id="commited_paper_id"/>
     <c:if test="${sessionScope.teacher!=null}">
@@ -109,8 +110,8 @@
            value="${sessionScope.column}" id="column"/>
     <input type="hidden"
            value="${sessionScope.order}" id="order"/>
-    <input type="hidden" value="${requestScope.teacher_no}"
-           id="teacher_no" />
+    <%--<input type="hidden" value="${requestScope.teacher_no}"--%>
+    <%--id="teacher_no"/>--%>
     <span id="showAuthorProxyList"></span>
     <div class="row">
         <div class="col-md-6">
@@ -122,6 +123,13 @@
         <div class="col-md-12">&nbsp;</div>
     </div>
 </div>
+<form id="modify_form" action="../paper_proxy/upload.do" method="post">
+    <input type="hidden" value="${requestScope.teacher_no}" name="teacher_no"
+           id="teacher_no"/>
+    <input type="hidden"
+           value="${requestScope.paperproxy_id}" id="paperproxy_id" name="paperproxy_id"/>
+    <input type="hidden" id="paperproxy_publishType" name="paperproxy_publishType"/>
+</form>
 <!--footer开始-->
 <jsp:include page="../../../layout/footer.jsp"/>
 <!--footer结束-->

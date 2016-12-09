@@ -14,7 +14,7 @@ function shoWPaperProxy(paperproxy_id) {
             success: function (data, stats) {
                 if (stats == "success") {
                     var addText = "<div class='row'>";
-                    var journalsORconference = "";
+                    //   var journalsORconference = "";
                     result = JSON.parse(htmlobj.responseText);
                     addText += "<div class='col-md-6'>"
                         + "<dl class='dl-horizontal text-overflow'>"
@@ -120,6 +120,7 @@ function shoWPaperProxy(paperproxy_id) {
                         + "<tr>"
                         + "<td width='85%'>发表方式：  ";
                     var locations = result.paper_location.split("$");
+                    $("input#paperproxy_publishType").val(result.paper_publishType);
                     switch (result.paper_issue) {
                         case 0:
                             addText += "期刊";
@@ -585,10 +586,10 @@ function checkAllWithoutNull() {
     var locations = result.paper_location.split("$");
     switch (result.paper_issue) {
         case 0:
-            if(result.paper_publishName == null || $.trim(result.paper_publishName) == ""){
+            if (result.paper_publishName == null || $.trim(result.paper_publishName) == "") {
                 $("span#paper_journals_publishName_ErrorArea").html("<div class='col-md-7 col-md-offset-1'><div class='alert alert-danger' role='alert'><strong>期刊名称</strong>不能为空！</div></div>");
                 checked = false;
-            }else{
+            } else {
                 $("span#paper_journals_publishName_ErrorArea").html("");
             }
             if ($.trim(locations[0]) == "") {
@@ -617,10 +618,10 @@ function checkAllWithoutNull() {
             //} else {
             //    $("span#paper_conference_location1_ErrorArea").html("");
             //}
-            if(result.paper_publishName == null || $.trim(result.paper_publishName) == ""){
+            if (result.paper_publishName == null || $.trim(result.paper_publishName) == "") {
                 $("span#paper_conference_publishName_ErrorArea").html("<div class='col-md-7 col-md-offset-1'><div class='alert alert-danger' role='alert'><strong>会议名称</strong>不能为空！</div></div>");
                 checked = false;
-            }else{
+            } else {
                 $("span#paper_conference_publishName_ErrorArea").html("");
             }
             if (result.paper_status == 1 && ($.trim(locations[0]) == "")) {
@@ -671,9 +672,9 @@ function checkAllWithoutNull() {
 //    }
 //    return paramValue == "" && (paramValue = null), paramValue
 //}
-function backFunction() {
-    window.location.href = "../teacher/backFunction.do";
-}
+//function backFunction() {
+//    window.location.href = "../teacher/backFunction.do";
+//}
 $(document)
     .ready(
         function () {
@@ -688,7 +689,8 @@ $(document)
             $("button#paperproxy_confirm").click(
                 function () {
                     if (checkAllWithoutNull()) {
-                        window.location.href = "../paper_proxy/upload.do?teacher_no=" + teacher_no + "&paperproxy_id=" + paperproxy_id;
+                        //   window.location.href = "../paper_proxy/upload.do?teacher_no=" + teacher_no + "&paperproxy_id=" + paperproxy_id;
+                        $("form#modify_form").submit();
                     }
                 });
             $("button#paperproxy_modify").click(
