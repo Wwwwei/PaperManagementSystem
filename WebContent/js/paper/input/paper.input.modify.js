@@ -955,6 +955,8 @@ $(document)
                             false);
                         $("input#paper_if").attr("disabled",
                             false);
+                        $("input#paper_publishType1").attr("checked",
+                            "checked");
                     } else if (1 == flag) {
                         //会议
                         $("div#paper_journals_location").attr("hidden", "hidden");
