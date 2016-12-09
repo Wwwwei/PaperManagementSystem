@@ -371,10 +371,10 @@ function showSelect(flag) {
                         }
                         selectText += "</select>";
                         addText += "<div class='col-md-12'><div class='alert alert-warning' style='font-size: 14px;'><span class='glyphicon glyphicon-info-sign'></span><strong>Tips</strong>&nbsp;&nbsp;若您的论文在下列级别选项中无对应级别,请勾选其他,手动填写.</div></div>";
-                        addText += "<div class='form-group'><label class='col-md-4 control-label'>选择会议</label><div class='col-md-8'><select id='journalsORconferenceSelect_CCF' class='form-control' name='paper_journals_conference_CCF.journals_conference_id' onchange='showLocationAreaByConference()'>"
+                        addText += "<div class='form-group'><label class='col-md-2 control-label'>选择会议</label><div class='col-md-2'><select id='journalsORconferenceSelect_CCF' class='form-control' name='paper_journals_conference_CCF.journals_conference_id' onchange='showLocationAreaByConference()'>"
                             + selectText
                             + "</div></div><div class='col-md-12'>&nbsp;</div>";
-                        addText += " <label class='col-md-4 control-label'>其他</label><div class='col-md-8'> <input type='checkbox' id='journalsORconferenceSelect_OTHER' name='paper_journals_conference_isOther' value='0' onchange='checkJournalsORConferenceOther(1)'/> ";
+                        addText += " <label class='col-md-2 control-label'>其他</label><div class='col-md-2'> <input type='checkbox' id='journalsORconferenceSelect_OTHER' name='paper_journals_conference_isOther' value='0' onchange='checkJournalsORConferenceOther(1)'/></div> <div class='col-md-2'>&nbsp;</div> ";
                     }
                     $("span#journalsORconferenceArea").html(addText);
                 }
@@ -851,6 +851,8 @@ function shoWPaperProxyInputList(paperproxy_id) {
                                 $("div#paper_journals_location").removeAttr("hidden");
                                 $("input#paper_journals_publishName").val(
                                     result.paper_publishName);
+                                $("input#paper_conference_publishName").attr("disabled",
+                                    true);
                                 switch (result.paper_publishType) {
                                     case 1:
                                         $("input#paper_publishType1").attr("checked", "checked");
@@ -883,6 +885,11 @@ function shoWPaperProxyInputList(paperproxy_id) {
                                 }
                                 if (null != result.paper_location) {
                                     var locations = result.paper_location.split("$");
+                                    for (var i = 0; i < locations.length; i++) {
+                                        if (null == locations[i] || "null" == locations[i]) {
+                                            locations[i] = "";
+                                        }
+                                    }
                                     $("input#paper_journals_location1").val(locations[0]);
                                     $("input#paper_journals_location2").val(locations[1]);
                                     $("input#paper_journals_location3").val(locations[2]);
@@ -896,12 +903,19 @@ function shoWPaperProxyInputList(paperproxy_id) {
                                 $("div#paper_conference_location").removeAttr("hidden");
                                 $("input#paper_conference_publishName").val(
                                     result.paper_publishName);
+                                $("input#paper_journals_publishName").attr("disabled",
+                                    true);
                                 var CCF_id = -1;
                                 if (null != result.paper_journals_conference_CCF) {
                                     CCF_id = result.paper_journals_conference_CCF.journals_conference_id;
                                 }
                                 if (null != result.paper_location) {
                                     var locations = result.paper_location.split("$");
+                                    for (var i = 0; i < locations.length; i++) {
+                                        if (null == locations[i] || "null" == locations[i]) {
+                                            locations[i] = "";
+                                        }
+                                    }
                                     $("input#paper_conference_location1").val(locations[0]);
                                     $("input#paper_conference_location2").val(locations[1]);
                                 }
@@ -969,6 +983,7 @@ $(document)
                         $("input#paper_if").attr("disabled",
                             true);
                         if (0 == status) {
+                            $("input#paper_conference_location1").val("");
                             $("input#paper_conference_location1").attr("disabled",
                                 true);
                         } else {
