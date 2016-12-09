@@ -120,6 +120,11 @@ function shoWPaperProxy(paperproxy_id) {
                         + "<tr>"
                         + "<td width='85%'>发表方式：  ";
                     var locations = result.paper_location.split("$");
+                    for (var i = 0; i < locations.length; i++) {
+                        if (null == locations[i] || "null" == locations[i] || "" == locations[i]) {
+                            locations[i] = "无";
+                        }
+                    }
                     $("input#paperproxy_publishType").val(result.paper_publishType);
                     switch (result.paper_issue) {
                         case 0:
