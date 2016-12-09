@@ -3,7 +3,7 @@ $(document)
         function () {
             var teacher_no = $("input#teacher_no").val();
             var paperproxy_id = $("input#paperproxy_id").val();
-            var paperproxy_publishType=$("input#paperproxy_publishType").val();
+            var paperproxy_publishType = $("input#paperproxy_publishType").val();
             var htmlobj = $
                 .ajax({
                     url: "../paper_proxy/file/getFile.do",
@@ -17,8 +17,8 @@ $(document)
                         if (stats == "success") {
                             result = JSON.parse(htmlobj.responseText);
                             changefile();
-                            for(var i in result){
-                                wordgreen(paperproxy_publishType,result[i].file_type);
+                            for (var i in result) {
+                                wordgreen(paperproxy_publishType, result[i].file_type);
                             }
 
                         }
@@ -44,11 +44,15 @@ $(document)
                             success: function (data, stats) {
                                 if (stats == "success") {
                                     var result = JSON.parse(htmlobj.responseText);
-                                    alert("录入成功!"+result);
+                                    if (result > 0) {
+                                        $("#myModal_success").modal();
+                                    } else {
+                                        $("#myModal_failed").modal();
+                                    }
                                 }
                             },
                             error: function (data) {
-                                alert("请求失败");
+                                $("#myModal_failed").modal();
                             }
                         });
                 });
@@ -56,7 +60,7 @@ $(document)
     )
 function changefile() {
     //var radioflag = $("input[name='paper_type']:checked").val();
-    var paperproxy_publishType=$("input#paperproxy_publishType").val();
+    var paperproxy_publishType = $("input#paperproxy_publishType").val();
     var listarea1 = document.getElementById("china");
     var listarea2 = document.getElementById("us");
     var filearea1 = document.getElementById("china2");
@@ -69,7 +73,7 @@ function changefile() {
     var h6 = document.getElementById("h6");
     var next = document.getElementById("paperproxy_submit");
 
-    if (paperproxy_publishType == 2||paperproxy_publishType == 3) {//国外
+    if (paperproxy_publishType == 2 || paperproxy_publishType == 3) {//国外
         next.setAttribute("disabled", "true");
         listarea1.setAttribute("class", "col-md-12 hidden");
         listarea2.setAttribute("class", "col-md-12");
@@ -90,11 +94,11 @@ function changefile() {
         }
     }
 }
-function wordgreen(publishType,Filetype){
-    if(publishType == 1){//国内
-        var f = document.getElementById("f"+Filetype);
-        var text = document.getElementById("text"+Filetype);
-        var textok = document.getElementById("textok"+Filetype);
+function wordgreen(publishType, Filetype) {
+    if (publishType == 1) {//国内
+        var f = document.getElementById("f" + Filetype);
+        var text = document.getElementById("text" + Filetype);
+        var textok = document.getElementById("textok" + Filetype);
         f.setAttribute("class", "alert alert-success");
         text.setAttribute("class", "text-success");
         textok.setAttribute("class", "glyphicon glyphicon-ok-sign");
@@ -103,32 +107,40 @@ function wordgreen(publishType,Filetype){
         var h3 = document.getElementById("h3");
         var h4 = document.getElementById("h4");
         var next = document.getElementById("paperproxy_submit");
-        switch(Filetype){
-            case 1:h1.setAttribute("value", "1");break;
-            case 2:h2.setAttribute("value", "1");break;
-            case 3:h3.setAttribute("value", "1");break;
-            case 4:h4.setAttribute("value", "1");break;
+        switch (Filetype) {
+            case 1:
+                h1.setAttribute("value", "1");
+                break;
+            case 2:
+                h2.setAttribute("value", "1");
+                break;
+            case 3:
+                h3.setAttribute("value", "1");
+                break;
+            case 4:
+                h4.setAttribute("value", "1");
+                break;
         }
         if (h1.value == "1" && h2.value == "1" && h3.value == "1" && h4.value == "1") {
             next.removeAttribute("disabled");
         }
-    }else{//国外+国际
-        if(Filetype == 2)
+    } else {//国外+国际
+        if (Filetype == 2)
             Filetype = 5;
         else
             Filetype = 6;
-        var f = document.getElementById("f"+Filetype);
-        var text = document.getElementById("text"+Filetype);
-        var textok = document.getElementById("textok"+Filetype);
+        var f = document.getElementById("f" + Filetype);
+        var text = document.getElementById("text" + Filetype);
+        var textok = document.getElementById("textok" + Filetype);
         f.setAttribute("class", "alert alert-success");
         text.setAttribute("class", "text-success");
         textok.setAttribute("class", "glyphicon glyphicon-ok-sign");
         var h5 = document.getElementById("h5");
         var h6 = document.getElementById("h6");
         var next = document.getElementById("paperproxy_submit");
-        if(Filetype == 5)
+        if (Filetype == 5)
             h5.setAttribute("value", "1");
-        if(Filetype == 6)
+        if (Filetype == 6)
             h6.setAttribute("value", "1");
 
         if (h5.value == "1" && h6.value == "1") {

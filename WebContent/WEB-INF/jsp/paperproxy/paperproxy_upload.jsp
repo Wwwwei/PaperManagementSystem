@@ -114,7 +114,7 @@
     <div class="row">
         <%--<div class="col-md-4"><label>请选择论文的类型：</label></div>--%>
         <%--<div class="col-md-4"><input id="incountry" type="radio" name="paper_type" value="0" checked--%>
-                                     <%--onclick="changefile()">&nbsp;&nbsp;国内论文--%>
+        <%--onclick="changefile()">&nbsp;&nbsp;国内论文--%>
         <%--</div>--%>
         <%--<div class="col-md-4"><input id="outcountry" type="radio" name="paper_type" value="1" onclick="changefile()">&nbsp;&nbsp;国外论文--%>
         <%--</div>--%>
@@ -282,7 +282,43 @@
             <button class="btn btn-block btn-primary" id="paperproxy_show">上一步</button>
         </div>
         <div class="col-md-6">
-            <button class="btn btn-block btn-warning" id="paperproxy_submit" disabled>确认录入论文</button>
+            <button class="btn btn-block btn-warning" id="paperproxy_submit"
+                    disabled>确认录入论文
+            </button>
+
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal_success" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel1">录入结果</h4>
+                    </div>
+                    <div class="modal-body">
+                        录入成功
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="myModal_failed" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel2">录入结果</h4>
+                    </div>
+                    <div class="modal-body">
+                        录入失败,请稍后再试!
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <input type="hidden" value="${requestScope.teacher_no}" name="teacher_no"
