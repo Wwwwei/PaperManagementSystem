@@ -44,7 +44,7 @@
         <collection property="paper_teacher" resultMap="TeacherBean"/>
     </resultMap>
 
-    <resultMap type="pms.entity.Journals_Conference" id="Journals_ConferenceBean">
+    <resultMap type="pms.entity.JournalsConference" id="Journals_ConferenceBean">
         <id column="journals_conference_id" property="journals_conference_id"/>
         <result column="journals_conference_degree" property="journals_conference_degree"/>
         <result column="journals_conference_name" property="journals_conference_name"/>
