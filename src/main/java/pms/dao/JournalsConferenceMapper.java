@@ -5,7 +5,7 @@ import java.util.Map;
 
 import pms.entity.Journals_Conference;
 
-public interface Journals_ConferenceMapper {
+public interface JournalsConferenceMapper {
 	/**
 	 * 查询所有会议或者期刊实体
 	 * @return

@@ -7,7 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pms.dao.Journals_ConferenceMapper;
+import pms.dao.JournalsConferenceMapper;
 import pms.entity.Journals_Conference;
 import pms.service.JournalsConferenceService;
 
@@ -15,13 +15,13 @@ import pms.service.JournalsConferenceService;
 public class JournalsConferenceServiceImpl implements JournalsConferenceService {
 
 	@Autowired
-	private Journals_ConferenceMapper journals_ConferenceMapper;
+	private JournalsConferenceMapper journalsConferenceMapper;
 
 	@Override
 	public List<Journals_Conference> findAllJournals_Conference() {
 		// TODO Auto-generated method stub
 //		List<Journals_Conference> journals_Conferences = journals_ConferenceMapper.findJournals_Conference();
-		List<Journals_Conference> journals_Conferences = journals_ConferenceMapper.findAll();
+		List<Journals_Conference> journals_Conferences = journalsConferenceMapper.findAll();
 		return journals_Conferences;
 	}
 
@@ -30,7 +30,7 @@ public class JournalsConferenceServiceImpl implements JournalsConferenceService 
 		// TODO Auto-generated method stub
 		if (flag != null) {
 			//return journals_ConferenceMapper.findJournals_ConferenceByFlag(flag);
-		return journals_ConferenceMapper.findByFlag(flag);
+		return journalsConferenceMapper.findByFlag(flag);
 		} else {
 			return null;
 		}
@@ -43,7 +43,7 @@ public class JournalsConferenceServiceImpl implements JournalsConferenceService 
 			Map<String, Object> params = new HashMap<String, Object>();
 			params.put("journals_conference_id", id);
 			params.put("journals_conference_year", year);
-			return journals_ConferenceMapper.selectByIdAndYear(params);
+			return journalsConferenceMapper.selectByIdAndYear(params);
 		} else {
 			return null;
 		}
