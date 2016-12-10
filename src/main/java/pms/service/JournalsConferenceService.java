@@ -2,7 +2,7 @@ package pms.service;
 
 import java.util.List;
 
-import pms.entity.Journals_Conference;
+import pms.entity.JournalsConference;
 
 public interface JournalsConferenceService {
 
@@ -11,15 +11,15 @@ public interface JournalsConferenceService {
 	 *
 	 * @return
 	 */
-	//public List<Journals_Conference> findJournals_Conference();
-	public List<Journals_Conference> findAllJournals_Conference();
+	//public List<JournalsConference> findJournals_Conference();
+	public List<JournalsConference> findAllJournals_Conference();
 	/**
 	 * 根据教师flag查询会议或者期刊集合
 	 * 
 	 * @param flag
 	 * @return
 	 */
-	public List<Journals_Conference> findJournals_ConferenceByFlag(Integer flag);
+	public List<JournalsConference> findJournals_ConferenceByFlag(Integer flag);
 
 	/**
 	 * 根据id和影响因子时间查询期刊论文实体
@@ -28,6 +28,6 @@ public interface JournalsConferenceService {
 	 * @param year
 	 * @return
 	 */
-	public Journals_Conference findJournals_ConferenceByIdAndYear(Integer id, Integer year);
+	public JournalsConference findJournals_ConferenceByIdAndYear(Integer id, Integer year);
 
 }
