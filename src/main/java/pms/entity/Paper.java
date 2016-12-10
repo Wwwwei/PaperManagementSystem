@@ -12,7 +12,7 @@ public class Paper {
     private int paper_rank; // 录入教师在所有作者中的排名
     private int paper_authorNum;// 作者总数
     /*废弃*/
-    // private Journals_Conference paper_journals_Conference;
+    // private JournalsConference paper_journals_Conference;
     private String paper_includedType; // 收录类型
     private String paper_accNum;// 检索号
     private String paper_time;
@@ -29,11 +29,11 @@ public class Paper {
     private int paper_citations_google; // google scholar 引用
     private int paper_status; // 表示论文状态
     private int paper_issue;// 发表方式（0:期刊;1:会议）
-    private Journals_Conference paper_journals_conference_ZKY; // 中科院期刊会议
-    private Journals_Conference paper_journals_conference_JCR; // JCR期刊会议
-    private Journals_Conference paper_journals_conference_CCF; // CFF期刊会议
-    private Journals_Conference paper_journals_conference_ESI; // ESI期刊会议
-    private Journals_Conference paper_journals_conference_OTHER; // 其他期刊会议
+    private JournalsConference paper_journals_conference_ZKY; // 中科院期刊会议
+    private JournalsConference paper_journals_conference_JCR; // JCR期刊会议
+    private JournalsConference paper_journals_conference_CCF; // CFF期刊会议
+    private JournalsConference paper_journals_conference_ESI; // ESI期刊会议
+    private JournalsConference paper_journals_conference_OTHER; // 其他期刊会议
     private String paper_journals_conference_CUSTOM;//自定义期刊会议
     private int paper_journals_conference_isZjut100 = 0; // 是否zjut100期刊论文(0:不是;1:是)
     private int paper_journals_conference_isOther = 1;// 是否勾选期刊会议其他(0:表示期刊会议为其他，1:表示期刊会议为存在)
@@ -138,19 +138,19 @@ public class Paper {
         this.paper_status = paper_status;
     }
 
-    public Journals_Conference getPaper_journals_conference_ZKY() {
+    public JournalsConference getPaper_journals_conference_ZKY() {
         return paper_journals_conference_ZKY;
     }
 
-    public void setPaper_journals_conference_ZKY(Journals_Conference paper_journals_conference_ZKY) {
+    public void setPaper_journals_conference_ZKY(JournalsConference paper_journals_conference_ZKY) {
         this.paper_journals_conference_ZKY = paper_journals_conference_ZKY;
     }
 
-    public Journals_Conference getPaper_journals_conference_JCR() {
+    public JournalsConference getPaper_journals_conference_JCR() {
         return paper_journals_conference_JCR;
     }
 
-    public void setPaper_journals_conference_JCR(Journals_Conference paper_journals_conference_JCR) {
+    public void setPaper_journals_conference_JCR(JournalsConference paper_journals_conference_JCR) {
         this.paper_journals_conference_JCR = paper_journals_conference_JCR;
     }
 //
@@ -178,11 +178,11 @@ public class Paper {
 //        this.paper_location_JCR = paper_location_JCR;
 //    }
 
-    public Journals_Conference getPaper_journals_conference_CCF() {
+    public JournalsConference getPaper_journals_conference_CCF() {
         return paper_journals_conference_CCF;
     }
 
-    public void setPaper_journals_conference_CCF(Journals_Conference paper_journals_conference_CCF) {
+    public void setPaper_journals_conference_CCF(JournalsConference paper_journals_conference_CCF) {
         this.paper_journals_conference_CCF = paper_journals_conference_CCF;
     }
 
@@ -233,19 +233,19 @@ public class Paper {
         this.paper_location = paper_location;
     }
 
-    public Journals_Conference getPaper_journals_conference_ESI() {
+    public JournalsConference getPaper_journals_conference_ESI() {
         return paper_journals_conference_ESI;
     }
 
-    public void setPaper_journals_conference_ESI(Journals_Conference paper_journals_conference_ESI) {
+    public void setPaper_journals_conference_ESI(JournalsConference paper_journals_conference_ESI) {
         this.paper_journals_conference_ESI = paper_journals_conference_ESI;
     }
 
-    public Journals_Conference getPaper_journals_conference_OTHER() {
+    public JournalsConference getPaper_journals_conference_OTHER() {
         return paper_journals_conference_OTHER;
     }
 
-    public void setPaper_journals_conference_OTHER(Journals_Conference paper_journals_conference_OTHER) {
+    public void setPaper_journals_conference_OTHER(JournalsConference paper_journals_conference_OTHER) {
         this.paper_journals_conference_OTHER = paper_journals_conference_OTHER;
     }
 
