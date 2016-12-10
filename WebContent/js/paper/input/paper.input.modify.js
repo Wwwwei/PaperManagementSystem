@@ -905,6 +905,9 @@ function shoWPaperProxyInputList(paperproxy_id) {
                                     result.paper_publishName);
                                 $("input#paper_journals_publishName").attr("disabled",
                                     true);
+                                $("input#paper_if").val("");
+                                $("input#paper_if").attr("disabled",
+                                    true);
                                 var CCF_id = -1;
                                 if (null != result.paper_journals_conference_CCF) {
                                     CCF_id = result.paper_journals_conference_CCF.journals_conference_id;
