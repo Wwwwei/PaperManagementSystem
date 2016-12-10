@@ -9,7 +9,6 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import pms.entity.Author;
 import pms.service.AuthorService;
 import pms.service.PaperService;
 
@@ -36,7 +35,7 @@ public class PaperTest {
 	@Test
 	public void testInsertPaper(){
 		Paper paper=new Paper();
-		Journals_Conference paper_journals_Conference=new Journals_Conference();
+		JournalsConference paper_journals_Conference=new JournalsConference();
 		Teacher paper_teacher= new Teacher();
 		paper_journals_Conference.setJournals_conference_id(1);
 		paper_teacher.setTeacher_id(1);
