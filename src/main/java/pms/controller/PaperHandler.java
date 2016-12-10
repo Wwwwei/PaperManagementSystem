@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import pms.entity.Journals_Conference;
+import pms.entity.JournalsConference;
 import pms.entity.Page;
 import pms.entity.Paper;
 import pms.entity.Teacher;
@@ -99,7 +99,7 @@ public class PaperHandler {
 		session.setAttribute("paper_citations_others_min", 0);
 		session.setAttribute("paper_citations_others_max", 100000);
 		if (session.getAttribute("journals_Conference_degrees") == null) {
-			List<Journals_Conference> journals_Conferences = journalsConferenceService.findAllJournals_Conference();
+			List<JournalsConference> journals_Conferences = journalsConferenceService.findAllJournals_Conference();
 			session.setAttribute("journals_Conferences", journals_Conferences);
 		}
 		if (session.getAttribute("teachers") == null) {
@@ -182,7 +182,7 @@ public class PaperHandler {
 		page.setCurrentPage(1);
 		List<Paper> papers = paperService.findAllPaper(0, "ALL", "ALL", -1, 0, -1, 0, 100, 0, 1000.0, 0, 100000, 0,
 				100000, "ALL", 1, page);
-		List<Journals_Conference> journals_Conferences = journalsConferenceService.findAllJournals_Conference();
+		List<JournalsConference> journals_Conferences = journalsConferenceService.findAllJournals_Conference();
 		List<Teacher> teachers = teacherService.findAllTeacher();
 		session.setAttribute("journals_conference_id", 0);
 		session.setAttribute("paper_includedType", "ALL");

@@ -143,7 +143,7 @@ public class PaperProxyHandler {
             if (null != paper.getPaper_journals_conference_ZKY()
                     && -1 != paper.getPaper_journals_conference_ZKY().getJournals_conference_id()) {
                 int zky_id = paper.getPaper_journals_conference_ZKY().getJournals_conference_id();
-                Journals_Conference zky = journals_ConferenceService.findJournals_ConferenceByIdAndYear(zky_id,
+                JournalsConference zky = journals_ConferenceService.findJournals_ConferenceByIdAndYear(zky_id,
                         (Calendar.getInstance()).get(Calendar.YEAR));
                 if (null != zky) {
                     zky_if = journals_ConferenceService
@@ -155,7 +155,7 @@ public class PaperProxyHandler {
             if (null != paper.getPaper_journals_conference_JCR()
                     && -1 != paper.getPaper_journals_conference_JCR().getJournals_conference_id()) {
                 int jcr_id = paper.getPaper_journals_conference_JCR().getJournals_conference_id();
-                Journals_Conference jcr = journals_ConferenceService.findJournals_ConferenceByIdAndYear(jcr_id,
+                JournalsConference jcr = journals_ConferenceService.findJournals_ConferenceByIdAndYear(jcr_id,
                         (Calendar.getInstance()).get(Calendar.YEAR));
                 if (null != jcr) {
                     jcr_if = journals_ConferenceService
@@ -166,7 +166,7 @@ public class PaperProxyHandler {
             if (null != paper.getPaper_journals_conference_CCF()
                     && -1 != paper.getPaper_journals_conference_CCF().getJournals_conference_id()) {
                 int ccf_id = paper.getPaper_journals_conference_CCF().getJournals_conference_id();
-                Journals_Conference ccf = journals_ConferenceService.findJournals_ConferenceByIdAndYear(ccf_id,
+                JournalsConference ccf = journals_ConferenceService.findJournals_ConferenceByIdAndYear(ccf_id,
                         (Calendar.getInstance()).get(Calendar.YEAR));
                 if (null != ccf) {
                     ccf_if = journals_ConferenceService
@@ -303,7 +303,7 @@ public class PaperProxyHandler {
             if (null != paper.getPaper_journals_conference_ZKY()
                     && -1 != paper.getPaper_journals_conference_ZKY().getJournals_conference_id()) {
                 int zky_id = paper.getPaper_journals_conference_ZKY().getJournals_conference_id();
-                Journals_Conference zky = journalsConferenceService.findJournals_ConferenceByIdAndYear(zky_id,
+                JournalsConference zky = journalsConferenceService.findJournals_ConferenceByIdAndYear(zky_id,
                         (Calendar.getInstance()).get(Calendar.YEAR));
                 if (null != zky) {
                     zky_if = journalsConferenceService
@@ -315,7 +315,7 @@ public class PaperProxyHandler {
             if (null != paper.getPaper_journals_conference_JCR()
                     && -1 != paper.getPaper_journals_conference_JCR().getJournals_conference_id()) {
                 int jcr_id = paper.getPaper_journals_conference_JCR().getJournals_conference_id();
-                Journals_Conference jcr = journalsConferenceService.findJournals_ConferenceByIdAndYear(jcr_id,
+                JournalsConference jcr = journalsConferenceService.findJournals_ConferenceByIdAndYear(jcr_id,
                         (Calendar.getInstance()).get(Calendar.YEAR));
                 if (null != jcr) {
                     jcr_if = journalsConferenceService
@@ -326,7 +326,7 @@ public class PaperProxyHandler {
             if (null != paper.getPaper_journals_conference_CCF()
                     && -1 != paper.getPaper_journals_conference_CCF().getJournals_conference_id()) {
                 int ccf_id = paper.getPaper_journals_conference_CCF().getJournals_conference_id();
-                Journals_Conference ccf = journalsConferenceService.findJournals_ConferenceByIdAndYear(ccf_id,
+                JournalsConference ccf = journalsConferenceService.findJournals_ConferenceByIdAndYear(ccf_id,
                         (Calendar.getInstance()).get(Calendar.YEAR));
                 if (null != ccf) {
                     ccf_if = journalsConferenceService

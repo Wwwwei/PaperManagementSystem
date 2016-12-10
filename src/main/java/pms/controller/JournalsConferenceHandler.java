@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import pms.entity.Journals_Conference;
+import pms.entity.JournalsConference;
 import pms.service.JournalsConferenceService;
 
 @Controller
@@ -21,8 +21,8 @@ public class JournalsConferenceHandler {
 
 	@ResponseBody
 	@RequestMapping(value = "/journals_conference/findByFlag", method = RequestMethod.POST)
-	public List<Journals_Conference> findByFlag(@RequestParam("flag") int flag, HttpServletRequest request) {
-		List<Journals_Conference>  journalsORconference= journalsConferenceService.findJournals_ConferenceByFlag(flag);
+	public List<JournalsConference> findByFlag(@RequestParam("flag") int flag, HttpServletRequest request) {
+		List<JournalsConference>  journalsORconference= journalsConferenceService.findJournals_ConferenceByFlag(flag);
 		//System.out.println(x.get(0).getJournals_conference_id());
 		return journalsORconference;
 	}
