@@ -1,6 +1,6 @@
 package pms.entity;
 
-public class Journals_Conference {
+public class JournalsConference {
 	private int journals_conference_id;
 	private String journals_conference_name;
 	private String journals_conference_degree;// 刊物或论文等级
