@@ -158,7 +158,7 @@
                                 </label>
                                 <div class="col-md-5">
                                     <input type="number" id="rank" name="paper_rank" min="1"
-                                           class="form-control" max="5">
+                                           class="form-control" max="100">
                                 </div>
                             </div>
                             <div class="col-md-12">&nbsp;</div>
