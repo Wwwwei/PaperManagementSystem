@@ -714,7 +714,8 @@ public class PaperProxyHandler {
 						 */
                         // ==============================
 //                        path = "G:/" + teacher_id + "/" + paperproxy_id + "/";
-                        path = "/Users/zhaogx/Downloads/" + teacher_id + "/" + paperproxy_id + "/";
+//                        path = "/Users/zhaogx/Downloads/" + teacher_id + "/" + paperproxy_id + "/";
+                        path = "/paper/upload/" + teacher_id + "/" + paperproxy_id + "/";
                         File f = new File(path);
                         if (!f.exists()) {
                             f.mkdirs();

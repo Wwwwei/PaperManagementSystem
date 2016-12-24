@@ -1,4 +1,5 @@
 .gitignore
+.settings/
 /classes/
 *.iml
 *.ipr
