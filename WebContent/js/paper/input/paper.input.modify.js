@@ -542,11 +542,11 @@ function showSelectByFlag(paperproxy_id, flag, ZKY_id, JCR_id, CCF_id, ESI_id, O
                         select_ESI += "</select>";
                         select_OTHER += "</select>";
                         if (0 == isZjut100) {
-                            addText += " <label class='col-md-3 control-label'>是否ZJUT100期刊论文</label><div class='col-md-3'> <input type='checkbox' id='paper_journals_conference_isZjut100' name='paper_journals_conference_isZjut100' value='1'/></div><div class='col-md-12'>&nbsp;</div>";
+                            addText += " <label class='col-md-3 control-label'>属于ZJUT100期刊论文</label><div class='col-md-3'> <input type='checkbox' id='paper_journals_conference_isZjut100' name='paper_journals_conference_isZjut100' value='1'/></div><div class='col-md-12'>&nbsp;</div>";
                             addText += "<div class='col-md-12'><div class='alert alert-warning' style='font-size: 14px;'><span class='glyphicon glyphicon-info-sign'></span><strong>Tips</strong>&nbsp;&nbsp;若您的论文在下列级别选项中无对应级别,请勾选其他,手动填写.</div></div>";
                         }
                         else {
-                            addText += " <label class='col-md-3 control-label'>是否ZJUT100期刊论文</label><div class='col-md-3'> <input type='checkbox' id='paper_journals_conference_isZjut100' name='paper_journals_conference_isZjut100' value='1' checked='checked'/></div><div class='col-md-12'>&nbsp;</div>";
+                            addText += " <label class='col-md-3 control-label'>属于ZJUT100期刊论文</label><div class='col-md-3'> <input type='checkbox' id='paper_journals_conference_isZjut100' name='paper_journals_conference_isZjut100' value='1' checked='checked'/></div><div class='col-md-12'>&nbsp;</div>";
                             addText += "<div class='col-md-12'><div class='alert alert-warning' style='font-size: 14px;'><span class='glyphicon glyphicon-info-sign'></span><strong>Tips</strong>&nbsp;&nbsp;若您的论文在下列级别选项中无对应级别,请勾选其他,手动填写.</div></div>";
                         }
                         addText += "<div class='form-group'><label class='col-md-2 control-label' >中科院分区</label><div class='col-md-2'><select id='journalsORconferenceSelect_ZKY' class='form-control' name='paper_journals_conference_ZKY.journals_conference_id'>"
