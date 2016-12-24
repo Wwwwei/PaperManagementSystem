@@ -15,7 +15,7 @@
 <script type="text/javascript" src="js/softwareCopyright.js"></script>
 <script type="text/ecmascript" src="js/secure/sha1.js"></script>
 <script type="text/javascript" src="js/secure/login.js"></script>
-<title>Insert title here</title>
+<title>登录</title>
 <style>
 body {
 	padding-top: 10%;
