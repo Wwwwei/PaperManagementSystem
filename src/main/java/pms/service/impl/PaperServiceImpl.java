@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import pms.dao.PaperMapper;
+import pms.entity.Author;
 import pms.entity.Page;
 import pms.entity.Paper;
 import pms.service.AuthorService;
@@ -29,10 +30,10 @@ public class PaperServiceImpl implements PaperService {
 
 	@Override
 	public List<Paper> findPaper(String find_string, String find_type, String journals_conference_degree,
-			String paper_includedType, String paper_time, int journals_conference_flag, int teacher_id, int teacher_sex,
-			int teacher_age_min, int teacher_age_max, double journals_conference_IF_min,
-			double journals_conference_IF_max, int paper_citations_min, int paper_citations_max,
-			int paper_citations_others_min, int paper_citations_others_max, String column, int order, Page page) {
+								 String paper_includedType, String paper_time, int journals_conference_flag, int teacher_id, int teacher_sex,
+								 int teacher_age_min, int teacher_age_max, double journals_conference_IF_min,
+								 double journals_conference_IF_max, int paper_citations_min, int paper_citations_max,
+								 int paper_citations_others_min, int paper_citations_others_max, String column, int order, Page page) {
 		// TODO Auto-generated method stub
 		// Map<String, Object> params = new HashMap<String, Object>();
 		// params.put("find_string", find_string);
@@ -52,7 +53,7 @@ public class PaperServiceImpl implements PaperService {
 
 	/**
 	 * 根据作者信息查询
-	 * 
+	 *
 	 * @param authorInfo
 	 * @return
 	 */
@@ -65,10 +66,10 @@ public class PaperServiceImpl implements PaperService {
 
 	@Override
 	public List<Paper> findAllPaper(int journals_conference_id, String paper_includedType, String paper_time,
-			int journals_conference_flag, int teacher_id, int teacher_sex, int teacher_age_min, int teacher_age_max,
-			double journals_conference_IF_min, double journals_conference_IF_max, int paper_citations_min,
-			int paper_citations_max, int paper_citations_others_min, int paper_citations_others_max, String column,
-			int order, Page page) {
+									int journals_conference_flag, int teacher_id, int teacher_sex, int teacher_age_min, int teacher_age_max,
+									double journals_conference_IF_min, double journals_conference_IF_max, int paper_citations_min,
+									int paper_citations_max, int paper_citations_others_min, int paper_citations_others_max, String column,
+									int order, Page page) {
 		Map<String, Object> params = new HashMap<String, Object>();
 		putParams(params, journals_conference_id, paper_includedType, paper_time, journals_conference_flag, teacher_id,
 				teacher_sex, teacher_age_min, teacher_age_max, journals_conference_IF_min, journals_conference_IF_max,
@@ -79,7 +80,7 @@ public class PaperServiceImpl implements PaperService {
 
 	/**
 	 * 填充参数
-	 * 
+	 *
 	 * @param params
 	 * @param journals_conference_degree
 	 * @param paper_includedType
@@ -93,17 +94,21 @@ public class PaperServiceImpl implements PaperService {
 	 * @param page
 	 */
 	private void putParams(Map<String, Object> params, int journals_conference_id, String paper_includedType,
-			String paper_time, int journals_conference_flag, int teacher_id, int teacher_sex, int teacher_age_min,
-			int teacher_age_max, double journals_conference_IF_min, double journals_conference_IF_max,
-			int paper_citations_min, int paper_citations_max, int paper_citations_others_min,
-			int paper_citations_others_max, String column, int order, Page page) {
-		if (0 < journals_conference_id && journals_conference_id < 13) {
+						   String paper_time, int journals_conference_flag, int teacher_id, int teacher_sex, int teacher_age_min,
+						   int teacher_age_max, double journals_conference_IF_min, double journals_conference_IF_max,
+						   int paper_citations_min, int paper_citations_max, int paper_citations_others_min,
+						   int paper_citations_others_max, String column, int order, Page page) {
+		if (0 < journals_conference_id && journals_conference_id < 50) {
 			if (0 < journals_conference_id && journals_conference_id <= 3)
 				params.put("journals_conference_ZKY_id", journals_conference_id);
 			if (3 < journals_conference_id && journals_conference_id <= 6)
 				params.put("journals_conference_JCR_id", journals_conference_id);
-			if (6 < journals_conference_id && journals_conference_id <= 12)
+			if (6 < journals_conference_id && journals_conference_id <= 13)
 				params.put("journals_conference_CCF_id", journals_conference_id);
+			if (13 < journals_conference_id && journals_conference_id <= 16)
+				params.put("journals_conference_ESI_id", journals_conference_id);
+			if (16 < journals_conference_id && journals_conference_id <= 18)
+				params.put("journals_conference_OTHER_id", journals_conference_id);
 		}
 		if (!paper_includedType.equals("ALL"))
 			params.put("paper_includedType", paper_includedType);
@@ -158,6 +163,7 @@ public class PaperServiceImpl implements PaperService {
 		return paperMapper.findPaperByPaperId(paper_id);
 	}
 
+
 	@Override
 	public int insertPaper(Paper paper) {
 		// TODO Auto-generated method stub
@@ -169,6 +175,20 @@ public class PaperServiceImpl implements PaperService {
 		if (paperMapper.deletePaperByPaperId(paper_id) != 0 && authorService.deleteAuthor(paper_id))
 			return true;
 		return false;
+	}
+	public boolean updatePaper(int paper_id,int paper_status,String paper_accNum,String paper_time,String paper_location)
+	{
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("paper_id", paper_id);
+		params.put("paper_status", paper_status);
+		params.put("paper_accNum", paper_accNum);
+		params.put("paper_time", paper_time);
+		params.put("paper_location", paper_location);
+		int flag=paperMapper.updatePaperByPaperId(params);
+		if(flag==1)
+			return true;
+		return false;
+
 	}
 
 	@Override

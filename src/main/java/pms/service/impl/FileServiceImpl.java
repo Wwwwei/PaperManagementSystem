@@ -45,4 +45,15 @@ public class FileServiceImpl implements FileService {
             return null;
         }
     }
+    @Override
+    public File findFileByPaperIdAndFileType(Integer paperId, Integer fileType) {
+        if (null != paperId && null != fileType) {
+            Map<String, Object> params = new HashMap<String, Object>();
+            params.put("paperId", paperId);
+            params.put("fileType", fileType);
+            return fileMapper.selectByPaperIdAndFileType(params);
+        } else {
+            return null;
+        }
+    }
 }

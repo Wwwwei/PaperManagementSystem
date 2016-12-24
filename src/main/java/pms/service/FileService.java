@@ -37,5 +37,13 @@ public interface FileService {
      * @return
      */
     public File findFileByPaperproxyIdAndFileType(Integer paperproxyId, Integer fileType);
+    /**
+     * 根据论文id和文件类型查询文件记录
+     *
+     * @param paperproxyId
+     * @param fileType
+     * @return
+     */
+    public File findFileByPaperIdAndFileType(Integer paper_id, Integer file_type);
 
 }

@@ -15,11 +15,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import pms.entity.Author;
 import pms.entity.JournalsConference;
 import pms.entity.Page;
 import pms.entity.Paper;
 import pms.entity.Teacher;
 import pms.service.AuthorProxyService;
+import pms.service.AuthorService;
 import pms.service.JournalsConferenceService;
 import pms.service.PaperProxyService;
 import pms.service.PaperService;
@@ -55,24 +57,27 @@ public class PaperHandler {
 	@Resource(name = "authorProxyServiceImpl")
 	private AuthorProxyService authorProxyService;
 
+	@Resource(name = "authorServiceImpl")
+	private AuthorService authorService;
+
 	@RequestMapping(value = "/findPaper", method = RequestMethod.POST)
 	public String findPaper(@RequestParam(required = false, defaultValue = "") String find_string,
-			@RequestParam(value = "find_type", required = false, defaultValue = DEFAULT_FIND_TYPE) String find_type,
-			@RequestParam(value = "journals_conference_degree", required = false, defaultValue = "ALL") String journals_conference_degree,
-			@RequestParam(value = "paper_includedType", required = false, defaultValue = "ALL") String paper_includedType,
-			@RequestParam(value = "paper_time", required = false, defaultValue = "ALL") String paper_time,
-			@RequestParam(value = "journals_conference_flag", required = false, defaultValue = "-1") int journals_conference_flag,
-			@RequestParam(value = "teacher_id", required = false, defaultValue = "0") int teacher_id,
-			@RequestParam(value = "teacher_sex", required = false, defaultValue = "-1") int teacher_sex,
-			@RequestParam(value = "teacher_age_min", required = false, defaultValue = "0") int teacher_age_min,
-			@RequestParam(value = "teacher_age_max", required = false, defaultValue = "100") int teacher_age_max,
-			@RequestParam(value = "journals_conference_IF_min", required = false, defaultValue = "0") double journals_conference_IF_min,
-			@RequestParam(value = "journals_conference_IF_max", required = false, defaultValue = "1000") double journals_conference_IF_max,
-			@RequestParam(value = "paper_citations_min", required = false, defaultValue = "0") int paper_citations_min,
-			@RequestParam(value = "paper_citations_max", required = false, defaultValue = "100000") int paper_citations_max,
-			@RequestParam(value = "paper_citations_others_min", required = false, defaultValue = "0") int paper_citations_others_min,
-			@RequestParam(value = "paper_citations_others_max", required = false, defaultValue = "100000") int paper_citations_others_max,
-			HttpSession session, HttpServletRequest request) {
+							@RequestParam(value = "find_type", required = false, defaultValue = DEFAULT_FIND_TYPE) String find_type,
+							@RequestParam(value = "journals_conference_degree", required = false, defaultValue = "ALL") String journals_conference_degree,
+							@RequestParam(value = "paper_includedType", required = false, defaultValue = "ALL") String paper_includedType,
+							@RequestParam(value = "paper_time", required = false, defaultValue = "ALL") String paper_time,
+							@RequestParam(value = "journals_conference_flag", required = false, defaultValue = "-1") int journals_conference_flag,
+							@RequestParam(value = "teacher_id", required = false, defaultValue = "0") int teacher_id,
+							@RequestParam(value = "teacher_sex", required = false, defaultValue = "-1") int teacher_sex,
+							@RequestParam(value = "teacher_age_min", required = false, defaultValue = "0") int teacher_age_min,
+							@RequestParam(value = "teacher_age_max", required = false, defaultValue = "100") int teacher_age_max,
+							@RequestParam(value = "journals_conference_IF_min", required = false, defaultValue = "0") double journals_conference_IF_min,
+							@RequestParam(value = "journals_conference_IF_max", required = false, defaultValue = "1000") double journals_conference_IF_max,
+							@RequestParam(value = "paper_citations_min", required = false, defaultValue = "0") int paper_citations_min,
+							@RequestParam(value = "paper_citations_max", required = false, defaultValue = "100000") int paper_citations_max,
+							@RequestParam(value = "paper_citations_others_min", required = false, defaultValue = "0") int paper_citations_others_min,
+							@RequestParam(value = "paper_citations_others_max", required = false, defaultValue = "100000") int paper_citations_others_max,
+							HttpSession session, HttpServletRequest request) {
 		Page page = new Page();
 		page.setCurrentPage(1);
 		find_string = find_string.trim();
@@ -123,13 +128,13 @@ public class PaperHandler {
 	 * @param request
 	 * @param column
 	 * @param order
-     * @return
-     */
+	 * @return
+	 */
 	@RequestMapping(value = "/findPaper", method = RequestMethod.GET)
 	public String findPaper(@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
-			HttpSession session, HttpServletRequest request,
-			@RequestParam(value = "column", required = false, defaultValue = "ALL") String column,
-			@RequestParam(value = "order", required = false, defaultValue = "1") int order) {
+							HttpSession session, HttpServletRequest request,
+							@RequestParam(value = "column", required = false, defaultValue = "ALL") String column,
+							@RequestParam(value = "order", required = false, defaultValue = "1") int order) {
 		Page page = new Page();
 		page.setCurrentPage(currentPage);
 		session.setAttribute("column", column);
@@ -160,16 +165,53 @@ public class PaperHandler {
 	}
 
 	@RequestMapping(value = "/findPaperById", method = RequestMethod.GET)
-	public String findPaperById(@RequestParam(value = "paper_id") int paper_id, HttpServletRequest request) {
+	public String findPaperById(@RequestParam(value = "paper_id") int paper_id,
+								@RequestParam(value = "teacher_no") String teacher_no, HttpSession session, HttpServletRequest request) {
 		Paper paper = paperService.findPaperByPaperId(paper_id);
-		if (paper != null)
-			request.setAttribute("paper", paper);
+		List<Author> author = authorService.findAuthor(paper_id);
+		request.setAttribute("paper", paper);
+		request.setAttribute("authors", author);
+		if (paper.getPaper_status() == 0) {
+			if (paper.getPaper_issue() == 0) {
+				String s1 = paper.getPaper_location();
+				System.out.println(s1);
+				request.setAttribute("paper_number", s1.substring(0, s1.indexOf("$")));
+			}
+			if (paper.getPaper_issue() == 1) {
+				String s1 = paper.getPaper_location();
+				System.out.println(s1);
+				request.setAttribute("meeting_place", s1.substring(s1.indexOf("$") + 1));
+			}
+
+		}
+		if (paper.getPaper_status() == 1) {
+			if (paper.getPaper_issue() == 0) {
+				String s1 = paper.getPaper_location();
+				System.out.println(s1);
+				request.setAttribute("paper_number", s1.substring(0, s1.indexOf("$")));
+				String s2 = s1.substring(s1.indexOf("$") + 1);
+				System.out.println(s2);
+				request.setAttribute("paper_location_volume", s2.substring(0, s2.indexOf("$")));
+				String s3 = s2.substring(s2.indexOf("$") + 1);
+				System.out.println(s3);
+				request.setAttribute("paper_location_pagination", s3);
+			}
+			if (paper.getPaper_issue() == 1) {
+				String s1 = paper.getPaper_location();
+				System.out.println(s1);
+				request.setAttribute("meeting_page", s1.substring(0, s1.indexOf("$")));
+				String s2 = s1.substring(s1.indexOf("$") + 1);
+				System.out.println(s2);
+				request.setAttribute("meeting_place", s2);
+			}
+
+		}
 		return PAPER_INFO;
 	}
 
 	/**
 	 * 查询所有论文信息
-	 * 
+	 *
 	 * @param currentPage
 	 * @param request
 	 * @param session
@@ -217,7 +259,7 @@ public class PaperHandler {
 
 	/**
 	 * 根据页码分页查询
-	 * 
+	 *
 	 * @param session
 	 * @param request
 	 * @param currentPage
@@ -225,10 +267,10 @@ public class PaperHandler {
 	 */
 	@RequestMapping(value = "/findAllPaper", method = RequestMethod.GET)
 	public String findAllPaper(HttpSession session, HttpServletRequest request,
-			@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
-			@RequestParam(value = "column", required = false, defaultValue = "ALL") String column,
-			@RequestParam(value = "order", required = false, defaultValue = "1") int order) {
-		
+							   @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
+							   @RequestParam(value = "column", required = false, defaultValue = "ALL") String column,
+							   @RequestParam(value = "order", required = false, defaultValue = "1") int order) {
+
 		Page page = new Page();
 		page.setCurrentPage(currentPage);
 		session.setAttribute("currentPage", currentPage);
@@ -264,7 +306,7 @@ public class PaperHandler {
 
 	/**
 	 * 根据筛选条件查询所有论文
-	 * 
+	 *
 	 * @param session
 	 * @param request
 	 * @param journals_conference_degree
@@ -275,20 +317,20 @@ public class PaperHandler {
 	 */
 	@RequestMapping(value = "/findAllPaper", method = RequestMethod.POST)
 	public String findAllPaper(HttpSession session, HttpServletRequest request,
-			@RequestParam(value = "journals_conference_id", required = false, defaultValue = "0") int journals_conference_id,
-			@RequestParam(value = "paper_includedType", required = false, defaultValue = "ALL") String paper_includedType,
-			@RequestParam(value = "paper_time", required = false, defaultValue = "ALL") String paper_time,
-			@RequestParam(value = "journals_conference_flag", required = false, defaultValue = "-1") int journals_conference_flag,
-			@RequestParam(value = "teacher_id", required = false, defaultValue = "0") int teacher_id,
-			@RequestParam(value = "teacher_sex", required = false, defaultValue = "0") int teacher_sex,
-			@RequestParam(value = "teacher_age_min", required = false, defaultValue = "0") int teacher_age_min,
-			@RequestParam(value = "teacher_age_max", required = false, defaultValue = "100") int teacher_age_max,
-			@RequestParam(value = "journals_conference_IF_min", required = false, defaultValue = "0") double journals_conference_IF_min,
-			@RequestParam(value = "journals_conference_IF_max", required = false, defaultValue = "1000") double journals_conference_IF_max,
-			@RequestParam(value = "paper_citations_min", required = false, defaultValue = "0") int paper_citations_min,
-			@RequestParam(value = "paper_citations_max", required = false, defaultValue = "100000") int paper_citations_max,
-			@RequestParam(value = "paper_citations_others_min", required = false, defaultValue = "0") int paper_citations_others_min,
-			@RequestParam(value = "paper_citations_others_max", required = false, defaultValue = "100000") int paper_citations_others_max) {
+							   @RequestParam(value = "journals_conference_id", required = false, defaultValue = "0") int journals_conference_id,
+							   @RequestParam(value = "paper_includedType", required = false, defaultValue = "ALL") String paper_includedType,
+							   @RequestParam(value = "paper_time", required = false, defaultValue = "ALL") String paper_time,
+							   @RequestParam(value = "journals_conference_flag", required = false, defaultValue = "-1") int journals_conference_flag,
+							   @RequestParam(value = "teacher_id", required = false, defaultValue = "0") int teacher_id,
+							   @RequestParam(value = "teacher_sex", required = false, defaultValue = "0") int teacher_sex,
+							   @RequestParam(value = "teacher_age_min", required = false, defaultValue = "0") int teacher_age_min,
+							   @RequestParam(value = "teacher_age_max", required = false, defaultValue = "100") int teacher_age_max,
+							   @RequestParam(value = "journals_conference_IF_min", required = false, defaultValue = "0") double journals_conference_IF_min,
+							   @RequestParam(value = "journals_conference_IF_max", required = false, defaultValue = "1000") double journals_conference_IF_max,
+							   @RequestParam(value = "paper_citations_min", required = false, defaultValue = "0") int paper_citations_min,
+							   @RequestParam(value = "paper_citations_max", required = false, defaultValue = "100000") int paper_citations_max,
+							   @RequestParam(value = "paper_citations_others_min", required = false, defaultValue = "0") int paper_citations_others_min,
+							   @RequestParam(value = "paper_citations_others_max", required = false, defaultValue = "100000") int paper_citations_others_max) {
 		Page page = new Page();
 		page.setCurrentPage(1);
 		if(session.getAttribute("column")==null){
@@ -322,7 +364,7 @@ public class PaperHandler {
 
 	/**
 	 * 删除论文(2016/8/7 wei补充有问题联系)
-	 * 
+	 *
 	 * @param paper_id
 	 * @return
 	 */
@@ -334,7 +376,7 @@ public class PaperHandler {
 
 	/**
 	 * 修改论文（将论文复制到代理表，代理表提交后删除主表）(2016/8/7 wei补充有问题联系)
-	 * 
+	 *
 	 * @param paper_id
 	 * @return
 	 */

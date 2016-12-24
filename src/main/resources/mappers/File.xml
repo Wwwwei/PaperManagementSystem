@@ -36,4 +36,11 @@
         WHERE
         file_paperproxy_id=#{paperproxyId} AND file_type=#{fileType} AND file_is_valid=1;
     </select>
+    <select id="selectByPaperIdAndFileType" resultMap="pms.entity.EntityMapper.FileBean"
+            parameterType="java.util.Map">
+        SELECT *
+        FROM file
+        WHERE
+        file_paper_id=#{paperId} AND file_type=#{fileType};
+    </select>
 </mapper>

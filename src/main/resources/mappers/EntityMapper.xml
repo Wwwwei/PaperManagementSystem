@@ -19,29 +19,39 @@
     </resultMap>
 
     <resultMap type="pms.entity.Paper" id="PaperBean">
-        <id column="paper_id" property="paper_id"/>
-        <result column="paper_name" property="paper_name"/>
-        <result column="paper_rank" property="paper_rank"/>
-        <result column="paper_author_num" property="paper_authorNum"/>
-        <result column="paper_included_type" property="paper_includedType"/>
-        <result column="paper_acc_num" property="paper_accNum"/>
-        <result column="paper_status" property="paper_status"/>
-        <result column="paper_time" property="paper_time"/>
-        <result column="paper_citations" property="paper_citations"/>
-        <result column="paper_citations_others" property="paper_citations_others"/>
-        <result column="paper_citations_google" property="paper_citations_google"/>
-        <result column="paper_journals_conference_other" property="paper_journals_conference_other"/>
-        <result column="paper_issue" property="paper_issue"/>
-        <result column="paper_location_zky" property="paper_location_ZKY"/>
-        <result column="paper_location_jcr" property="paper_location_JCR"/>
-        <result column="paper_location_ccf" property="paper_location_CCF"/>
+        <id column="paper_id" property="paper_id" />
+        <result column="paper_name" property="paper_name" />
+        <result column="paper_rank" property="paper_rank" />
+        <result column="paper_author_num" property="paper_authorNum" />
+        <result column="paper_included_type" property="paper_includedType" />
+        <result column="paper_acc_num" property="paper_accNum" />
+        <result column="paper_status" property="paper_status" />
+        <result column="paper_time" property="paper_time" />
+        <result column="paper_citations" property="paper_citations" />
+        <result column="paper_citations_others" property="paper_citations_others" />
+        <result column="paper_citations_google" property="paper_citations_google" />
+        <result column="paper_issue" property="paper_issue" />
+        <result column="paper_location" property="paper_location" />
+        <result column="paper_publish_name" property="paper_publishName" />
+        <result column="paper_publish_type" property="paper_publishType" />
+        <result column="paper_if" property="paper_if" />
+        <result column="paper_journals_conference_custom"
+                property="paper_journals_conference_CUSTOM" />
+        <result column="paper_journals_conference_is_zjut100"
+                property="paper_journals_conference_isZjut100" />
+        <result column="paper_journals_conference_is_other"
+                property="paper_journals_conference_isOther" />
         <association property="paper_journals_conference_ZKY"
-                     column="paper_journals_conference_zky_id" select="pms.dao.JournalsConferenceMapper.selectById"/>
+                     column="paper_journals_conference_zky_id" select="pms.dao.JournalsConferenceMapper.selectById" />
         <association property="paper_journals_conference_JCR"
-                     column="paper_journals_conference_jcr_id" select="pms.dao.JournalsConferenceMapper.selectById"/>
+                     column="paper_journals_conference_jcr_id" select="pms.dao.JournalsConferenceMapper.selectById" />
         <association property="paper_journals_conference_CCF"
-                     column="paper_journals_conference_ccf_id" select="pms.dao.JournalsConferenceMapper.selectById"/>
-        <collection property="paper_teacher" resultMap="TeacherBean"/>
+                     column="paper_journals_conference_ccf_id" select="pms.dao.JournalsConferenceMapper.selectById" />
+        <association property="paper_journals_conference_ESI"
+                     column="paper_journals_conference_esi_id" select="pms.dao.JournalsConferenceMapper.selectById" />
+        <association property="paper_journals_conference_OTHER"
+                     column="paper_journals_conference_other_id" select="pms.dao.JournalsConferenceMapper.selectById" />
+        <collection property="paper_teacher" resultMap="TeacherBean" />
     </resultMap>
 
     <resultMap type="pms.entity.JournalsConference" id="Journals_ConferenceBean">

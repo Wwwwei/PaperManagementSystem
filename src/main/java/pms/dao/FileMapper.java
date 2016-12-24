@@ -36,4 +36,12 @@ public interface FileMapper {
      * @return
      */
     public File selectByPaperproxyIdAndFileType(Map<String, Object> params);
+
+    /**
+     * 根据论文id和文件类型查询文件记录
+     *
+     * @param params
+     * @return
+     */
+    public File selectByPaperIdAndFileType(Map<String, Object> params);
 }
