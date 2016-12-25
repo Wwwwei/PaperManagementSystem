@@ -841,12 +841,12 @@ public class PaperProxyHandler {
     public List<pms.entity.File> getFileByPaperproxyId(@RequestParam("paperproxy_id") Integer paperproxy_id) {
         return fileService.findFileByPaperproxyId(paperproxy_id);
     }
-
-    @ResponseBody
-    @RequestMapping(value = "/paper_proxy/test1", method = RequestMethod.GET)
-    public ModelAndView test1() {
-        Map<String, String> model = new HashMap<String, String>();
-        model.put("paperproxy_id", "23");
-        return new ModelAndView("paperproxy/paperproxy_show", model);
-    }
+//
+//    @ResponseBody
+//    @RequestMapping(value = "/paper_proxy/test1", method = RequestMethod.GET)
+//    public ModelAndView test1() {
+//        Map<String, String> model = new HashMap<String, String>();
+//        model.put("paperproxy_id", "23");
+//        return new ModelAndView("paperproxy/paperproxy_show", model);
+//    }
 }
