@@ -68,7 +68,6 @@ public class TeacherHandler {
 					password_info.get("teacher_salt"))) {
 				Teacher teacher = teacherService.findTeacher(teacher_no);
 				session.setAttribute("teacher", teacher);
-				// System.out.println(session.getId());
 				result = "success";
 			} else
 				result = "error";
