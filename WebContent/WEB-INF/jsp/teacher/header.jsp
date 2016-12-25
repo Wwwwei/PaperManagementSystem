@@ -116,7 +116,7 @@
 
                         <p class="navbar-text">
                             &nbsp;<span class="glyphicon glyphicon-log-out"></span> &nbsp;<a
-                                href="login.jsp" data-toggle="tooltip" data-placement="bottom"
+                                href="teacher/quit.do" data-toggle="tooltip" data-placement="bottom"
                                 title="单击退出">退出</a>
                         </p>
                     </li>

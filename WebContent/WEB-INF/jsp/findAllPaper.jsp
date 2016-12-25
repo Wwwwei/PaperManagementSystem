@@ -182,7 +182,7 @@
                     <li>
                         <p class="navbar-text">
                             <span class="glyphicon glyphicon-log-in"></span>&nbsp;<a
-                                href="login.jsp">登录 </a>
+                                href="teacher/quit.do">登录 </a>
                         </p>
                     </li>
                 </ul>
