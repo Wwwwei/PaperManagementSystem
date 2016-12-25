@@ -220,7 +220,7 @@
                             <div class="form-group">
                                 <label class="col-md-1 control-label">影响因子<span style="color: #ff0000">*</span></label>
                                 <div class="col-md-5">
-                                    <input type="text" id="paper_if" name="paper_if"
+                                    <input type="text" id="paper_if" name="paper_if" min="1"
                                            class="form-control">
                                 </div>
                             </div>

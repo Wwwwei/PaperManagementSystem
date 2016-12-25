@@ -1113,6 +1113,9 @@ $(document)
                             paper_time: {
                                 dateISO: true
                             },
+                            paper_if: {
+                                number: true
+                            },
                             paper_citations: {
                                 digits: true
                             },
@@ -1137,6 +1140,9 @@ $(document)
                             },
                             paper_time: {
                                 dateISO: "请按照年/月/日格式输入日期，例如2016/6/1"
+                            },
+                            paper_if: {
+                                number: "请输入数字！"
                             },
                             paper_citations: {
                                 digits: "请输入整数!"
