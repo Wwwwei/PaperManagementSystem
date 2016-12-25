@@ -67,6 +67,49 @@
             background-color: #FFFFFF;
             color: #f0ad4e;
         }
+        .navbar a {
+            color: white;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
+        .navbar a:link {
+            color: white;
+            text-decoration: none;
+        }
+
+        .navbar a:visited {
+            color: white;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            color: white;
+            text-decoration: none;
+            font-weight: bolder;
+
+        }
+
+        .navbar-default .navbar-nav > li > a:hover {
+            font-weight: bolder;
+            background-color: #2E619F;
+        }
+
+        .test {
+            color: white;
+            text-decoration: none;
+            font-weight: bolder;
+            background-color: #2E619F;
+        }
+
+        label {
+            margin-top: 5px;
+        }
+
+        a:hover {
+            cursor: pointer;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
