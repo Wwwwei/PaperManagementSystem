@@ -67,10 +67,18 @@ $(document)
                                 var paper_location_pagination = $(
                                     "[name=paper_location_pagination]")
                                     .val();
-                                if (
-                                    paper_location_volume == ""
-                                    || paper_location_pagination == "") {
-                                    confirm_update_status = true;
+                                //if (
+                                //    paper_location_volume == ""
+                                //    || paper_location_pagination == "") {
+                                //    confirm_update_status = true;
+                                //}
+                                if (/[\u4E00-\u9FA5]/g.test(paper_location_volume)){
+                                    alert("期刊号只能输入字母,数字和符号");
+                                    return false;
+                                }
+                                if (/^\d*\-\d+$/.test(paper_location_pagination)){
+                                    alert("页码请按照:数字-数字的格式输入");
+                                    return false;
                                 }
                                 var paper_location =paper_location_volume
                                     + '$'
