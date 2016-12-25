@@ -181,34 +181,36 @@ public class PaperProxyHandler {
         }
         */
 //        System.out.println("\n" + JSON.toJSONString(paper));
-        paperProxyService.createPaperProxy(paper);
-        System.out.println(paper.getPaper_teacher().getTeacher_id() + "----------------------------");
-        // authorProxy处理
-        //	List<AuthorProxy> authors = new ArrayList();
-        for (int i = 1; i <= paper.getPaper_authorNum(); i++) {
-            // 输出信息====================================================
-            System.out.println("=========");
-            System.out.println(request.getParameter("authorName" + i));
-            System.out.println(request.getParameter("authorID" + i));
-            System.out.println(request.getParameter("authorOffice" + i));
-            System.out.println(request.getParameter("authorType" + i));
-            // ===========================================================
-            AuthorProxy authorProxy = new AuthorProxy();
-            authorProxy.setAuthor_name(request.getParameter("authorName" + i));
-            authorProxy.setAuthor_rank(i);
-            String authorID = request.getParameter("authorID" + i);
-            String authorOffice = request.getParameter("authorOffice" + i);
-            int authorType = Integer.parseInt(request.getParameter("authorType" + i));
-            if (authorID != null) {
-                authorProxy.setAuthor_no(authorID);
+        if (!(paperProxyService.findPaperProxyByName(paper.getPaper_name()))) {
+            paperProxyService.createPaperProxy(paper);
+            // System.out.println(paper.getPaper_teacher().getTeacher_id() + "----------------------------");
+            // authorProxy处理
+            //	List<AuthorProxy> authors = new ArrayList();
+            for (int i = 1; i <= paper.getPaper_authorNum(); i++) {
+                // 输出信息====================================================
+                System.out.println("=========");
+                System.out.println(request.getParameter("authorName" + i));
+                System.out.println(request.getParameter("authorID" + i));
+                System.out.println(request.getParameter("authorOffice" + i));
+                System.out.println(request.getParameter("authorType" + i));
+                // ===========================================================
+                AuthorProxy authorProxy = new AuthorProxy();
+                authorProxy.setAuthor_name(request.getParameter("authorName" + i));
+                authorProxy.setAuthor_rank(i);
+                String authorID = request.getParameter("authorID" + i);
+                String authorOffice = request.getParameter("authorOffice" + i);
+                int authorType = Integer.parseInt(request.getParameter("authorType" + i));
+                if (authorID != null) {
+                    authorProxy.setAuthor_no(authorID);
+                }
+                if (authorOffice != null) {
+                    authorProxy.setAuthor_office(authorOffice);
+                }
+                authorProxy.setAuthor_paper(paper);
+                authorProxy.setAuthor_type(authorType);
+                //		authors.add(authorProxy);
+                authorProxyService.createAuthorProxy(authorProxy);
             }
-            if (authorOffice != null) {
-                authorProxy.setAuthor_office(authorOffice);
-            }
-            authorProxy.setAuthor_paper(paper);
-            authorProxy.setAuthor_type(authorType);
-            //		authors.add(authorProxy);
-            authorProxyService.createAuthorProxy(authorProxy);
         }
         Map<String, String> model = new HashMap<String, String>();
         model.put("paperproxy_id", String.valueOf(paper.getPaper_id()));
