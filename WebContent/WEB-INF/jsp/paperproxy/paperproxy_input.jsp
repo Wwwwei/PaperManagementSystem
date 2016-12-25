@@ -263,7 +263,7 @@
                                     <label class="col-md-1 control-label">期刊号<span
                                             style="color: #ff0000">*</span></label>
                                     <div class="col-md-5">
-                                        <input type="text" name="paper_journals_location1"
+                                        <input type="text" id="paper_journals_location1" name="paper_journals_location1"
                                                class="form-control">
                                     </div>
                                 </div>

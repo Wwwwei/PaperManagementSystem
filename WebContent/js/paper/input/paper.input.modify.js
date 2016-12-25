@@ -1085,6 +1085,10 @@ $(document)
                     authorsWrite();
                     RANK = $("input#paper_rank").val();
                 });
+            jQuery.validator.addMethod("chinese", function (value, element) {
+                var chinese = /^[\u4e00-\u9fa5]+$/;
+                return !(this.optional(element) || (chinese.test(value)));
+            }, "只能输入字母,数字和符号");
             var validate = $("#paperForm")
                 .validate(
                     {
@@ -1115,6 +1119,9 @@ $(document)
                             },
                             paper_if: {
                                 number: true
+                            },
+                            paper_journals_location1: {
+                                chinese: true
                             },
                             paper_citations: {
                                 digits: true
