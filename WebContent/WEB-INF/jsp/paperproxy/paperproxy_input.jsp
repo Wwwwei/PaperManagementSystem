@@ -438,7 +438,7 @@
 <input type="hidden" value="${requestScope.teacher.teacher_name}"
        id="teacher_name"/>
 <input type="hidden"
-       value="${requestScope.teacher.teacher_institute.institute_name}"
+       value="${requestScope.teacher.teacher_university}"
        id="teacher_office"/>
 
 

@@ -399,7 +399,7 @@
 <input type="hidden" value="${teacher.teacher_no}" id="teacher_no"/>
 <input type="hidden" value="${teacher.teacher_name}" id="teacher_name"/>
 <input type="hidden"
-       value="${teacher.teacher_institute.institute_name}"
+       value="${teacher.teacher_university}"
        id="teacher_office"/>
 <!--footer开始-->
 <jsp:include page="../../../layout/footer.jsp"/>
