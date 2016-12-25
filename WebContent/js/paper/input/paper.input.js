@@ -621,8 +621,7 @@ $(document)
                 });
             //期刊号,卷期验证 不能含有中文
             jQuery.validator.addMethod("isNotChinese", function (value, element) {
-                var chinese = /^[\u4e00-\u9fa5]+$/;
-                return !(this.optional(element) || (chinese.test(value)));
+                return this.optional(element) || !(/[\u4E00-\u9FA5]/g.test(value));
             }, "只能输入字母,数字和符号");
             //页码验证 数字-数字
             jQuery.validator.addMethod("isPaginationCheck", function (value, element) {
