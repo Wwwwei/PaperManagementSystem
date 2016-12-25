@@ -258,6 +258,7 @@
                                             style="color: #ff0000">*</span></label>
                                     <div class="col-md-5">
                                         <input type="text" id="paper_journals_location3" name="paper_journals_location3"
+                                               placeholder="请按照格式输入:数字-数字"
                                                class="form-control">
                                     </div>
                                 </div>
@@ -294,6 +295,7 @@
                                     <div class="col-md-5">
                                         <input type="text" id="paper_conference_location1"
                                                name="paper_conference_location1"
+                                               placeholder="请按照格式输入:数字-数字"
                                                class="form-control">
                                     </div>
                                 </div>

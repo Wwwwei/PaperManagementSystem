@@ -619,10 +619,16 @@ $(document)
                     }
                     RANK = $("input#rank").val();
                 });
-            jQuery.validator.addMethod("chinese", function (value, element) {
+            //期刊号,卷期验证 不能含有中文
+            jQuery.validator.addMethod("isNotChinese", function (value, element) {
                 var chinese = /^[\u4e00-\u9fa5]+$/;
                 return !(this.optional(element) || (chinese.test(value)));
             }, "只能输入字母,数字和符号");
+            //页码验证 数字-数字
+            jQuery.validator.addMethod("isPaginationCheck", function (value, element) {
+                var chinese = /^\d*\-\d+$/;
+                return this.optional(element) || (chinese.test(value));
+            }, "请按照:数字-数字的格式输入");
             var validate = $("#paperForm")
                 .validate(
                     {
@@ -655,7 +661,16 @@ $(document)
                                 number: true
                             },
                             paper_journals_location1: {
-                                chinese: true
+                                isNotChinese: true
+                            },
+                            paper_journals_location2: {
+                                isNotChinese: true
+                            },
+                            paper_journals_location3: {
+                                isPaginationCheck: true
+                            },
+                            paper_conference_location1: {
+                                isPaginationCheck: true
                             },
                             paper_citations: {
                                 digits: true
