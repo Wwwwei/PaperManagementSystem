@@ -58,7 +58,7 @@
 
 	<select id="findTeacher" parameterType="java.util.Map"
 		resultMap="pms.entity.EntityMapper.TeacherBean">
-		select t.*,i.institute_id,i.institute_name from teacher t inner join institute i on t.teacher_institute_id = i.institute_id
+		select t.* from teacher t
 		<where>
 			<if test="teacher_no!=null">teacher_no = #{teacher_no}</if>
 			<if test="teacher_name!=null">teacher_name = #{teacher_name}</if>
