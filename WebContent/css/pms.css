@@ -18,11 +18,6 @@ select {
     border: 0px;
 }
 
-.container {
-    padding-left: 0px;
-    padding-right: 0px;
-}
-
 .btn-danger {
     font-size: 15px;
     width: 100%;
@@ -142,4 +137,9 @@ a:hover {
     background-color: #337ab7;
     color: #FFF;
     margin-left: 100px;
+}
+
+.container {
+    padding-left: 0px;
+    padding-right: 0px;
 }

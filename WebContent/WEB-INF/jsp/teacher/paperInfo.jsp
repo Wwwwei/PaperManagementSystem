@@ -19,7 +19,7 @@
     <script type="text/javascript" src="js/paper/paperInfo.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的信息</title>
+    <title>Insert title here</title>
     <style>
         .jumbotron {
             text-align: center;
@@ -34,7 +34,7 @@
 <!--导航条结束-->
 <div class="jumbotron">
     <div class="container">
-        <h1 style="font-size:45px;">论文详细信息</h1>
+        <h1 style="font-size: 45px;">论文详细信息</h1>
     </div>
 </div>
 <div class="container">
@@ -42,18 +42,15 @@
         <span>论文详细信息 </span>
     </blockquote>
     <input Type="hidden" name="paper_id" value="${paper.paper_id}"></input>
-    <input Type="hidden" name="teacher_no" value="${paper.paper_teacher.teacher_no}"></input>
+    <input Type="hidden" name="teacher_no"
+           value="${paper.paper_teacher.teacher_no}"></input>
     <dl class="dl-horizontal text-overflow">
         <dt>论文名称</dt>
-        <dd>
-            ${paper.paper_name}
-        </dd>
+        <dd>${paper.paper_name}</dd>
     </dl>
     <dl class="dl-horizontal text-overflow">
         <dt>录入教师姓名</dt>
-        <dd>
-            ${paper.paper_teacher.teacher_name}
-        </dd>
+        <dd>${paper.paper_teacher.teacher_name}</dd>
     </dl>
     <dl class="dl-horizontal text-overflow">
         <dt>录入教师排名</dt>
@@ -63,14 +60,8 @@
         <dt>论文类型</dt>
         <input Type="hidden" name="paper_issue" value="${paper.paper_issue}"></input>
         <dd>
-            <c:if
-
-                    test="${paper.paper_issue== 0}">
-                期刊
-            </c:if> <c:if
-                test="${paper.paper_issue == 1}">
-            会议
-        </c:if>
+            <c:if test="${paper.paper_issue == 0}">期刊</c:if>
+            <c:if test="${paper.paper_issue == 1}">会议</c:if>
         </dd>
     </dl>
     <c:if test="${paper.paper_issue== 0&&paper.paper_publishType==1}">
@@ -91,18 +82,17 @@
             <dd>国际会议</dd>
         </dl>
     </c:if>
-    <c:if test="${paper.paper_issue== 0&&paper.paper_journals_conference_isZjut100==0}">
-        <dl class="dl-horizontal text-overflow ">
-            <dt>是否zjut100期刊论文</dt>
+    <dl class="dl-horizontal text-overflow ">
+        <dt>是否zjut100期刊论文</dt>
+        <c:if
+                test="${paper.paper_issue== 0&&paper.paper_journals_conference_isZjut100==0}">
             <dd>否</dd>
-        </dl>
-    </c:if>
-    <c:if test="${paper.paper_issue== 0&&paper.paper_journals_conference_isZjut100==1}">
-        <dl class="dl-horizontal text-overflow ">
-            <dt>是否zjut100期刊论文</dt>
+        </c:if>
+        <c:if
+                test="${paper.paper_issue== 0&&paper.paper_journals_conference_isZjut100==1}">
             <dd>是</dd>
-        </dl>
-    </c:if>
+        </c:if>
+    </dl>
     <c:if test="${paper.paper_status == 0&&paper.paper_issue== 0}">
         <dl class="dl-horizontal text-overflow ">
             <dt>期刊号</dt>
@@ -118,21 +108,23 @@
     <dl class="dl-horizontal text-overflow">
         <dt>发表状态</dt>
         <dd>
-            <c:if
-                    test="${paper.paper_status== 1}">
+            <c:if test="${paper.paper_status== 1}">
                 <span class="paper-status-text">已发表</span>
             </c:if>
-            <c:if
-                    test="${paper.paper_status == 0}">
-                <span class="paper-status-text">未发表</span><a class="update-paper-status">修改状态</a>
+            <c:if test="${paper.paper_status == 0}">
+                <span class="paper-status-text">未发表</span>
+                <a class="update-paper-status">修改状态</a>
             </c:if>
-            <input type="hidden" name="paper_status" class="paper_status" value="${paper.paper_status}"></input>
+            <input type="hidden" name="paper_status" class="paper_status"
+                   value="${paper.paper_status}"></input>
         </dd>
     </dl>
     <c:if test="${paper.paper_status == 0}">
         <dl class="dl-horizontal text-overflow acc-num">
             <dt>检索号</dt>
-            <dd><input type="text" name="paper_accNum" class="la-info"></input></dd>
+            <dd>
+                <input type="text" name="paper_accNum" class="form-control" style="width:192px;"></input>
+            </dd>
         </dl>
     </c:if>
 
@@ -146,10 +138,10 @@
     <c:if test="${paper.paper_status == 0}">
         <dl class="dl-horizontal text-overflow acc-num">
             <dt>发表年月</dt>
-            <div class="paper_time">
-                <dd><input type="date" id="time" name="paper_time" width="50px" value="${paper.paper_time}"
-                           class="form-control valid"></dd>
-            </div>
+            <dd>
+                <input type="date" id="time" name="paper_time"
+                       value="${paper.paper_time}" class="form-control valid" style="width:192px;">
+            </dd>
         </dl>
     </c:if>
     <c:if test="${paper.paper_status== 1}">
@@ -162,8 +154,12 @@
         <dl class="dl-horizontal text-overflow ">
             <dt>期刊号</dt>
             <dd>${paper_number}</dd>
+        </dl>
+        <dl class="dl-horizontal text-overflow ">
             <dt>卷期</dt>
             <dd>${paper_location_volume}</dd>
+        </dl>
+        <dl class="dl-horizontal text-overflow ">
             <dt>页码</dt>
             <dd>${paper_location_pagination}</dd>
         </dl>
@@ -172,74 +168,73 @@
         <dl class="dl-horizontal text-overflow ">
             <dt>会议页码</dt>
             <dd>${meeting_page}</dd>
+        </dl>
+        <dl class="dl-horizontal text-overflow ">
             <dt>会议地点</dt>
             <dd>${meeting_place}</dd>
         </dl>
     </c:if>
     <c:if test="${paper.paper_status == 0&&paper.paper_issue== 0}">
-        <dl class="dl-horizontal text-overflow acc-num">
-            <div class="location-area">
+        <div class="location-area">
+            <dl class="dl-horizontal text-overflow acc-num">
                 <input type="hidden" name="update_location" value="0">
-                <!-- 					   <label class="la-title">期刊号</label> -->
-                <!-- 					   <input type="text" name="paper_location_issuing" class="la-info"></input> -->
-                <label class="la-title">卷期</label>
-                <input type="text" name="paper_location_volume" class="la-info"></input>
-                <label class="la-title">页码</label>
-                <input type="text" name="paper_location_pagination" class="la-info"></input>
-            </div>
-        </dl>
+                <dt>卷期</dt>
+                <dd><input type="text" name="paper_location_volume" class="form-control" style="width:192px;"></dd>
+            </dl>
+            <dl class="dl-horizontal text-overflow acc-num">
+                <dt>页码</dt>
+                <dd><input type="text" name="paper_location_pagination" class="form-control" style="width:192px;"></dd>
+            </dl>
+        </div>
     </c:if>
 
     <c:if test="${paper.paper_status == 0&&paper.paper_issue== 1}">
-        <dl class="dl-horizontal text-overflow acc-num">
-            <div class="location-area">
+        <div class="location-area">
+            <dl class="dl-horizontal text-overflow acc-num">
                 <input type="hidden" name="update_location" value="0">
-                <!-- 		                <label class="la-title">会议地点</label> -->
-                <!-- 					   <input type="text" name="meeting_place" class="la-info"></input> -->
-                <label class="la-title">会议页码</label>
-                <input type="text" name="meeting_page" class="la-info"></input>
-            </div>
-        </dl>
+                <dt>会议页码</dt>
+                <dd><input type="text" name="meeting_page" class="form-control" style="width:192px;"/></dd>
+            </dl>
+        </div>
     </c:if>
 
     <dl class="dl-horizontal text-overflow">
         <dt>
-            <c:if
-                    test="${paper.paper_issue== 0}">
-                期刊
-            </c:if> <c:if
-                test="${paper.paper_issue == 1}">
-            会议
-        </c:if>
-            等级
+            <c:if test="${paper.paper_issue== 0}">期刊</c:if><c:if test="${paper.paper_issue == 1}">会议</c:if>等级
         </dt>
-        <dd class="jc-field"><c:if test="${paper.paper_journals_conference_ZKY != null}">
-            ${paper.paper_journals_conference_ZKY.journals_conference_name}
+
+        <c:if test="${paper.paper_journals_conference_ZKY != null}">
+            <dd class="jc-field">
+                    ${paper.paper_journals_conference_ZKY.journals_conference_name}
+            </dd>
         </c:if>
 
-        </dd>
-        <dd class="jc-field">
-            <c:if test="${paper.paper_journals_conference_JCR != null}">
-                ${paper.paper_journals_conference_JCR.journals_conference_name}
-            </c:if>
-        </dd>
-        <dd class="jc-field">
-            <c:if test="${paper.paper_journals_conference_CCF != null}">
-                ${paper.paper_journals_conference_CCF.journals_conference_name}
 
-            </c:if>
-        </dd>
-        <dd class="jc-field">
-            <c:if test="${paper.paper_journals_conference_ESI != null}">
-                ${paper.paper_journals_conference_ESI.journals_conference_name}
-            </c:if>
-        </dd>
+        <c:if test="${paper.paper_journals_conference_JCR != null}">
+            <dd class="jc-field">
+                    ${paper.paper_journals_conference_JCR.journals_conference_name}
+            </dd>
+        </c:if>
 
-        <dd class="jc-field">
-            <c:if test="${paper.paper_journals_conference_OTHER != null}">
-                ${paper.paper_journals_conference_OTHER.journals_conference_name}
-            </c:if>
-        </dd>
+
+        <c:if test="${paper.paper_journals_conference_CCF != null}">
+            <dd class="jc-field">
+                    ${paper.paper_journals_conference_CCF.journals_conference_name}
+            </dd>
+        </c:if>
+
+        <c:if test="${paper.paper_journals_conference_ESI != null}">
+            <dd class="jc-field">
+                    ${paper.paper_journals_conference_ESI.journals_conference_name}
+            </dd>
+        </c:if>
+
+
+        <c:if test="${paper.paper_journals_conference_OTHER != null}">
+            <dd class="jc-field">
+                    ${paper.paper_journals_conference_OTHER.journals_conference_name}
+            </dd>
+        </c:if>
 
 
     </dl>
@@ -248,18 +243,17 @@
         <dd>${paper.paper_includedType}</dd>
     </dl>
 
-    <%-- <dl class="dl-horizontal text-overflow">
-        <dt>论文位置</dt>
-        <dd>${paper.paper_location}</dd>
-    </dl> --%>
+
     <dl class="dl-horizontal text-overflow">
         <dt>作者</dt>
-        <c:forEach var="author" begin="0" step="1" items="${authors}">
-            <dd>${author.author_name}</dd>
-        </c:forEach>
+        <dd>
+            <c:forEach var="author" begin="0" step="1" items="${authors}">
+                ${author.author_name};
+            </c:forEach>
+        </dd>
     </dl>
     <c:if test="${paper.paper_status== 0}">
-        <a class="confirm-button">确认修改</a>
+        <a class="confirm-button btn btn-primary" style="width:192px;">确认修改</a>
     </c:if>
     <blockquote>
         <span>下载 </span>
@@ -291,8 +285,10 @@
                 </c:if>
             </select>
         </div>
-        <div class="col-md-12" style="padding-bottom:3%">
-            <a href="" class="btn btn-primary" style="font-size: 15px;">下载</a>
+        <div class="col-md-12">&nbsp;</div>
+        <div class="col-md-12" style="padding-bottom: 3%">
+            <a id="dowload_id"
+               class="btn btn-primary disabled" style="font-size: 15px;">下载</a>
         </div>
         <%--             <a href="teacher/download.do?paper_id=${paper.paper_id}&teacher_no=${paper.paper_teacher.teacher_no}&fileName=1">下载</a> --%>
         <%--             paper_id=${paper.id}&teacher_no=${paper.paper_teacher.teacher_no} --%>

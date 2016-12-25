@@ -1,9 +1,9 @@
 $(document)
     .ready(
-        function () {
+        function() {
             $(".update-paper-status")
                 .click(
-                    function () {
+                    function() {
                         var paper_status = $(".paper_status")
                             .val();
                         if (paper_status == 0) {
@@ -33,7 +33,7 @@ $(document)
                     });
             $(".confirm-button")
                 .click(
-                    function () {
+                    function() {
                         var paper_status = $(".paper_status")
                             .val();
                         if (paper_status == 0) {
@@ -49,15 +49,15 @@ $(document)
                                 alert("请填写检索编号！");
                                 return false;
                             }
-                            var paper_time = $("[name=paper_time]").val();
-                            if (paper_time == "") {
+                            var paper_time=$("[name=paper_time]").val();
+                            if (paper_time== "") {
                                 alert("请填写发表时间！");
                                 return false;
                             }
 
                             var confirm_update_status = false;
-                            var paper_issue = $("[name=paper_issue]").val();
-                            if (paper_issue == 0) {
+                            var paper_issue=$("[name=paper_issue]").val();
+                            if (paper_issue==0) {
 //											var paper_location_issuing = $(
 //													"[name=paper_location_issuing]")
 //													.val();
@@ -72,25 +72,26 @@ $(document)
                                     || paper_location_pagination == "") {
                                     confirm_update_status = true;
                                 }
-                                var paper_location = paper_location_volume
+                                var paper_location =paper_location_volume
                                     + '$'
                                     + paper_location_pagination;
                                 var data = {
-                                    paper_id: paper_id,
-                                    paper_status: 1,
-                                    paper_accNum: paper_accNum,
-                                    paper_time: paper_time,
-                                    paper_location: paper_location,
+                                    paper_id : paper_id,
+                                    paper_status : 1,
+                                    paper_accNum : paper_accNum,
+                                    paper_time:paper_time,
+                                    paper_location  : paper_location,
 //													paper_location_JCR : paper_location_JCR,
 //													paper_location_CCF : paper_location_CCF
                                 };
 
                             }
-                            if (paper_issue == 1) {
+                            if (paper_issue==1) {
                                 var meeting_page = $(
                                     "[name=meeting_page]")
                                     .val();
-                                if (meeting_page == "") {
+                                if (meeting_page == "")
+                                {
                                     confirm_update_status = true;
                                 }
                                 var paper_location = meeting_page
@@ -99,17 +100,18 @@ $(document)
 
                             }
                             var data = {
-                                paper_id: paper_id,
-                                paper_status: 1,
-                                paper_accNum: paper_accNum,
-                                paper_time: paper_time,
-                                paper_location: paper_location,
+                                paper_id : paper_id,
+                                paper_status : 1,
+                                paper_accNum : paper_accNum,
+                                paper_time:paper_time,
+                                paper_location  : paper_location,
 //												paper_location_JCR : paper_location_JCR,
 //												paper_location_CCF : paper_location_CCF
                             };
                         }
 
-                        if (confirm_update_status) {
+                        if (confirm_update_status)
+                        {
                             if (confirm('还有相应的信息未填写，提交后将无法修改信息，是否确认修改？'))
                                 updatePaper(data);
                         } else {
@@ -117,25 +119,25 @@ $(document)
                         }
 
                     });
-            var updatePaper = function (data) {
+            var updatePaper = function(data) {
 
                 $.ajax({
-                    url: "teacher/updatePaperById.do",
-                    type: 'GET',
-                    data: data,
-                    datatype: "json",
-                    success: function (result) {
+                    url : "teacher/updatePaperById.do",
+                    type : 'GET',
+                    data : data,
+                    datatype : "json",
+                    success : function(result) {
                         if (result == "success") {
                             alert("修改论文成功！")
                             history.go(0);
                             window.location.href = "teacher/modifyPaper.do?paper_id="
-                                + paper_id + "&teacher_no=" + teacher_no;
+                                + paper_id+"&teacher_no="+teacher_no;
                         }
                         if (result == "error") {
                             alert("修改论文失败，请重新尝试！");
                         }
                     },
-                    error: function (data) {
+                    error : function(data) {
                         alert("请求失败");
                     }
                 });
@@ -146,26 +148,25 @@ $(document)
         })
 
 
-function selectType() {
+function selectType()
+{
     var dowloadType = document.getElementById('dowloadType');
 //	var dowloadTypeValue = dowloadType.value;//这里获取value
-    var paper_id = $("[name=paper_id]").val();
-    var teacher_no = $("[name=teacher_no]").val();
-    if (dowloadType.value != 0) {
+    var paper_id=$("[name=paper_id]").val();
+    var teacher_no=$("[name=teacher_no]").val();
+    var dowload_id=document.getElementById('dowload_id');
+    if(dowloadType.value!=0)
+    {
+        dowload_id.removeAttribute("class");
+        dowload_id.setAttribute("class", "btn btn-primary");
         var a = document.getElementsByTagName("a");
-        for (var i = 0; i < a.length; i++) a[a.length - 1].href = "teacher/download.do?paper_id=" + paper_id + "&fileType=" + dowloadType.value;
+
+        for(var i=0;i<a.length;i++) a[a.length-1].href = "teacher/download.do?paper_id="+paper_id+"&fileType="+dowloadType.value;
     }
-    if (dowloadType.value == 0) {
-        var a = document.getElementsByTagName("a");
-        for (var i = 0; i < a.length; i++) a[a.length - 1].href = "";
+    if(dowloadType.value==0)
+    {
+        dowload_id.removeAttribute("class");
+        dowload_id.setAttribute("class", "btn btn-primary disabled");
     }
 
 }
-//function dowload()
-//{
-//	alert("434");
-//	var dowloadType = document.getElementById('dowloadType');
-//	if(dowloadType.value=0)
-//		alert("请选择！");
-//
-//}

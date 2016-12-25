@@ -67,6 +67,7 @@
             background-color: #FFFFFF;
             color: #f0ad4e;
         }
+
         .navbar a {
             color: white;
             margin-left: 5px;
@@ -358,7 +359,9 @@
                         录入失败,请稍后再试!
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                onclick="window.location.href('../teacher/findPaper?isCommited=true')">确定
+                        </button>
                     </div>
                 </div>
             </div>
