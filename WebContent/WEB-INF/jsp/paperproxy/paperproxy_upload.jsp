@@ -353,7 +353,9 @@
                         录入成功
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                onclick="window.location.href('../teacher/findPaper?isCommited=true')">确定
+                        </button>
                     </div>
                 </div>
             </div>
