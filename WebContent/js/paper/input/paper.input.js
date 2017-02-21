@@ -94,7 +94,7 @@ function showSelectByFlag(flag) {
                         addText += "<div class='form-group'><label class='col-md-2 control-label'>ESI等级</label><div class='col-md-2'><select id='journalsORconferenceSelect_ESI' class='form-control' name='paper_journals_conference_ESI.journals_conference_id'>"
                             + select_ESI
                             + "</div></div>";
-                        addText += "<div class='form-group'><label class='col-md-2 control-label'>其他等级</label><div class='col-md-2'><select id='journalsORconferenceSelect_OTHER' class='form-control' name='paper_journals_conference_OTHER.journals_conference_id'>"
+                        addText += "<div class='form-group'><label class='col-md-2 control-label'>国内期刊等级</label><div class='col-md-2'><select id='journalsORconferenceSelect_OTHER' class='form-control' name='paper_journals_conference_OTHER.journals_conference_id'>"
                             + select_OTHER
                             + "</div></div><div class='col-md-12'>&nbsp;</div>";
 
