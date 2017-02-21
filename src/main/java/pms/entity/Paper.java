@@ -33,7 +33,7 @@ public class Paper {
     private JournalsConference paper_journals_conference_JCR; // JCR期刊会议
     private JournalsConference paper_journals_conference_CCF; // CFF期刊会议
     private JournalsConference paper_journals_conference_ESI; // ESI期刊会议
-    private JournalsConference paper_journals_conference_OTHER; // 其他期刊会议
+    private JournalsConference paper_journals_conference_OTHER; // 国内期刊会议
     private String paper_journals_conference_CUSTOM;//自定义期刊会议
     private int paper_journals_conference_isZjut100 = 0; // 是否zjut100期刊论文(0:不是;1:是)
     private int paper_journals_conference_isOther = 1;// 是否勾选期刊会议其他(0:表示期刊会议为其他，1:表示期刊会议为存在)
