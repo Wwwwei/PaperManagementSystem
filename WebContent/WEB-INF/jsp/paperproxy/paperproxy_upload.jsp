@@ -216,8 +216,18 @@
                 </div>
                 <div class="panel-body" style="color: #000000; font-size: 18px;padding-bottom:20px">
                     <div class="alert alert-warning" style="font-size: 14px;">
-                        <span class="glyphicon glyphicon-info-sign"></span>
-                        <strong>Tips2</strong>&nbsp;&nbsp;两个文件必须分开、按顺序上传才算录入成功哦;文件上传格式支持pdf、doc、docx;
+                        <table>
+                            <tr>
+                                <td width="10%" valign="middle" rowspan="2">
+                                    <span class="glyphicon glyphicon-info-sign"></span>
+                                    <strong>Tips2</strong>
+                                </td>
+                                <td>两个文件必须分开、按顺序上传才算录入成功哦; 文件上传格式支持pdf、doc、docx;</td>
+                            </tr>
+                            <tr>
+                                <td>ESI论文需要在全文上传时将期刊封面、信息页、全文合成一个文档统一上传(ESI检索证明上传时需要：ESI证明+SCI检索证明)</td>
+                            </tr>
+                        </table>
                     </div>
                     <div class="col-md-6">
                         <p id="text5">论文全文&nbsp;&nbsp;<span class="hidden" id="textok5"></span></p>
