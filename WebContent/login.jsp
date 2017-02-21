@@ -63,7 +63,7 @@
 </nav>
 <!--导航条结束-->
 <!-- 登录主体开始 -->
-<div class="container" style="min-height:300px">
+<div class="container" style="min-height:450px">
     <div class="row">
         <div class="col-lg-4 col-lg-offset-4" style="padding-bottom: 8%;">
             <!-- 				<form action="teacher/login.do" method="post" -->
