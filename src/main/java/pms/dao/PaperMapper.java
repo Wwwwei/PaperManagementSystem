@@ -60,4 +60,12 @@ public interface PaperMapper {
 
 	public int findTeacherIdByPaperId(int paper_id);
 
+	/**
+	 * 更新论文对象
+	 *
+	 * @param paper
+	 * @return
+	 */
+	public Integer update(Paper paper);
+
 }
