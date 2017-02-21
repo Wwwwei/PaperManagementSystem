@@ -23,10 +23,13 @@
 <jsp:include page="head.jsp"/>
 <div class="container" style="margin-top: 5%;min-height:340px">
 	<div class="row">
-		<div class="col-lg-2">
-			<jsp:include page="left.jsp"><jsp:param value="2" name="location" /></jsp:include>
-		</div>
-		<div class="col-lg-10">
+		<table class="table" style="border-color: #FFFFFF">
+			<tr>
+			<td width="20%">
+				<jsp:include page="left.jsp"><jsp:param value="2" name="location" /></jsp:include>
+			</td>
+				<td>
+		<%--<div class="col-lg-10">--%>
 			<blockquote>
 				<span> 单个录入 </span>
 			</blockquote>
@@ -35,6 +38,7 @@
 				<div class="col-lg-2"><label>教师工号：</label></div>
 				<div class="col-lg-4"><input type="text" name="teacher_no" id="teacher_no" class="form-control"></div>
 				<span id="teacher_no_info"></span><br>
+
 				<div class="col-lg-2"><label>教师姓名：</label></div>
 				<div class="col-lg-4"><input type="text" name="teacher_name" class="form-control"></div>
 
@@ -47,6 +51,7 @@
 						<option value="1">男</option>
 					</select>
 				</div>
+
 				<div class="col-lg-2"><label>教师职称：</label></div>
 				<div class="col-lg-4">
 					<select id="teacher_title" name="teacher_title" class="form-control">
@@ -80,7 +85,7 @@
 
 				<div class="col-lg-12">&nbsp;</div>
 
-				<div class="col-lg-2"><label>教师身份证：</label></div>
+				<div class="col-lg-2"><label>教师身份证号：</label></div>
 				<div class="col-lg-4">
 					<input type="text" name="teacher_idCard" id="teacher_idCard" class="form-control"/>
 				</div>
@@ -134,22 +139,28 @@
 						</c:forEach>
 					</select>
 				</div>
+
 				<div class="col-lg-12">&nbsp;</div>
 				<div class="col-lg-2"><label>个人主页：</label></div>
 				<div class="col-lg-4"><input type="text" name="teacher_info_url" class="form-control"/></div>
 				<div class="col-lg-2"><label>谷歌个人主页：</label></div>
 				<div class="col-lg-4"><input type="text" name="teacher_google_scolar_url" class="form-control"/></div>
 				<div class="col-lg-12">&nbsp;</div>
-				<div class="col-lg-4 col-lg-offset-4">
+
+
 					<div class="col-lg-4 col-lg-offset-4">
 						<input type="submit" class="btn btn-primary" value="确认录入">
 					</div>
+
 			</form>
 			<div class="col-lg-12">&nbsp;</div>
-		</div>
-	</div>
 
+				</td>
+			</tr>
+		</table>
+		</div>
 </div>
+
 <jsp:include page="../../../layout/footer.jsp" />
 </body>
 </html>

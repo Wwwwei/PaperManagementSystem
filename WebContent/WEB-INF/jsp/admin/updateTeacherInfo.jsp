@@ -74,12 +74,14 @@
 <!--导航条开始-->
 <jsp:include page="head.jsp"/>
 
-<div class="container" style="margin-top: 5%;min-height:350px">
+<div class="container" style="margin-top: 5%;min-height:450px">
 	<div class="row">
-		<div class="col-lg-2">
+		<table class="table" style="border-color: #FFFFFF">
+			<tr>
+				<td width="20%">
 			<jsp:include page="left.jsp"><jsp:param value="3" name="location" /></jsp:include>
-		</div>
-		<div class="col-lg-10">
+				</td>
+				<td>
 			<blockquote>
 				<span> 查询教师信息 </span>
 			</blockquote>
@@ -215,7 +217,9 @@
 
 			</c:if>
 			<div class="col-lg-12">&nbsp;</div>
-		</div>
+				</td>
+			</tr>
+		</table>
 	</div>
 
 </div>

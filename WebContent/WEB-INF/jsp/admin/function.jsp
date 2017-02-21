@@ -24,7 +24,7 @@ padding-top: 100px;
 </style>
 </head>
 <body>
-	<div class="jumbotron" style="padding-bottom:20px;min-height:345px">
+	<div class="jumbotron" style="padding-bottom:20px;min-height:450px">
 		<div class="container">
 			<h1>Hello, 管理员</h1>
 			<p>

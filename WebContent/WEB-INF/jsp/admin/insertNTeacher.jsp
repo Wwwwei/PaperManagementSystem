@@ -46,12 +46,14 @@
 </head>
 <body>
 <jsp:include page="head.jsp"></jsp:include>
-<div class="container" style="margin-top: 5%;min-height:340px">
+<div class="container" style="margin-top: 5%;min-height:450px">
 	<div class="row">
-		<div class="col-lg-2">
+		<table class="table" style="border-color: #FFFFFF">
+			<tr>
+				<td width="20%">
 			<jsp:include page="left.jsp"><jsp:param value="1" name="location" /></jsp:include>
-		</div>
-		<div class="col-lg-10">
+				</td>
+				<td>
 			<blockquote>
 				<span> 批量录入 </span>
 			</blockquote>
@@ -63,7 +65,9 @@
 			</p>
 			<input type="button" id="uploadFile" value="录入教师信息" />
 			<div class="col-lg-12">&nbsp;</div>
-		</div>
+				</td>
+			</tr>
+		</table>
 	</div>
 
 </div>
