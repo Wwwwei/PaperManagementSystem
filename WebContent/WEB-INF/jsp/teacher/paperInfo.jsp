@@ -63,6 +63,12 @@
             <c:if test="${paper.paper_issue == 1}">会议</c:if>
         </dd>
     </dl>
+    <c:if test="${paper.paper_issue== 0}">
+        <dl class="dl-horizontal text-overflow">
+            <dt>影响因子</dt>
+            <dd>${paper.paper_if}</dd>
+        </dl>
+    </c:if>
     <c:if test="${paper.paper_issue== 0&&paper.paper_publishType==1}">
         <dl class="dl-horizontal text-overflow ">
             <dt>期刊性质</dt>
@@ -256,8 +262,6 @@
         <dt>收录类型</dt>
         <dd>${paper.paper_includedType}</dd>
     </dl>
-
-
     <dl class="dl-horizontal text-overflow">
         <dt>作者</dt>
         <dd>
@@ -265,6 +269,18 @@
                 ${author.author_name};
             </c:forEach>
         </dd>
+    </dl>
+    <dl class="dl-horizontal text-overflow">
+        <dt>总引用</dt>
+        <dd>${paper.paper_citations}</dd>
+    </dl>
+    <dl class="dl-horizontal text-overflow">
+        <dt>他引用</dt>
+        <dd>${paper.paper_citations_others}</dd>
+    </dl>
+    <dl class="dl-horizontal text-overflow">
+        <dt>google scholar 引用</dt>
+        <dd>${paper.paper_citations_google}</dd>
     </dl>
     <c:if test="${paper.paper_status== 0}">
         <a class="confirm-button btn btn-primary" style="width: 192px;">确认修改</a>

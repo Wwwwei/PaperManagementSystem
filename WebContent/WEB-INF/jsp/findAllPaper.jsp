@@ -21,6 +21,11 @@
     // 	return false;
     // };
     window.onload = function () {
+        var exportLocation= $("[name=exportLocation]").val();;
+        if(exportLocation=="export")
+        {
+            alert("导出路径：E:论文.xls");
+        }
         var journals_conference_id_value = "${journals_conference_id}";
         $("#journals_conference_id").val(journals_conference_id_value);
 
@@ -394,6 +399,50 @@
                                     </table>
                                 </div>
                                 <div class="col-md-12">&nbsp;</div>
+                                <div class="col-md-1">
+                                    <label>专业</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <select id="teacher_teachingProfession"
+                                            name="teachingProfession_id"
+                                            class="form-control">
+                                        <option value="0" selected="selected">----请选择----</option>
+                                        <c:forEach var="teachingProfession" begin="0" step="1"
+                                                   items="${teachingProfession}">
+                                            <option value="${teachingProfession.teachingProfession_id}">${teachingProfession.teachingProfession_name}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                                <div class="hidden-lg hidden-md">
+                                    <br>
+                                </div>
+                                <div class="col-md-1">
+                                    <label>研究所</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <select id="teacher_institute"
+                                            name="institute_id" class="form-control">
+                                        <option value="0" selected="selected">----请选择----</option>
+                                        <c:forEach var="institute" begin="0" step="1"
+                                                   items="${institutes}">
+                                            <option value="${institute.institute_id}">${institute.institute_name}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">&nbsp;</div>
+                                <div class="col-md-1">
+                                    <label>职称</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <select id="teacher_title" name="teacher_title"
+                                            class="form-control">
+                                        <option value="ALL" selected="selected">----请选择----</option>
+                                        <option value="教授">教授</option>
+                                        <option value="副教授">副教授</option>
+                                        <option value="讲师">讲师</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">&nbsp;</div>
                                 <div class="col-md-6">
                                     <button type="submit" class="btn btn-primary btn-lg">查询</button>
                                 </div>
@@ -415,7 +464,10 @@
     <!--查询结果显示开始-->
     <div class="container">
         <blockquote>
-            <span> 查询结果 </span>
+            <span> 查询结果  </span>
+            <span style="margin-right:900px;">		</span>
+            <input id="exportLocation" type="hidden" name="exportLocation" value="${sessionScope.exportLocation}"/>
+            <span><a href="exportPaper.do">导出论文</a></span>
         </blockquote>
         <div class="table-responsive">
             <table class="table table-striped table-hover">
@@ -469,9 +521,10 @@
                 </tr>
                 </thead>
                 <c:forEach var="paper" begin="0" end="10" step="1"
-                           items="${requestScope.papers}" varStatus="status">
+                           items="${papers}" varStatus="status">
                     <tr>
                         <td>${status.count+(page.currentPage-1)*page.pageNumber}</td>
+
                         <td class="text-overflow"><a
                                 href="findPaperById.do?paper_id=${paper.paper_id}&teacher_no=${paper.paper_teacher.teacher_no}">${paper.paper_name}</a>
                         </td>
@@ -511,10 +564,9 @@
                         <td>${paper.paper_citations}</td>
                         <td>${paper.paper_citations_others}</td>
                         <c:if test="${sessionScope.admin!=null}">
-                            <td class="text-overflow"><a
-                                    href="admin/updatePaperById.do?paper_id=${paper.paper_id}">修改</a>
-                                <a
-                                        href="admin/deletePaperById.do?paper_id=${paper.paper_id}">删除</a></td>
+                            <td class="text-overflow">
+                                <a  href="modify.do?paper_id=${paper.paper_id }">修改</a>
+                                <a href="admin/deletePaperById.do?paper_id=${paper.paper_id}">删除</a></td>
                         </c:if>
                             <%-- 							<td><a href="${paper.paper_url}"><button type="button" --%>
                         <!-- 										class="btn btn-primary">下载</button></a></td> -->
