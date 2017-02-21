@@ -50,7 +50,7 @@
 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/softwareCopyright.js"></script>
-<title>Insert title here</title>
+<title>管理员登录</title>
 <style>
 body {
 	padding-top: 99px;
