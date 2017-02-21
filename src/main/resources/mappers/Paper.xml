@@ -19,6 +19,13 @@
 		where p.paper_teacher_id = #{teacher_id} order by p.paper_time desc
 	</select>
 
+	<update id="update" parameterType="pms.entity.Paper">
+		UPDATE paper
+		SET
+		paper_name=#{paper_name},paper_rank=#{paper_rank},paper_author_num=#{paper_authorNum},paper_included_type=#{paper_includedType},paper_status=#{paper_status},paper_acc_num=#{paper_accNum},paper_time=#{paper_time},paper_citations=#{paper_citations},paper_citations_others=#{paper_citations_others},paper_citations_google=#{paper_citations_google},paper_journals_conference_is_zjut100=#{paper_journals_conference_isZjut100},paper_journals_conference_is_other=#{paper_journals_conference_isOther},paper_journals_conference_zky_id=#{paper_journals_conference_ZKY.journals_conference_id},paper_journals_conference_jcr_id=#{paper_journals_conference_JCR.journals_conference_id},paper_journals_conference_ccf_id=#{paper_journals_conference_CCF.journals_conference_id},paper_journals_conference_esi_id=#{paper_journals_conference_ESI.journals_conference_id},paper_journals_conference_other_id=#{paper_journals_conference_OTHER.journals_conference_id},paper_journals_conference_custom=#{paper_journals_conference_CUSTOM},paper_issue=#{paper_issue},paper_if=#{paper_if},paper_publish_name=#{paper_publishName},paper_publish_type=#{paper_publishType},paper_location=#{paper_location}
+		WHERE paper_id=#{paper_id}
+	</update>
+
 	<select id="findAllPaperByPage" resultMap="pms.entity.EntityMapper.PaperBean"
 			parameterType="java.util.Map">
 		SELECT t.*,p.*,year(now())-year(teacher_birth) as teacher_age from
@@ -40,6 +47,9 @@
 				p.paper_issue=#{journals_conference_flag}
 			</if>
 			<if test="teacher_id!=null"> and p.paper_teacher_id=#{teacher_id}</if>
+			<if test="institute_id!=null"> and t.teacher_institute_id=#{institute_id}</if>
+			<if test="teachingProfession_id!=null"> and t.teacher_teachingProfession_id=#{teachingProfession_id}</if>
+			<if test="teacher_title!=null"> and t.teacher_title=#{teacher_title}</if>
 			<if test="teacher_sex!=null"> and t.teacher_sex=#{teacher_sex}</if>
 			<if test="journals_conference_IF_min!=null"> and p.paper_if &gt;=
 				#{journals_conference_IF_min}

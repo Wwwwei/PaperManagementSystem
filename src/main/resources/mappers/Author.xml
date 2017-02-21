@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="pms.dao.AuthorMapper">
 
-<insert id="insertAuthor" parameterType="pms.entity.AuthorProxy"
-		useGeneratedKeys="true" keyProperty="author_id">
+	<insert id="insertAuthor" parameterType="pms.entity.AuthorProxy"
+			useGeneratedKeys="true" keyProperty="author_id">
 		<selectKey keyProperty="author_id" resultType="java.lang.Integer"
-			order="AFTER">
+				   order="AFTER">
 			SELECT
 			LAST_INSERT_ID()
 		</selectKey>
@@ -16,14 +16,36 @@
 		author(author_no,author_name,author_office,author_paper_id,author_rank,author_type)
 		VALUES(#{author_no},#{author_name},#{author_office},#{author_paper.paper_id},#{author_rank},#{author_type});
 	</insert>
+	<insert id="insert" parameterType="pms.entity.Author"
+			useGeneratedKeys="true" keyProperty="author_id">
+		<selectKey keyProperty="author_id" resultType="java.lang.Integer"
+				   order="AFTER">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO
+		author(author_id,author_no,author_name,author_office,author_paper_id,author_rank,author_type)
+		VALUES(#{author_id},#{author_no},#{author_name},#{author_office},#{author_paper.paper_id},#{author_rank},#{author_type});
+	</insert>
+	<update id="update" parameterType="pms.entity.Author">
+		UPDATE author
+		SET
+		author_no=#{author_no},author_name=#{author_name},author_office=#{author_office},author_rank=#{author_rank},author_paper_id=#{author_paper.paper_id},author_type=#{author_type}
+		WHERE author_id=#{author_id}
+	</update>
 	<delete id="deleteAuthorByPaperId" parameterType="int">
-	   delete from author where author_paper_id = #{paper_id} 
+		delete from author where author_paper_id = #{paper_id}
 	</delete>
-	
-	<select id="findAuthorByPaperId" parameterType="int" resultMap="pms.entity.EntityMapper.AuthorBean">
-	  select a.* from author a where a.author_paper_id = #{paper_id}
-	</select>
-  
 
-  
+	<select id="findAuthorByPaperId" parameterType="int" resultMap="pms.entity.EntityMapper.AuthorBean">
+		select a.* from author a where a.author_paper_id = #{paper_id}
+	</select>
+
+	<select id="findByPaperId" resultMap="pms.entity.EntityMapper.AuthorBean"
+			parameterType="String">
+		SELECT * FROM author a INNER JOIN paper p
+		WHERE a.author_paper_id=#{paper_id} AND
+		a.author_paper_id=p.paper_id ORDER BY author_rank;
+	</select>
+
 </mapper>
