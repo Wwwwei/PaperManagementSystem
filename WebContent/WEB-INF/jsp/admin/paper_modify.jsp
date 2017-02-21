@@ -137,7 +137,7 @@
                                             class="form-control">
                                         <option value="SCI">SCI</option>
                                         <option value="EI">EI</option>
-                                        <option value="ISTP">ISTP</option>
+                                        <option value="CPCI-S">CPCI-S</option>
                                         <option value="SSCI">SSCI</option>
                                         <option value="other">其他</option>
                                     </select>
