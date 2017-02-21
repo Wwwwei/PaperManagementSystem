@@ -9,14 +9,15 @@ import org.springframework.stereotype.Service;
 
 import pms.dao.InstituteMapper;
 import pms.entity.Institute;
+import pms.entity.TeachingProfession;
 import pms.service.InstituteService;
 
 @Service
 public class InstituteServiceImpl implements InstituteService {
-	
+
 	@Autowired
 	private InstituteMapper instituteMapper;
-	
+
 
 	@Override
 	public Institute getInstitue(String institute_name) {

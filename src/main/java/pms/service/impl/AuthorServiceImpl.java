@@ -17,7 +17,7 @@ public class AuthorServiceImpl implements AuthorService {
 
 	@Autowired
 	private AuthorMapper authorMapper;
-	
+
 	@Override
 	public boolean insertAuthor(AuthorProxy authorProxy) {
 		// TODO Auto-generated method stub
@@ -25,7 +25,7 @@ public class AuthorServiceImpl implements AuthorService {
 			return true;
 		return false;
 	}
-	
+
 	public boolean deleteAuthor(int paper_id) {
 		try{
 			authorMapper.deleteAuthorByPaperId(paper_id);
@@ -44,6 +44,25 @@ public class AuthorServiceImpl implements AuthorService {
 	public List<Author> findAuthor(int paper_id) {
 		return authorMapper.findAuthorByPaperId(paper_id);
 	}
-	
+
+	@Override
+	public List<Author> findAuthorListByPaperId(String paper_id) {
+		// TODO Auto-generated method stub
+		return authorMapper.findByPaperId(paper_id);
+	}
+
+	@Override
+	public Integer createAuthor(Author author) {
+		// TODO Auto-generated method stub
+		authorMapper.insert(author);
+		return author.getAuthor_id();
+	}
+
+	@Override
+	public Integer updateAuthor(Author author) {
+		// TODO Auto-generated method stub
+		authorMapper.update(author);
+		return author.getAuthor_id();
+	}
 
 }

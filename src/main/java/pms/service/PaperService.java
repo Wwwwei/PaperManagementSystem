@@ -42,7 +42,7 @@ public interface PaperService {
 	public List<Paper> findAllPaper(int journals_conference_id, String paper_includedType,
 									String paper_time, int journals_conference_flag, int teacher_id, int teacher_sex,
 									int teacher_age_min, int teacher_age_max, double journals_conference_IF_min, double journals_conference_IF_max,
-									int paper_citations_min, int paper_citations_max, int paper_citations_others_min, int paper_citations_others_max, String column, int order, Page page);
+									int paper_citations_min, int paper_citations_max, int paper_citations_others_min, int paper_citations_others_max, int institute_id,int teachingProfession_id,String teacher_title,String column, int order, Page page);
 
 	public Paper findPaperByPaperId(int paper_id);
 
@@ -56,4 +56,12 @@ public interface PaperService {
 	public boolean insertAuthorProxyByPaperId(int paper_id, int paperproxy_id);
 
 	public int findTeacherIdByPaperId(int paper_id);
+
+	/**
+	 * 更新Paper对象
+	 *
+	 * @param paper
+	 * @return
+	 */
+	public Integer updatePaper(Paper paper);
 }

@@ -1,5 +1,7 @@
 package pms.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,12 +14,18 @@ public class TeachingProfessionServiceImpl implements TeachingProfessionService 
 
 	@Autowired
 	private TeachingProfessionMapper teachingProfessionMapper;
-	
+
 	@Override
 	public TeachingProfession getTeachingProfession(String teachingProfession_name) {
 		return teachingProfessionMapper.findTeachingProfessionByName(teachingProfession_name);
 	}
 
-	
+	@Override
+	public List<TeachingProfession> getAllTeachingProfession()
+	{
+		return teachingProfessionMapper.getAllTeachingProfession();
+	}
+
+
 
 }
