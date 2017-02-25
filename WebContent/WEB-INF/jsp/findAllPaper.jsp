@@ -21,11 +21,7 @@
     // 	return false;
     // };
     window.onload = function () {
-        var exportLocation= $("[name=exportLocation]").val();;
-        if(exportLocation=="export")
-        {
-            alert("导出路径：E:论文.xls");
-        }
+
         var journals_conference_id_value = "${journals_conference_id}";
         $("#journals_conference_id").val(journals_conference_id_value);
 
@@ -565,7 +561,7 @@
                         <td>${paper.paper_citations_others}</td>
                         <c:if test="${sessionScope.admin!=null}">
                             <td class="text-overflow">
-                                <a  href="modify.do?paper_id=${paper.paper_id }">修改</a>
+                                <a href="modify.do?paper_id=${paper.paper_id }">修改</a>
                                 <a href="admin/deletePaperById.do?paper_id=${paper.paper_id}">删除</a></td>
                         </c:if>
                             <%-- 							<td><a href="${paper.paper_url}"><button type="button" --%>
