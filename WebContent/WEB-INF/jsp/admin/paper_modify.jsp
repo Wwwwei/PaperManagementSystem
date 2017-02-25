@@ -8,7 +8,7 @@
     <script type="text/javascript"
             src="<%=request.getContextPath()%>/js/common/jquery-2.1.4.min.js"></script>
     <script type="text/javascript"
-            src="<%=request.getContextPath()%>/js/paper/paper.modify.js"></script> 
+            src="<%=request.getContextPath()%>/js/admin/paper.modify.js"></script>
     <script type="text/javascript"
             src="<%=request.getContextPath()%>/js/paper/validate/jquery.validate.min.js"></script>
     <script type="text/javascript"
@@ -85,8 +85,8 @@
 <form action="paper/update.do" method="post" id="paperForm">
     <input type="hidden" value="${requestScope.paper_id}"
            id="paper_id" name="paper_id"/> <input type="hidden"
-                                                       value="${requestScope.commited_paper_id}" id="commited_paper_id"
-                                                       name="commited_paper_id"/>
+                                                  value="${requestScope.commited_paper_id}" id="commited_paper_id"
+                                                  name="commited_paper_id"/>
     <div class="jumbotron">
         <div class="container">
             <h2>修改成果</h2>
@@ -371,8 +371,8 @@
         </div>
     </div>
 </form>
-<input type="hidden" value="${teacher.teacher_no}" id="teacher_no"/>
-<input type="hidden" value="${teacher.teacher_name}" id="teacher_name"/>
+<input type="hidden" id="teacher_no"/>
+<input type="hidden" id="teacher_name"/>
 <input type="hidden"
        value="${teacher.teacher_university}"
        id="teacher_office"/>

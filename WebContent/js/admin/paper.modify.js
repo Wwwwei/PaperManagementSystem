@@ -220,7 +220,13 @@ function showAuthorInputList(paper_id) {
         success: function (data, stats) {
             if (stats == "success") {
                 authorResult = JSON.parse(htmlobj.responseText);
+                var rank = $("input#paper_rank").val();
                 for (var i in authorResult) {
+                    if (rank == authorResult[i].author_rank) {
+                        $("input#teacher_name").val(authorResult[i].author_name);
+                        $("input#teacher_office").val(authorResult[i].author_office);
+                        $("input#teacher_no").val(authorResult[i].author_no);
+                    }
                     $("input#author_id" + authorResult[i].author_rank).val(
                         authorResult[i].author_id);
                     authorsID.push(authorResult[i].author_id);
