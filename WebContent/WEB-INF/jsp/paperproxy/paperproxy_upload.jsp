@@ -350,11 +350,11 @@
                         <h4 class="modal-title" id="myModalLabel1">录入结果</h4>
                     </div>
                     <div class="modal-body">
-                        录入成功
+                        录入成功!
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal"
-                                onclick="window.location.href('../teacher/findPaper?isCommited=true')">确定
+                        <button type="button" id="myModal_button_success" class="btn btn-primary" data-dismiss="modal">
+                            确定
                         </button>
                     </div>
                 </div>
@@ -371,8 +371,7 @@
                         录入失败,请稍后再试!
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal"
-                                onclick="window.location.href('../teacher/findPaper?isCommited=true')">确定
+                        <button type="button" id="myModal_button_failed" class="btn btn-primary" data-dismiss="modal">确定
                         </button>
                     </div>
                 </div>

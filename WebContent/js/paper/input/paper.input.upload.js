@@ -31,6 +31,14 @@ $(document)
                 function () {
                     window.location.href = "../paper_proxy/show.do?paperproxy_id=" + paperproxy_id;
                 });
+            $("button#myModal_button_success").click(
+                function () {
+                    window.location.href = "../teacher/findPaper.do?isCommited=true";
+                });
+            $("button#myModal_button_failed").click(
+                function () {
+                    window.location.href = "../teacher/findPaper.do?isCommited=false";
+                });
             $("button#paperproxy_submit").click(
                 function () {
                     var htmlobj = $
