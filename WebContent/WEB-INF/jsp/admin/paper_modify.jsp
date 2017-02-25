@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>论文成果录入修改11111</title>
+    <title>管理员论文成果修改</title>
     <script type="text/javascript"
             src="<%=request.getContextPath()%>/js/common/jquery-2.1.4.min.js"></script>
     <script type="text/javascript"
